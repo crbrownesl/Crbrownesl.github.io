@@ -1,51 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Learn English with [Your Name]</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Learn English with Connor Brown</title>
+  <meta name="description" content="Online English lessons with Connor Brown — flexible, friendly, and effective. Book a trial today.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    <header>
-        <h1>Learn English with [Your Name]</h1>
-        <p>Fun, flexible, and effective online English lessons</p>
-        <nav>
-            <a href="#about">About</a>
-            <a href="#lessons">Lessons</a>
-            <a href="#reviews">Reviews</a>
-            <a href="#booking">Book a Lesson</a>
-        </nav>
-    </header>
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a href="#" class="brand">
+        <img class="brand-avatar" src="assets/profile.svg" alt="Profile photo" />
+        <span class="brand-name">Connor Brown</span>
+      </a>
+      <nav class="nav">
+        <a href="#about">About</a>
+        <a href="#lessons">Lessons</a>
+        <a href="#reviews">Reviews</a>
+        <a href="#contact" class="btn small">Contact</a>
+      </nav>
+    </div>
+  </header>
 
-    <section id="about">
-        <h2>About Me</h2>
-        <p>Hello! I'm [Your Name], a TEFL-certified English teacher with [X] years of experience helping students improve their speaking, writing, and comprehension skills. I offer personalized lessons to meet your goals — whether for travel, work, or exams.</p>
-    </section>
-
-    <section id="lessons">
-        <h2>Lesson Packages</h2>
-        <ul>
-            <li>Trial Lesson (25 min) — Free</li>
-            <li>Standard Lesson (50 min) — $20</li>
-            <li>5-Lesson Package — $90</li>
+  <section class="hero">
+    <div class="container hero-grid">
+      <div class="hero-text">
+        <h1>Speak Confident English — Anywhere, Anytime</h1>
+        <p class="lead">Friendly, goal-driven online lessons for conversation, exams, and business. Start with a 20-minute trial for just $8.</p>
+        <div class="cta-row">
+          <a href="#contact" class="btn primary">Contact to Book</a>
+          <a href="https://wa.me/50768103205" class="btn whatsapp" target="_blank">Chat on WhatsApp</a>
+        </div>
+        <ul class="trust">
+          <li>Level-6 TEFL Certified</li>
+          <li>2+ years experience</li>
+          <li>Open availability</li>
         </ul>
-    </section>
+      </div>
+    </div>
+  </section>
 
-    <section id="reviews">
-        <h2>What My Students Say</h2>
-        <blockquote>"[Your Name] is patient, friendly, and makes learning fun!" — Maria</blockquote>
-        <blockquote>"I improved my English quickly thanks to these lessons." — Ahmed</blockquote>
-    </section>
+  <section id="about" class="section">
+    <div class="container">
+      <h2>About Me</h2>
+      <p>I’m Connor Brown, an English teacher from sunny California with a Level-6 TEFL certificate and over two years of international teaching experience. I began my teaching journey in Europe and now work with students from around the globe. My lessons are a balance of engaging speaking practice and targeted grammar work, drawing heavily from trusted Cambridge English resources. I’m here to make learning clear, practical, and enjoyable — no matter your goals.</p>
+    </div>
+  </section>
 
-    <section id="booking">
-        <h2>Book a Lesson</h2>
-        <p>To book a lesson, click the link below to view my calendar and choose a time that works for you.</p>
-        <a href="https://calendly.com/" target="_blank" class="button">Book Now</a>
-    </section>
+  <section id="lessons" class="section light">
+    <div class="container">
+      <h2>Lessons & Pricing</h2>
+      <ul class="pricing">
+        <li><strong>Trial Lesson (20 min)</strong> — $8</li>
+        <li><strong>Standard Lesson (45 min)</strong> — $15</li>
+        <li><strong>Extended Lesson (60 min)</strong> — $18</li>
+      </ul>
+      <p class="note">Open availability — flexible scheduling to suit your needs.</p>
+    </div>
+  </section>
 
-    <footer>
-        <p>Contact me: <a href="mailto:your.email@example.com">your.email@example.com</a></p>
-    </footer>
+  <section id="contact" class="section">
+    <div class="container">
+      <h2>Contact Me</h2>
+      <p>📧 Email: <a href="mailto:crbrown.esl@gmail.com">crbrown.esl@gmail.com</a></p>
+      <p>📱 WhatsApp: <a href="https://wa.me/50768103205" target="_blank">+507 6810 3205</a></p>
+      <a href="https://wa.me/50768103205" class="btn whatsapp" target="_blank">Message Me on WhatsApp</a>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© <span id="year"></span> Connor Brown — Online English Teacher</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
