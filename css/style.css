@@ -106,3 +106,19 @@ footer {
     color: white;
     margin-top: 2rem;
 }
+/* Logo + Text side by side */
+.logo-wrap {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* space between logo and text */
+}
+
+.cesl-logo {
+    height: 50px; /* adjust size */
+    width: auto;
+}
+
+.logo-text {
+    font-size: 1.8em;
+    margin: 0;
+}
