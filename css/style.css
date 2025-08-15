@@ -8,7 +8,6 @@
 /* Body Styling */
 body {
     font-family: 'Roboto', sans-serif;
-    margin: 0;
     background-color: #d0e7ff;
     color: #333;
     line-height: 1.6;
@@ -46,7 +45,6 @@ header .container {
     font-size: 2rem;
     font-weight: bold;
     color: white;
-    white-space: nowrap;
 }
 
 /* Navigation */
@@ -62,7 +60,7 @@ nav ul li a {
     text-decoration: none;
     font-size: 1.2rem;
     font-weight: bold;
-    transition: text-decoration 0.3s ease;
+    transition: all 0.3s ease;
 }
 
 nav ul li a:hover,
@@ -72,8 +70,8 @@ nav ul li a.active {
 
 /* Main Content */
 main {
-    width: 80%;
-    max-width: 1000px;
+    width: 90%;
+    max-width: 1200px;
     margin: 3rem auto;
     text-align: center;
 }
@@ -83,7 +81,7 @@ main {
     background-color: white;
     padding: 4rem 3rem;
     border-radius: 12px;
-    box-shadow: 0 0 25px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 30px rgba(0,0,0,0.1);
     margin-bottom: 2rem;
 }
 
@@ -103,9 +101,15 @@ main {
     background-color: white;
     padding: 3rem 2rem;
     border-radius: 12px;
-    box-shadow: 0 0 25px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 25px rgba(0,0,0,0.08);
     margin-bottom: 2rem;
     text-align: left;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.content-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.15);
 }
 
 .content-box h2 {
@@ -129,23 +133,25 @@ main {
 /* Buttons */
 .btn {
     display: inline-block;
-    padding: 1rem 2rem;
+    padding: 12px 25px;
     background-color: #0077cc;
     color: white;
     text-decoration: none;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     border-radius: 6px;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .btn:hover {
     background-color: #005fa3;
+    transform: translateY(-2px);
 }
 
 /* Pricing Packages */
 .pricing-container {
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 2rem;
 }
 
@@ -153,8 +159,15 @@ main {
     background-color: white;
     padding: 2rem;
     border-radius: 12px;
-    box-shadow: 0 0 20px rgba(0,0,0,0.05);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
     text-align: center;
+    flex: 1 1 250px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.package:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.15);
 }
 
 .package h3 {
@@ -175,49 +188,32 @@ main {
     margin-left: 5px;
 }
 
-/* Footer */
-footer {
-    text-align: center;
-    padding: 2rem 0;
-    background-color: #0077cc;
-    color: white;
-    margin-top: 2rem;
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-    nav ul {
-        flex-wrap: wrap;
-        gap: 1rem;
-    }
-
-    .logo {
-        font-size: 1.6rem;
-    }
-
-    .content-box {
-        text-align: center;
-    }
-}
+/* Booking Page */
 .booking-page {
     text-align: center;
-    padding: 30px 15px;
+    padding: 40px 15px;
 }
 
 .booking-grid {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 20px;
+    gap: 25px;
     margin-top: 30px;
 }
 
 .booking-option {
     background: white;
-    border-radius: 10px;
-    padding: 20px;
+    border-radius: 12px;
+    padding: 25px;
     width: 300px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.booking-option:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
 }
 
 .booking-option h3 {
@@ -229,15 +225,39 @@ footer {
     margin: 10px 0;
 }
 
-.btn {
-    display: inline-block;
-    background: #0073e6;
+/* Footer */
+footer {
+    text-align: center;
+    padding: 2rem 0;
+    background-color: #0077cc;
     color: white;
-    padding: 10px 15px;
-    border-radius: 5px;
-    text-decoration: none;
+    margin-top: 2rem;
 }
 
-.btn:hover {
-    background: #005bb5;
+/* Responsive Design */
+@media (max-width: 992px) {
+    nav ul {
+        flex-wrap: wrap;
+        gap: 1rem;
+        justify-content: center;
+        margin-top: 10px;
+    }
+    main {
+        width: 95%;
+    }
+    .content-box {
+        text-align: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .logo {
+        font-size: 1.6rem;
+    }
+    .booking-option {
+        width: 90%;
+    }
+    .package {
+        width: 90%;
+    }
 }
