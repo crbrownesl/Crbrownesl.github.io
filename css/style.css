@@ -289,3 +289,18 @@ footer {
         margin-left: 0;
     }
 }
+.lesson-buttons {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* space between buttons */
+  flex-wrap: wrap; /* allow wrapping on small screens */
+  margin-top: 10px;
+}
+
+.lesson-buttons .btn {
+  flex-shrink: 0; /* prevents the Book Now button from shrinking */
+}
+
+.lesson-buttons iframe {
+  max-height: 40px; /* keeps PayPal button roughly same height as your button */
+}
