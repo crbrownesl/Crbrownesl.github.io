@@ -5,8 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Book a Lesson - Connor ESL</title>
   <link rel="stylesheet" href="css/style.css">
+  <!-- Font Awesome for cart icon -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-  <!-- Inline CSS for layout and buttons -->
   <style>
     .booking-grid {
       display: flex;
@@ -69,6 +70,11 @@
       text-align: center;
       margin-bottom: 40px;
     }
+    nav ul li a.cart-link {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
   </style>
 </head>
 <body>
@@ -86,6 +92,8 @@
           <li><a href="pricing.html">Pricing</a></li>
           <li><a href="contact.html">Contact</a></li>
           <li><a href="book.html" class="active">Book</a></li>
+          <!-- Cart link with icon -->
+          <li><a href="cart.html" class="cart-link"><i class="fas fa-shopping-cart"></i> Cart</a></li>
         </ul>
       </nav>
     </div>
@@ -121,6 +129,7 @@
             <input type="hidden" name="business" value="crbrown.esl@gmail.com">
             <input type="hidden" name="item_name" value="Standard Lesson">
             <input type="hidden" name="amount" value="15.00">
+            <input type="hidden" name="currency_code" value="USD">
             <input type="submit" class="pp-button" value="Add to Cart">
           </form>
         </div>
@@ -140,6 +149,7 @@
             <input type="hidden" name="business" value="crbrown.esl@gmail.com">
             <input type="hidden" name="item_name" value="Full Lesson">
             <input type="hidden" name="amount" value="18.00">
+            <input type="hidden" name="currency_code" value="USD">
             <input type="submit" class="pp-button" value="Add to Cart">
           </form>
         </div>
