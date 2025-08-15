@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Adults (18+) - Connor ESL</title>
+<link rel="stylesheet" href="../style.css">
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+<body>
+<header>
+<a href="../index.html"><img src="../images/cesl-logo.png" alt="Connor ESL Logo" class="logo"></a>
+<nav>
+<ul>
+<li><a href="../index.html">Home</a></li>
+<li class="nav-item dropdown">
+<a class="nav-link dropdown-toggle" href="#">Lessons</a>
+<ul class="dropdown-menu">
+<li><a href="individual.html">Individual Lessons</a></li>
+<li><a href="adults.html">Adults (18+)</a></li>
+<li><a href="teens.html">Teens (13-17)</a></li>
+</ul>
+</li>
+<li><a href="cart.html"><i class="fas fa-shopping-cart"></i> Cart</a></li>
+</ul>
+</nav>
+</header>
+<main>
+<h1>Adults (18+)</h1>
+<p>My private online lessons for adults focus on practical English for everyday life, travel, work, and social interactions. Lessons combine conversation, grammar, reading, and writing. Cambridge exam prep (PET, FCE, CAE) is available.</p>
+<p><strong>Features:</strong><br>• Fully online – learn from home<br>• Tailored to your level and goals<br>• Flexible scheduling</p>
+
+<div class="lesson-item">
+<h3>5-Hour Package</h3>
+<button onclick="addToCart('Adults (18+) 5-Hour Package', 90)">Add to Cart - $90</button>
+</div>
+<div class="lesson-item">
+<h3>10-Hour Package</h3>
+<button onclick="addToCart('Adults (18+) 10-Hour Package', 170)">Add to Cart - $170</button>
+</div>
+<div class="lesson-item">
+<h3>20-Hour Package</h3>
+<button onclick="addToCart('Adults (18+) 20-Hour Package', 320)">Add to Cart - $320</button>
+</div>
+
+<script>
+let cart = JSON.parse(localStorage.getItem('cart')) || [];
+function addToCart(name, price) { cart.push({name, price}); localStorage.setItem('cart', JSON.stringify(cart)); alert(name + ' added to cart'); }
+</script>
+</main>
+</body>
+</html>

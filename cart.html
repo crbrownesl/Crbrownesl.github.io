@@ -1,19 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cart - Connor ESL</title>
+<link rel="stylesheet" href="../style.css">
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+<body>
+<header>
+<a href="../index.html"><img src="../images/cesl-logo.png" alt="Connor ESL Logo" class="logo"></a>
+<nav>
+<ul>
+<li><a href="../index.html">Home</a></li>
+<li class="nav-item dropdown">
+<a class="nav-link dropdown-toggle" href="#">Lessons</a>
+<ul class="dropdown-menu">
+<li><a href="individual.html">Individual Lessons</a></li>
+<li><a href="adults.html">Adults (18+)</a></li>
+<li><a href="teens.html">Teens (13-17)</a></li>
+</ul>
+</li>
+<li><a href="cart.html"><i class="fas fa-shopping-cart"></i> Cart</a></li>
+</ul>
+</nav>
+</header>
+
+<main>
 <h1>Your Cart</h1>
-<ul id="cart-list"></ul>
-<p>Total: $<span id="cart-total">0</span></p>
+<div id="cart"></div>
+<button id="checkout-btn">Checkout with PayPal</button>
+</main>
 
 <script>
 let cart = JSON.parse(localStorage.getItem('cart')) || [];
-const cartList = document.getElementById('cart-list');
-const cartTotal = document.getElementById('cart-total');
-let total = 0;
+function displayCart() {
+  const cartDiv = document.getElementById('cart');
+  cartDiv.innerHTML = '';
+  let total = 0;
+  cart.forEach((item,index)=>{
+    cartDiv.innerHTML += `<p>${item.name} - $${item.price}</p>`;
+    total += item.price;
+  });
+  cartDiv.innerHTML += `<p><strong>Total: $${total}</strong></p>`;
+}
+displayCart();
 
-cart.forEach(item => {
-  const li = document.createElement('li');
-  li.textContent = `${item.name} - $${item.price}`;
-  cartList.appendChild(li);
-  total += item.price;
-});
-
-cartTotal.textContent = total.toFixed(2);
+document.getElementById('checkout-btn').onclick = function() {
+  if(cart.length === 0) return alert("Your cart is empty!");
+  let url='https://www.paypal.com/cgi-bin/webscr?cmd=_cart&upload=1&business=crbrown.esl@gmail.com';
+  cart.forEach((item,index)=>{
+    url+=`&item_name_${index+1}=${encodeURIComponent(item.name)}&amount_${index+1}=${item.price}&quantity_${index+1}=1`;
+  });
+  window.open(url,'_blank');
+};
 </script>
+</body>
+</html>
