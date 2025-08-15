@@ -47,6 +47,7 @@ header .container {
     color: white;
 }
 
+/* Navigation */
 nav ul.nav-list {
     list-style: none;
     display: flex;
@@ -57,7 +58,7 @@ nav ul.nav-list {
 }
 
 nav ul.nav-list li.nav-end {
-    margin-left: auto; /* forces 'Book' to the end */
+    margin-left: auto; /* keeps 'Book' at the end */
 }
 
 nav ul.nav-list li a {
@@ -73,7 +74,7 @@ nav ul.nav-list li a.active {
     text-decoration: underline;
 }
 
-/* Responsive tweaks */
+/* Responsive Navigation */
 @media (max-width: 768px) {
     nav ul.nav-list {
         justify-content: flex-start;
@@ -253,12 +254,6 @@ footer {
 
 /* Responsive Design */
 @media (max-width: 992px) {
-    nav ul {
-        flex-wrap: wrap;
-        gap: 1rem;
-        justify-content: center;
-        margin-top: 10px;
-    }
     main {
         width: 95%;
     }
@@ -271,9 +266,7 @@ footer {
     .logo {
         font-size: 1.6rem;
     }
-    .booking-option {
-        width: 90%;
-    }
+    .booking-option,
     .package {
         width: 90%;
     }
