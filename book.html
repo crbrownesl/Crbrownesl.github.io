@@ -1,165 +1,185 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Book a Lesson - Connor ESL</title>
-  <link rel="stylesheet" href="css/style.css">
-  <!-- Font Awesome for cart icon -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-  <style>
-    .booking-grid {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
-      justify-content: center;
-    }
-    .booking-option {
-      border: 1px solid #ccc;
-      padding: 20px;
-      width: 300px;
-      box-sizing: border-box;
-      border-radius: 8px;
-      text-align: center;
-    }
-    .booking-option h3 {
-      margin-top: 0;
-    }
-    .booking-option .price {
-      font-weight: bold;
-      margin: 10px 0;
-    }
-    .btn {
-      display: inline-block;
-      padding: 10px 20px;
-      background-color: #0070ba;
-      color: white;
-      text-decoration: none;
-      border-radius: 5px;
-      font-weight: bold;
-    }
-    .btn:hover {
-      background-color: #005ea6;
-    }
-    .lesson-buttons {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      flex-wrap: wrap;
-      margin-top: 10px;
-      justify-content: center;
-    }
-    .pp-button {
-      display: inline-block;
-      text-align: center;
-      border: none;
-      border-radius: 0.25rem;
-      min-width: 11.625rem;
-      padding: 0.5rem 2rem;
-      height: 2.625rem;
-      font-weight: bold;
-      background-color: #FFD140;
-      color: #000000;
-      font-family: "Helvetica Neue", Arial, sans-serif;
-      font-size: 1rem;
-      line-height: 1.25rem;
-      cursor: pointer;
-    }
-    .hero {
-      text-align: center;
-      margin-bottom: 40px;
-    }
-    nav ul li a.cart-link {
-      display: flex;
-      align-items: center;
-      gap: 5px;
-    }
-  </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Book a Lesson - Connor ESL</title>
+<link rel="stylesheet" href="css/style.css">
+<!-- Font Awesome for cart icon -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+  .booking-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+  }
+  .booking-option {
+    border: 1px solid #ccc;
+    padding: 20px;
+    width: 300px;
+    box-sizing: border-box;
+    border-radius: 8px;
+    text-align: center;
+  }
+  .booking-option h3 { margin-top: 0; }
+  .booking-option .price { font-weight: bold; margin: 10px 0; }
+  .btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #0070ba;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+  }
+  .btn:hover { background-color: #005ea6; }
+  .lesson-buttons {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 10px;
+    justify-content: center;
+  }
+  .pp-button {
+    display: inline-block;
+    text-align: center;
+    border: none;
+    border-radius: 0.25rem;
+    min-width: 11.625rem;
+    padding: 0.5rem 2rem;
+    height: 2.625rem;
+    font-weight: bold;
+    background-color: #FFD140;
+    color: #000000;
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    font-size: 1rem;
+    line-height: 1.25rem;
+    cursor: pointer;
+  }
+  .hero { text-align: center; margin-bottom: 40px; }
+  
+  /* Cart dropdown styles */
+  .cart-dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  .cart-dropdown-content {
+    display: none;
+    position: absolute;
+    right: 0;
+    background-color: white;
+    min-width: 250px;
+    border: 1px solid #ccc;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    padding: 10px;
+    z-index: 100;
+  }
+  .cart-dropdown:hover .cart-dropdown-content {
+    display: block;
+  }
+  .cart-item { display: flex; justify-content: space-between; padding: 5px 0; }
+  .checkout-btn {
+    margin-top: 10px;
+    display: block;
+    width: 100%;
+    text-align: center;
+    background-color: #0070ba;
+    color: white;
+    text-decoration: none;
+    padding: 10px;
+    border-radius: 5px;
+    font-weight: bold;
+  }
+  nav ul li { position: relative; }
+  nav ul li a.cart-link { display: flex; align-items: center; gap: 5px; cursor: pointer; }
+</style>
 </head>
 <body>
-  <!-- Header -->
-  <header>
-    <div class="container nav-wrap">
-      <a href="index.html" class="brand">
-        <img src="images/cesl-logo.png" alt="Connor ESL Logo" class="cesl-logo">
-        <span class="logo">Connor ESL</span>
-      </a>
-      <nav>
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="pricing.html">Pricing</a></li>
-          <li><a href="contact.html">Contact</a></li>
-          <li><a href="book.html" class="active">Book</a></li>
-          <!-- Cart link with icon -->
-          <li><a href="cart.html" class="cart-link"><i class="fas fa-shopping-cart"></i> Cart</a></li>
-        </ul>
-      </nav>
+<header>
+  <div class="container nav-wrap">
+    <a href="index.html" class="brand">
+      <img src="images/cesl-logo.png" alt="Connor ESL Logo" class="cesl-logo">
+      <span class="logo">Connor ESL</span>
+    </a>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="pricing.html">Pricing</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="book.html" class="active">Book</a></li>
+        <li class="cart-dropdown">
+          <a class="cart-link"><i class="fas fa-shopping-cart"></i> <span id="cart-count">0</span> product(s)</a>
+          <div class="cart-dropdown-content" id="cart-dropdown"></div>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main class="booking-page">
+  <div class="hero">
+    <h1>Book Your Lesson</h1>
+    <p>Select the perfect lesson for your learning goals. Add lessons to your cart and checkout when ready.</p>
+  </div>
+
+  <div class="booking-grid">
+    <!-- Free Trial Lesson -->
+    <div class="booking-option">
+      <h3>Free Trial Lesson</h3>
+      <p>20-minute trial lesson to experience my teaching style. Perfect for new students.</p>
+      <p class="price">Free</p>
+      <a href="https://docs.google.com/forms/d/1IXS4wB5cD1RJ_i687feQZYEB0rpZlYpuLhYr0x0cblw/edit?pli=1" class="btn" target="_blank">Book Now</a>
     </div>
-  </header>
 
-  <!-- Main Content -->
-  <main class="booking-page">
-    <div class="hero">
-      <h1>Book Your Lesson</h1>
-      <p>Select the perfect lesson for your learning goals. Add lessons to your PayPal cart or book a free trial instantly.</p>
-    </div>
-
-    <div class="booking-grid">
-      <!-- Free Trial Lesson -->
-      <div class="booking-option">
-        <h3>Free Trial Lesson</h3>
-        <p>20-minute trial lesson to experience my teaching style. Perfect for new students.</p>
-        <p class="price">Free</p>
-        <a href="https://docs.google.com/forms/d/1IXS4wB5cD1RJ_i687feQZYEB0rpZlYpuLhYr0x0cblw/edit?pli=1" class="btn" target="_blank">Book Now</a>
-      </div>
-
-      <!-- Standard Lesson -->
-      <div class="booking-option">
-        <h3>Standard Lesson</h3>
-        <p>45-minute lesson focused on speaking and grammar using Cambridge English methods.</p>
-        <p class="price">$15</p>
-        <div class="lesson-buttons">
-          <a href="https://docs.google.com/forms/d/1IXS4wB5cD1RJ_i687feQZYEB0rpZlYpuLhYr0x0cblw/edit?pli=1" class="btn" target="_blank">Book Now</a>
-          <!-- PayPal Add to Cart Button -->
-          <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
-            <input type="hidden" name="cmd" value="_cart">
-            <input type="hidden" name="add" value="1">
-            <input type="hidden" name="business" value="crbrown.esl@gmail.com">
-            <input type="hidden" name="item_name" value="Standard Lesson">
-            <input type="hidden" name="amount" value="15.00">
-            <input type="hidden" name="currency_code" value="USD">
-            <input type="submit" class="pp-button" value="Add to Cart">
-          </form>
-        </div>
-      </div>
-
-      <!-- Full Lesson -->
-      <div class="booking-option">
-        <h3>Full Lesson</h3>
-        <p>1-hour comprehensive lesson for in-depth learning and practice.</p>
-        <p class="price">$18</p>
-        <div class="lesson-buttons">
-          <a href="https://docs.google.com/forms/d/1IXS4wB5cD1RJ_i687feQZYEB0rpZlYpuLhYr0x0cblw/edit?pli=1" class="btn" target="_blank">Book Now</a>
-          <!-- PayPal Add to Cart Button -->
-          <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
-            <input type="hidden" name="cmd" value="_cart">
-            <input type="hidden" name="add" value="1">
-            <input type="hidden" name="business" value="crbrown.esl@gmail.com">
-            <input type="hidden" name="item_name" value="Full Lesson">
-            <input type="hidden" name="amount" value="18.00">
-            <input type="hidden" name="currency_code" value="USD">
-            <input type="submit" class="pp-button" value="Add to Cart">
-          </form>
-        </div>
+    <!-- Standard Lesson -->
+    <div class="booking-option">
+      <h3>Standard Lesson</h3>
+      <p>45-minute lesson focused on speaking and grammar using Cambridge English methods.</p>
+      <p class="price">$15</p>
+      <div class="lesson-buttons">
+        <a href="#" class="pp-button" onclick="addToCart('Standard Lesson',15)">Add to Cart</a>
       </div>
     </div>
-  </main>
 
-  <!-- Footer -->
-  <footer>
-    <p>© 2025 Connor ESL. All rights reserved.</p>
-  </footer>
-</body>
-</html>
+    <!-- Full Lesson -->
+    <div class="booking-option">
+      <h3>Full Lesson</h3>
+      <p>1-hour comprehensive lesson for in-depth learning and practice.</p>
+      <p class="price">$18</p>
+      <div class="lesson-buttons">
+        <a href="#" class="pp-button" onclick="addToCart('Full Lesson',18)">Add to Cart</a>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <p>© 2025 Connor ESL. All rights reserved.</p>
+</footer>
+
+<script>
+  // Initialize cart from localStorage
+  let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+  function updateCartUI() {
+    const countEl = document.getElementById('cart-count');
+    const dropdownEl = document.getElementById('cart-dropdown');
+    countEl.textContent = cart.length;
+    dropdownEl.innerHTML = '';
+    cart.forEach((item, index) => {
+      const div = document.createElement('div');
+      div.className = 'cart-item';
+      div.innerHTML = `<span>${item.name}</span><span>$${item.price.toFixed(2)}</span>`;
+      dropdownEl.appendChild(div);
+    });
+    if(cart.length > 0){
+      const total = cart.reduce((sum,item)=>sum+item.price,0);
+      const checkout = document.createElement('a');
+      checkout.href = '#';
+      checkout.className = 'checkout-btn';
+      checkout.textContent = `Checkout ($${total.toFixed(2)})`;
+      checkout.onclick = checkoutCart;
+      dropdownEl.append
