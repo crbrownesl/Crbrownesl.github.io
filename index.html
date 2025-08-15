@@ -5,75 +5,90 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Connor ESL - Home</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-<link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="css/style.css">
 <style>
+body { font-family: Arial, sans-serif; line-height: 1.6; background-color: #f9f9f9; color: #333; margin: 0; padding: 0; }
+.container { width: 90%; max-width: 1200px; margin: 0 auto; }
+
+/* Header/Nav */
+header { background-color: #0070ba; color: #fff; padding: 1rem 0; }
+header .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: #fff; }
+header .brand img { height: 50px; border-radius: 5px; }
+nav ul { list-style: none; display: flex; gap: 20px; align-items: center; }
 nav ul li { position: relative; }
-nav ul li a.cart-link { display: flex; align-items: center; gap: 5px; cursor: pointer; }
+nav ul li a { text-decoration: none; color: #fff; font-weight: bold; }
+nav ul li a.active { text-decoration: underline; }
+
+/* Cart */
+nav ul li a.cart-link { display: flex; align-items: center; gap: 5px; cursor: pointer; color: #fff; }
 .cart-dropdown-content {
-  display: none; position: absolute; right: 0; background-color: white; min-width: 250px;
+  display: none; position: absolute; right: 0; background-color: #fff; color: #000; min-width: 250px;
   border: 1px solid #ccc; box-shadow: 0 8px 16px rgba(0,0,0,0.2); padding: 10px; z-index: 100;
-  max-height: 300px; overflow-y: auto;
+  max-height: 300px; overflow-y: auto; border-radius: 5px;
 }
 .cart-item { display: flex; justify-content: space-between; padding: 5px 0; }
 .remove-btn { color: red; cursor: pointer; margin-left: 5px; font-size: 0.85rem; }
-.checkout-btn {
-  margin-top: 10px; display: block; width: 100%; text-align: center;
-  background-color: #0070ba; color: white; text-decoration: none; padding: 10px;
-  border-radius: 5px; font-weight: bold;
-}
+
+/* Hero */
+.hero { padding: 2rem 0; text-align: center; }
+.hero h1 { font-size: 2.5rem; color: #0070ba; margin-bottom: 1rem; }
+.hero h2 { margin-bottom: 1rem; }
+.hero p { font-size: 1.1rem; }
+
+/* Sections */
+section { padding: 2rem 0; }
+.content-box { background-color: #fff; padding: 2rem; border-radius: 10px; margin-bottom: 2rem; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+.content-box h2 { color: #0070ba; margin-bottom: 1rem; }
+.content-box p { margin-bottom: 1rem; }
+.btn { background-color: #FFD140; color: #000; padding: 10px 20px; border-radius: 5px; text-decoration: none; font-weight: bold; display: inline-block; }
 </style>
 </head>
 <body>
 
 <header>
-    <div class="container nav-wrap">
-        <a href="index.html" class="brand">
-            <img src="assets/profile.jpg" alt="Connor ESL Logo" class="cesl-logo">
-            <h1 class="logo">Connor ESL</h1>
-        </a>
-        <nav>
-            <ul>
-                <li><a href="index.html" class="active">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="pricing.html">Pricing</a></li>
-                <li><a href="contact.html">Contact</a></li>
-                <li><a href="book.html">Book</a></li>
-                <li class="cart-dropdown">
-                  <a class="cart-link" id="cart-toggle"><i class="fas fa-shopping-cart"></i> <span id="cart-count">0</span> product(s)</a>
-                  <div class="cart-dropdown-content" id="cart-dropdown"></div>
-                </li>
-            </ul>
-        </nav>
-    </div>
+  <div class="container nav-wrap">
+    <a href="index.html" class="brand">
+      <img src="images/cesl-logo.png" alt="Connor ESL Logo" class="cesl-logo">
+      <h1 class="logo">Connor ESL</h1>
+    </a>
+    <nav>
+      <ul>
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="pricing.html">Pricing</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="book.html">Book</a></li>
+        <li class="cart-dropdown">
+          <a class="cart-link" id="cart-toggle"><i class="fas fa-shopping-cart"></i> <span id="cart-count">0</span> product(s)</a>
+          <div class="cart-dropdown-content" id="cart-dropdown"></div>
+        </li>
+      </ul>
+    </nav>
+  </div>
 </header>
 
 <section class="hero">
-    <h1>Welcome!</h1>
-    <h2>Master English with Confidence and Fun!</h2>
-    <p>Professional online English lessons focused on speaking, reading, writing, and grammar, using proven methods from Cambridge English.</p>
+  <h1>Welcome!</h1>
+  <h2>Master English with Confidence and Fun!</h2>
+  <p>Professional online English lessons focused on speaking, reading, writing, and grammar, using proven methods from Cambridge English.</p>
 </section>
 
 <main>
-    <section class="trial">
-        <div class="content-box">
-            <h2><i class="fa-solid fa-clock"></i> Try a Free 20-Minute Lesson!</h2>
-            <p><i class="fa-solid fa-star"></i> Get a taste of my teaching style with a <strong>free 20-minute trial lesson</strong>. Improve your speaking and grammar while having fun!</p>
-            <a href="book.html" class="btn"><i class="fa-solid fa-calendar-check"></i> Book Your Lesson</a>
-        </div>
-    </section>
+  <section class="content-box">
+    <h2><i class="fa-solid fa-clock"></i> Try a Free 20-Minute Lesson!</h2>
+    <p><i class="fa-solid fa-star"></i> Get a taste of my teaching style with a <strong>free 20-minute trial lesson</strong>. Improve your speaking and grammar while having fun!</p>
+    <a href="book.html" class="btn"><i class="fa-solid fa-calendar-check"></i> Book Your Lesson</a>
+  </section>
 
-    <section class="intro">
-        <div class="content-box">
-            <h2><i class="fa-solid fa-chalkboard-teacher"></i> Why Choose Me?</h2>
-            <p><i class="fa-solid fa-location-dot"></i> Native speaker from California, TEFL Level-5 certified, teaching for over 2 years in Europe.</p>
-            <p><i class="fa-solid fa-clock"></i> Flexible scheduling and personalized lessons that improve speaking and grammar efficiently.</p>
-        </div>
-    </section>
+  <section class="content-box">
+    <h2><i class="fa-solid fa-chalkboard-teacher"></i> Why Choose Me?</h2>
+    <p><i class="fa-solid fa-location-dot"></i> Native speaker from California, TEFL Level-5 certified, teaching for over 2 years in Europe.</p>
+    <p><i class="fa-solid fa-clock"></i> Flexible scheduling and personalized lessons that improve speaking and grammar efficiently.</p>
+  </section>
 </main>
 
 <footer>
-    <p>&copy; 2025 Connor Brown</p>
+  <p>© 2025 Connor Brown</p>
 </footer>
 
 <script>
@@ -84,7 +99,6 @@ const toggleBtn = document.getElementById('cart-toggle');
 function updateCartUI() {
   const countEl = document.getElementById('cart-count');
   countEl.textContent = cart.length;
-
   dropdownEl.innerHTML = '';
   if(cart.length === 0){
     dropdownEl.innerHTML = '<p>Your cart is empty.</p>';
@@ -105,12 +119,6 @@ function updateCartUI() {
   }
 }
 
-function addToCart(name,price){
-  cart.push({name,price});
-  localStorage.setItem('cart',JSON.stringify(cart));
-  updateCartUI();
-}
-
 function removeFromCart(index){
   cart.splice(index,1);
   localStorage.setItem('cart',JSON.stringify(cart));
@@ -128,11 +136,7 @@ function checkoutCart(e){
 }
 
 toggleBtn.addEventListener('click',()=>{
-  if(dropdownEl.style.display==='block'){
-    dropdownEl.style.display='none';
-  } else {
-    dropdownEl.style.display='block';
-  }
+  dropdownEl.style.display = dropdownEl.style.display==='block' ? 'none' : 'block';
 });
 
 updateCartUI();
