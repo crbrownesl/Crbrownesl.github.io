@@ -4,8 +4,30 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>Connor ESL — Home</title>
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+/* TEMP FIX until your style.css loads properly */
+header img {
+  max-height: 50px;
+  width: auto;
+}
+.nav {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+}
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  background: white;
+  border: 1px solid #ccc;
+  padding: 0.5rem;
+}
+.dropdown.open .dropdown-menu {
+  display: block;
+}
+</style>
 </head>
 <body>
 <header class="site-header">
