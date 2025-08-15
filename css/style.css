@@ -1,18 +1,20 @@
-/* ===== Reset & Base ===== */
+/* General Reset */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+/* Body Styling */
 body {
     font-family: 'Roboto', sans-serif;
     margin: 0;
     background-color: #d0e7ff;
     color: #333;
+    line-height: 1.6;
 }
 
-/* ===== Header ===== */
+/* Header */
 header {
     background-color: #0077cc;
     padding: 1rem 5%;
@@ -23,31 +25,36 @@ header .container {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
 }
 
-header .brand {
+/* Logo + Brand Name */
+.brand {
     display: flex;
     align-items: center;
     gap: 10px;
-}
-
-header h1.logo {
-    font-size: 2rem;
-    font-weight: bold;
+    text-decoration: none;
 }
 
 .cesl-logo {
     height: 50px;
     width: auto;
+    border-radius: 50%;
 }
 
-/* ===== Navigation ===== */
+.logo {
+    font-size: 2rem;
+    font-weight: bold;
+    color: white;
+    white-space: nowrap;
+}
+
+/* Navigation */
 nav ul {
     list-style: none;
     display: flex;
     gap: 2rem;
     margin: 0;
-    padding: 0;
 }
 
 nav ul li a {
@@ -55,6 +62,7 @@ nav ul li a {
     text-decoration: none;
     font-size: 1.2rem;
     font-weight: bold;
+    transition: text-decoration 0.3s ease;
 }
 
 nav ul li a:hover,
@@ -62,7 +70,7 @@ nav ul li a.active {
     text-decoration: underline;
 }
 
-/* ===== Main Layout ===== */
+/* Main Content */
 main {
     width: 80%;
     max-width: 1000px;
@@ -70,9 +78,8 @@ main {
     text-align: center;
 }
 
-/* ===== Hero & Content Boxes ===== */
-.hero,
-.content-box {
+/* Hero Section */
+.hero {
     background-color: white;
     padding: 4rem 3rem;
     border-radius: 12px;
@@ -80,7 +87,7 @@ main {
     margin-bottom: 2rem;
 }
 
-.hero h2 {
+.hero h1 {
     font-size: 3rem;
     color: #0077cc;
     margin-bottom: 1rem;
@@ -91,16 +98,38 @@ main {
     margin-bottom: 2rem;
 }
 
+/* Content Boxes */
+.content-box {
+    background-color: white;
+    padding: 3rem 2rem;
+    border-radius: 12px;
+    box-shadow: 0 0 25px rgba(0,0,0,0.1);
+    margin-bottom: 2rem;
+    text-align: left;
+}
+
 .content-box h2 {
-    font-size: 2.2rem;
+    font-size: 2rem;
     color: #0077cc;
     margin-bottom: 1rem;
 }
 
-/* ===== Buttons ===== */
+.content-box p {
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+/* Icon Styling */
+.content-box i,
+.hero i {
+    margin-right: 8px;
+    color: #0077cc;
+}
+
+/* Buttons */
 .btn {
     display: inline-block;
-    padding: 1rem 3rem;
+    padding: 1rem 2rem;
     background-color: #0077cc;
     color: white;
     text-decoration: none;
@@ -113,56 +142,40 @@ main {
     background-color: #005fa3;
 }
 
-/* ===== Booking / Pricing Cards ===== */
-.booking-grid {
+/* Pricing Packages */
+.pricing-container {
     display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
-    margin-top: 24px;
+    flex-direction: column;
+    gap: 2rem;
 }
 
-.booking-card {
-    background: #fff;
-    border-radius: 14px;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.10);
-    padding: 22px;
-    width: 290px;
+.package {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.05);
     text-align: center;
-    transition: transform .18s ease, box-shadow .18s ease;
 }
 
-.booking-card h3 {
-    font-size: 1.2rem;
-    margin-bottom: 8px;
-    color: #2c3e50;
-}
-
-.booking-card p {
-    color: #555;
-    font-size: 0.98rem;
-}
-
-.booking-card .price {
-    font-size: 1.25rem;
-    font-weight: 800;
+.package h3 {
+    font-size: 1.5rem;
     color: #0077cc;
-    margin: 12px 0 6px;
+    margin-bottom: 1rem;
 }
 
-.booking-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 14px 34px rgba(0,0,0,0.14);
+.package p {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
 }
 
-/* Old price (crossed out) for packages */
+/* Strike-through Pricing */
 .strike {
     text-decoration: line-through;
     color: #999;
-    margin-left: 6px;
+    margin-left: 5px;
 }
 
-/* ===== Footer ===== */
+/* Footer */
 footer {
     text-align: center;
     padding: 2rem 0;
@@ -171,85 +184,18 @@ footer {
     margin-top: 2rem;
 }
 
-/* ===== Responsive ===== */
-@media (max-width: 900px) {
-    header h1.logo {
-        font-size: 1.6rem;
-    }
-}
-
+/* Responsive Design */
 @media (max-width: 768px) {
-    header .container {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 10px;
-    }
     nav ul {
         flex-wrap: wrap;
-        gap: 12px 18px;
+        gap: 1rem;
     }
-    .hero, .content-box {
-        padding: 28px 22px;
+
+    .logo {
+        font-size: 1.6rem;
     }
-    .booking-grid {
-        flex-direction: column;
-        align-items: center;
+
+    .content-box {
+        text-align: center;
     }
-    .booking-card {
-        width: 100%;
-        max-width: 420px;
-    }
-}
-.schedule-note {
-    text-align: center;
-    margin-top: 1rem;
-    font-weight: bold;
-    color: #0077cc;
-}
-/* Consistent header branding */
-.brand {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.logo {
-    font-size: 2rem;
-    font-weight: bold;
-    margin: 0;
-    white-space: nowrap;
-}
-
-.cesl-logo {
-    height: 50px;
-    width: auto;
-}
-
-/* Package deals styling */
-.package-deals {
-    margin-top: 2rem;
-}
-
-.package-item {
-    margin: 1rem 0;
-    font-size: 1.1rem;
-}
-
-.schedule-note {
-    text-align: center;
-    margin-top: 1.5rem;
-    font-weight: bold;
-    color: #0077cc;
-}
-.brand {
-    display: flex;
-    flex-direction: row !important;
-    align-items: center;
-    gap: 10px;
-    flex-wrap: nowrap !important;
-}
-
-.brand .logo {
-    font-size: 2rem;
-    white-space: nowrap;
 }
