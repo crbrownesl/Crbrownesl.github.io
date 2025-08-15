@@ -3,182 +3,145 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pricing - Connor ESL</title>
+<title>Private English Lessons - Connor ESL</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <link rel="stylesheet" href="css/style.css">
 <style>
-/* Basic Reset */
-body, h1, h2, h3, p, ul, li { margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: Arial, sans-serif; line-height: 1.6; background-color: #f9f9f9; color: #333; }
-.container { width: 90%; max-width: 1200px; margin: 0 auto; }
-
-/* Header/Nav */
-header { background-color: #0070ba; color: #fff; padding: 1rem 0; }
-header .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: #fff; }
-header .brand img { height: 50px; border-radius: 5px; }
-nav ul { list-style: none; display: flex; gap: 20px; align-items: center; }
-nav ul li { position: relative; }
-nav ul li a { text-decoration: none; color: #fff; font-weight: bold; }
-nav ul li a.active { text-decoration: underline; }
-
-/* Cart */
-nav ul li a.cart-link { display: flex; align-items: center; gap: 5px; cursor: pointer; color: #fff; }
-.cart-dropdown-content {
-  display: none; position: absolute; right: 0; background-color: #fff; color: #000; min-width: 250px;
-  border: 1px solid #ccc; box-shadow: 0 8px 16px rgba(0,0,0,0.2); padding: 10px; z-index: 100;
-  max-height: 300px; overflow-y: auto; border-radius: 5px;
-}
-.cart-item { display: flex; justify-content: space-between; padding: 5px 0; color: #000; }
-.cart-item span:first-child { font-weight: bold; }
-.remove-btn { color: red; cursor: pointer; margin-left: 5px; font-size: 0.85rem; }
-.checkout-btn {
-  margin-top: 10px; display: block; width: 100%; text-align: center;
-  background-color: #0070ba; color: white; text-decoration: none; padding: 10px;
-  border-radius: 5px; font-weight: bold;
-}
-
-/* Main Content */
-main { padding: 2rem 0; }
-.pricing-section { background-color: #fff; padding: 2rem; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
-.pricing-section h1 { font-size: 2rem; margin-bottom: 1.5rem; color: #0070ba; }
-.pricing-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(250px,1fr)); gap: 20px; }
-.pricing-card { background-color: #f1f1f1; padding: 1.5rem; border-radius: 10px; text-align: center; box-shadow: 0 2px 6px rgba(0,0,0,0.1); }
-.pricing-card h3 { margin-bottom: 0.5rem; color: #0070ba; }
-.pricing-card p { margin-bottom: 0.5rem; }
-.pricing-card .price { font-size: 1.25rem; font-weight: bold; margin-bottom: 1rem; }
-.pricing-card button { background-color: #FFD140; color: #000; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; font-weight: bold; }
+body { font-family: Arial, sans-serif; line-height: 1.6; margin: 0; padding: 0; background-color: #f9f9f9; color: #333; }
+.container { width: 90%; max-width: 1200px; margin: 0 auto; padding: 2rem 0; }
+h1, h2 { color: #0070ba; }
+.lesson-category, .lesson-packages { margin-bottom: 2rem; padding: 1rem; background-color: #fff; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+.lesson-category h2, .lesson-packages h2 { margin-top: 0; }
+.lesson-item { margin: 1rem 0; padding: 1rem; border: 1px solid #ccc; border-radius: 5px; background-color: #fefefe; }
+.lesson-item h3 { margin-top: 0; }
+.paypal-button-container { margin-top: 0.5rem; }
+.description { font-size: 0.95rem; color: #555; margin-bottom: 0.5rem; }
+.features { font-size: 0.95rem; color: #0070ba; margin-bottom: 0.5rem; }
+.savings { font-weight: bold; color: #0070ba; }
 </style>
 </head>
 <body>
 
 <header>
-    <div class="container nav-wrap">
-        <a href="index.html" class="brand">
-            <img src="images/cesl-logo.png" alt="Connor ESL Logo" class="cesl-logo">
-            <h1 class="logo">Connor ESL</h1>
-        </a>
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="lessons.html" class="active">Lessons</a></li>
-                <li><a href="contact.html">Contact</a></li>
-                <li><a href="schedule.html">Schedule</a></li>
-                <li class="cart-dropdown">
-                  <a class="cart-link" id="cart-toggle"><i class="fas fa-shopping-cart"></i> <span id="cart-count">0</span> product(s)</a>
-                  <div class="cart-dropdown-content" id="cart-dropdown"></div>
-                </li>
-            </ul>
-        </nav>
-    </div>
+  <div class="container nav-wrap">
+    <a href="index.html" class="brand">
+      <img src="images/cesl-logo.png" alt="Connor ESL Logo" class="cesl-logo" style="height:50px; margin-right:10px;">
+      <h1 class="logo">Connor ESL</h1>
+    </a>
+    <nav>
+      <ul style="list-style:none; display:flex; gap:20px; align-items:center;">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="lessons.html" class="active">Lessons</a></li>
+        <li><a href="schedule.html">Schedule</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
 </header>
 
-<main>
-    <section class="pricing-section">
-        <h1>Pricing</h1>
-        <div class="pricing-grid">
-            <div class="pricing-card">
-                <h3>Standard Lesson</h3>
-                <p>45 minutes</p>
-                <p class="price">$15</p>
-                <button onclick="addToCart('Standard Lesson',15)">Add to Cart</button>
-            </div>
-            <div class="pricing-card">
-                <h3>Full Lesson</h3>
-                <p>60 minutes</p>
-                <p class="price">$18</p>
-                <button onclick="addToCart('Full Lesson',18)">Add to Cart</button>
-            </div>
-            <div class="pricing-card">
-                <h3>Package: 45 min × 5 Lessons</h3>
-                <p>Regular: $75 | Package: $70 | Save $5 (≈7%)</p>
-                <button onclick="addToCart('45min × 5 Lessons',70)">Add to Cart</button>
-            </div>
-            <div class="pricing-card">
-                <h3>Package: 60 min × 5 Lessons</h3>
-                <p>Regular: $90 | Package: $85 | Save $5 (≈6%)</p>
-                <button onclick="addToCart('60min × 5 Lessons',85)">Add to Cart</button>
-            </div>
-            <div class="pricing-card">
-                <h3>Package: 45 min × 10 Lessons</h3>
-                <p>Regular: $150 | Package: $135 | Save $15 (≈10%)</p>
-                <button onclick="addToCart('45min × 10 Lessons',135)">Add to Cart</button>
-            </div>
-            <div class="pricing-card">
-                <h3>Package: 60 min × 10 Lessons</h3>
-                <p>Regular: $180 | Package: $162 | Save $18 (≈10%)</p>
-                <button onclick="addToCart('60min × 10 Lessons',162)">Add to Cart</button>
-            </div>
-        </div>
-        <p style="margin-top: 2rem;">Email for more information on scheduling for packages.</p>
-    </section>
+<main class="container">
+  <h1>Private English Lessons (Online Only)</h1>
+  <p>All lessons are private and fully online. Choose from individual lessons or lesson packages. I focus on conversational practice, grammar, reading, writing, and Cambridge exam preparation. Lessons are tailored for adults and teens.</p>
+
+  <!-- Individual Lessons -->
+  <div class="lesson-category">
+    <h2>Individual Lessons</h2>
+
+    <div class="lesson-item">
+      <h3>45-Minute Lesson</h3>
+      <p class="description">A single 45-minute private lesson to focus on your specific needs and goals. Perfect for trying out my teaching style or addressing one particular area.</p>
+      <p class="description"><strong>Price:</strong> $25</p>
+      <div id="paypal-container-BXL8DBT26WMFE" class="paypal-button-container"></div>
+    </div>
+
+    <div class="lesson-item">
+      <h3>60-Minute Lesson</h3>
+      <p class="description">A full 60-minute private lesson for more in-depth practice on conversation, grammar, reading, and writing.</p>
+      <p class="description"><strong>Price:</strong> $30</p>
+      <div id="paypal-container-MSCYZ5M2YKTUL" class="paypal-button-container"></div>
+    </div>
+  </div>
+
+  <!-- Lesson Packages -->
+  <div class="lesson-packages">
+    <h2>Lesson Packages</h2>
+    
+    <!-- Adults -->
+    <div class="lesson-category">
+      <h2>Adults (18+)</h2>
+      <p class="description">My private online lessons for adults focus on conversation, grammar, reading, and writing. Cambridge exam prep is available.</p>
+      <p class="features">• Fun, interactive online sessions<br>• Tailored to your learning goals<br>• Focus on practical English</p>
+
+      <div class="lesson-item">
+        <h3>5-Hour Package</h3>
+        <p class="description">Total: $90</p>
+        <div id="paypal-container-34V4NMDFRTK3Q" class="paypal-button-container"></div>
+      </div>
+
+      <div class="lesson-item">
+        <h3>10-Hour Package</h3>
+        <p class="description">Total: $170</p>
+        <div id="paypal-container-Y2SB4DT5DSXAJ" class="paypal-button-container"></div>
+      </div>
+
+      <div class="lesson-item">
+        <h3>20-Hour Package</h3>
+        <p class="description">Total: $320</p>
+        <div id="paypal-container-ZX5A5RV6TGK6J" class="paypal-button-container"></div>
+      </div>
+    </div>
+
+    <!-- Teens -->
+    <div class="lesson-category">
+      <h2>Teens (13–17)</h2>
+      <p class="description">My private online lessons for teens focus on school support, exam prep, and conversational skills. I strengthen grammar, reading, writing, and speaking confidence. Cambridge exam prep is also available for teens interested in PET or FCE certification.</p>
+      <p class="features">• Fun, interactive online sessions<br>• Tailored for teen learning styles<br>• Focus on practical and academic English</p>
+
+      <div class="lesson-item">
+        <h3>5-Hour Package</h3>
+        <p class="description">Total: $90</p>
+        <div id="paypal-container-34V4NMDFRTK3Q" class="paypal-button-container"></div>
+      </div>
+
+      <div class="lesson-item">
+        <h3>10-Hour Package</h3>
+        <p class="description">Total: $170</p>
+        <div id="paypal-container-Y2SB4DT5DSXAJ" class="paypal-button-container"></div>
+      </div>
+
+      <div class="lesson-item">
+        <h3>20-Hour Package</h3>
+        <p class="description">Total: $320</p>
+        <div id="paypal-container-ZX5A5RV6TGK6J" class="paypal-button-container"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="lesson-category">
+    <h2>Extras</h2>
+    <p class="features">• All lessons are online, scheduled at your convenience.<br>• Packages include personalized lesson plans based on level and goals.<br>• Payment via PayPal or card, prior to booking.</p>
+  </div>
 </main>
 
-<footer>
-    <p>© 2025 Connor Brown</p>
+<footer style="text-align:center; padding:1rem; background:#0070ba; color:#fff;">
+  <p>© 2025 Connor Brown</p>
 </footer>
 
+<!-- PayPal SDK & Buttons -->
+<script 
+  src="https://www.paypal.com/sdk/js?client-id=BAAkcBDlCC1EQyxwhygwlwBMYtu3mbf6oO_heeJ67csBfq6zAe5MVsso2-TihL10tgi-YfeD_vmfZrPbe0&components=hosted-buttons&enable-funding=venmo&currency=USD">
+</script>
+
 <script>
-let cart = JSON.parse(localStorage.getItem('cart')) || [];
-const dropdownEl = document.getElementById('cart-dropdown');
-const toggleBtn = document.getElementById('cart-toggle');
+  // Individual Lessons
+  paypal.HostedButtons({ hostedButtonId: "BXL8DBT26WMFE" }).render("#paypal-container-BXL8DBT26WMFE");
+  paypal.HostedButtons({ hostedButtonId: "MSCYZ5M2YKTUL" }).render("#paypal-container-MSCYZ5M2YKTUL");
 
-function updateCartUI() {
-  const countEl = document.getElementById('cart-count');
-  countEl.textContent = cart.length;
-  dropdownEl.innerHTML = '';
-  if(cart.length === 0){
-    dropdownEl.innerHTML = '<p>Your cart is empty.</p>';
-  } else {
-    cart.forEach((item,index)=>{
-      const div = document.createElement('div');
-      div.className='cart-item';
-      div.innerHTML=`<span>${item.name}</span><span>$${item.price.toFixed(2)} <span class="remove-btn" onclick="removeFromCart(${index})">&times;</span></span>`;
-      dropdownEl.appendChild(div);
-    });
-    const total = cart.reduce((sum,item)=>sum+item.price,0);
-    const checkout=document.createElement('a');
-    checkout.href='#';
-    checkout.className='checkout-btn';
-    checkout.textContent=`Checkout ($${total.toFixed(2)})`;
-    checkout.onclick=checkoutCart;
-    dropdownEl.appendChild(checkout);
-  }
-}
-
-function removeFromCart(index){
-  cart.splice(index,1);
-  localStorage.setItem('cart',JSON.stringify(cart));
-  updateCartUI();
-}
-
-function checkoutCart(e){
-  e.preventDefault();
-  if(cart.length === 0) return alert("Your cart is empty!");
-  let url='https://www.paypal.com/cgi-bin/webscr?cmd=_cart&upload=1&business=crbrown.esl@gmail.com';
-  cart.forEach((item,index)=>{
-    url+=`&item_name_${index+1}=${encodeURIComponent(item.name)}&amount_${index+1}=${item.price}&quantity_${index+1}=1`;
-  });
-  window.open(url,'_blank');
-}
-
-toggleBtn.addEventListener('click',()=>{
-  dropdownEl.style.display = dropdownEl.style.display==='block' ? 'none' : 'block';
-});
-
-updateCartUI();
-
-document.addEventListener('click',(e)=>{
-  if(!toggleBtn.contains(e.target) && !dropdownEl.contains(e.target)){
-    dropdownEl.style.display='none';
-  }
-});
-
-function addToCart(name,price){
-  cart.push({name:name,price:price});
-  localStorage.setItem('cart',JSON.stringify(cart));
-  updateCartUI();
-}
+  // Packages (Adults & Teens)
+  paypal.HostedButtons({ hostedButtonId: "34V4NMDFRTK3Q" }).render("#paypal-container-34V4NMDFRTK3Q");
+  paypal.HostedButtons({ hostedButtonId: "Y2SB4DT5DSXAJ" }).render("#paypal-container-Y2SB4DT5DSXAJ");
+  paypal.HostedButtons({ hostedButtonId: "ZX5A5RV6TGK6J" }).render("#paypal-container-ZX5A5RV6TGK6J");
 </script>
 
 </body>
