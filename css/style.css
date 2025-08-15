@@ -47,24 +47,30 @@ header .container {
     color: white;
 }
 
-//* Make navigation horizontal */
-nav ul {
-    list-style: none; /* remove bullets */
+/* Navigation */
+nav ul.nav-list {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
     margin: 0;
-    padding: 0;
-    display: flex; /* horizontal layout */
-    gap: 20px; /* space between links */
+    align-items: center;
 }
 
-/* Style the links */
-nav ul li a {
-    color: white; /* white text */
-    text-decoration: none; /* remove underline */
+nav ul.nav-list li.nav-end {
+    margin-left: auto; /* keeps 'Book' at the end */
+}
+
+nav ul.nav-list li a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.2rem;
     font-weight: bold;
+    transition: all 0.3s ease;
 }
 
-/* Optional: hover effect */
-nav ul li a:hover {
+nav ul.nav-list li a:hover,
+nav ul.nav-list li a.active {
     text-decoration: underline;
 }
 
@@ -78,6 +84,7 @@ nav ul li a:hover {
     nav ul.nav-list li.nav-end {
         margin-left: 0;
     }
+}
 
 /* Main Content */
 main {
