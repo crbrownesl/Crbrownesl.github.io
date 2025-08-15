@@ -7,21 +7,18 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-<header class="site-header">
+<header>
     <div class="container nav-wrap">
-        <div class="brand">
-            <a href="index.html">
-                <img src="images/cesl-logo.png" alt="CESL Logo" class="cesl-logo">
-            </a>
-            <h1 class="logo">Connor ESL</h1>
-        </div>
+        <a href="index.html" class="brand">
+            <img src="images/cesl-logo.png" alt="CESL Logo" class="cesl-logo">
+            <span class="logo">Connor ESL</span>
+        </a>
         <nav>
-            <ul>
+            <ul class="nav-list">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="about.html">About</a></li>
-                <li><a href="book.html">Book</a></li>
-                <li><a href="pricing.html" class="active">Pricing</a></li>
                 <li><a href="contact.html">Contact</a></li>
+                <li class="nav-end"><a href="book.html">Book</a></li>
             </ul>
         </nav>
     </div>
@@ -30,33 +27,43 @@
 <main>
     <section class="content-box">
         <h2>Pricing</h2>
-        <div class="pricing-grid">
-            <div class="pricing-card">
+
+        <!-- Individual Lessons -->
+        <div class="pricing-container">
+            <div class="package">
                 <h3>Standard Lesson</h3>
-                <p>45 minutes — <strong>$15</strong></p>
+                <p>45 minutes</p>
+                <p class="price">$15</p>
             </div>
-            <div class="pricing-card">
+            <div class="package">
                 <h3>Full Lesson</h3>
-                <p>60 minutes — <strong>$18</strong></p>
+                <p>60 minutes</p>
+                <p class="price">$18</p>
             </div>
         </div>
 
-        <h3>Package Deals</h3>
-        <div class="package-deals">
-            <div class="package-item">
-                <strong>45 min × 5 Lessons</strong> — Regular: $75 | Package: $70 | Save $5 (≈7%)
+        <!-- Package Deals -->
+        <h3 style="margin-top:2rem;">Package Deals</h3>
+        <div class="pricing-container">
+            <div class="package">
+                <p><strong>45 min × 5 Lessons</strong></p>
+                <p>Regular: $75 | Package: $70 | Save $5 (≈7%)</p>
             </div>
-            <div class="package-item">
-                <strong>60 min × 5 Lessons</strong> — Regular: $90 | Package: $85 | Save $5 (≈6%)
+            <div class="package">
+                <p><strong>60 min × 5 Lessons</strong></p>
+                <p>Regular: $90 | Package: $85 | Save $5 (≈6%)</p>
             </div>
-            <div class="package-item">
-                <strong>45 min × 10 Lessons</strong> — Regular: $150 | Package: $135 | Save $15 (≈10%)
+            <div class="package">
+                <p><strong>45 min × 10 Lessons</strong></p>
+                <p>Regular: $150 | Package: $135 | Save $15 (≈10%)</p>
             </div>
-            <div class="package-item">
-                <strong>60 min × 10 Lessons</strong> — Regular: $180 | Package: $162 | Save $18 (≈10%)
+            <div class="package">
+                <p><strong>60 min × 10 Lessons</strong></p>
+                <p>Regular: $180 | Package: $162 | Save $18 (≈10%)</p>
             </div>
-            <p class="schedule-note">Email for more information on scheduling.</p>
         </div>
+
+        <p class="schedule-note" style="margin-top:1.5rem;">Email for more information on scheduling.</p>
     </section>
 </main>
 
