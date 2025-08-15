@@ -4,38 +4,37 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>Connor ESL — Home</title>
-<link rel="stylesheet" href="/style.css">
-<!-- Font Awesome CDN for cart icon (you can keep your kit if you prefer) -->
+<link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
 <header class="site-header">
   <div class="header-inner">
-    <a class="brand" href="/index.html">
-      <img src="/images/cesl-logo.png" alt="Connor ESL logo">
+    <a class="brand" href="index.html">
+      <img src="images/cesl-logo.png" alt="Connor ESL logo">
       <strong>Connor ESL</strong>
     </a>
 
     <nav aria-label="Main navigation">
       <ul class="nav" role="menubar">
-        <li role="none"><a role="menuitem" href="/index.html">Home</a></li>
-        <li role="none"><a role="menuitem" href="/about.html">About</a></li>
-        <li role="none"><a role="menuitem" href="/pricing.html">Pricing</a></li>
+        <li role="none"><a role="menuitem" href="index.html">Home</a></li>
+        <li role="none"><a role="menuitem" href="about.html">About</a></li>
+        <li role="none"><a role="menuitem" href="pricing.html">Pricing</a></li>
 
         <li class="dropdown" role="none">
-          <a class="dropdown-toggle" href="#" role="menuitem" aria-haspopup="true" aria-expanded="false">Lessons <i class="fa fa-caret-down" aria-hidden="true"></i></a>
+          <a class="dropdown-toggle" href="#" role="menuitem" aria-haspopup="true" aria-expanded="false">Lessons <i class="fa fa-caret-down"></i></a>
           <div class="dropdown-menu" role="menu" aria-label="Lessons submenu">
-            <a role="menuitem" href="/lessons/individual.html">Individual Lessons</a>
-            <a role="menuitem" href="/lessons/adults.html">Adults (18+)</a>
-            <a role="menuitem" href="/lessons/teens.html">Teens (13–17)</a>
+            <a role="menuitem" href="lessons/individual.html">Individual Lessons</a>
+            <a role="menuitem" href="lessons/adults.html">Adults (18+)</a>
+            <a role="menuitem" href="lessons/teens.html">Teens (13–17)</a>
           </div>
         </li>
 
-        <li role="none"><a role="menuitem" href="/contact.html">Contact</a></li>
+        <li role="none"><a role="menuitem" href="contact.html">Contact</a></li>
 
         <li role="none">
           <a id="cart-toggle" class="cart-btn" href="#" title="Cart (opens PayPal)" aria-label="Cart">
-            <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+            <i class="fa fa-shopping-cart"></i>
             <span class="cart-count" id="cart-count">0</span>
           </a>
         </li>
@@ -47,12 +46,16 @@
 <main class="container">
   <section class="hero">
     <h1>Private English Lessons (Online)</h1>
-    <p>I teach private online lessons for adults and teens — conversation, grammar, reading, writing and Cambridge exam prep.</p>
+    <p>I teach private online lessons for adults and teens — conversation, grammar, reading, writing, and Cambridge exam prep.</p>
   </section>
 
   <section class="lesson-section">
     <h2>Quick links</h2>
-    <p><a href="/lessons/individual.html">Individual lessons</a> • <a href="/lessons/adults.html">Adults</a> • <a href="/lessons/teens.html">Teens</a></p>
+    <p>
+      <a href="lessons/individual.html">Individual lessons</a> •
+      <a href="lessons/adults.html">Adults</a> •
+      <a href="lessons/teens.html">Teens</a>
+    </p>
   </section>
 </main>
 
@@ -60,7 +63,6 @@
   <p>© 2025 Connor Brown</p>
 </footer>
 
-<!-- site script: dropdown + cart (paste this into every page) -->
 <script>
 document.addEventListener('DOMContentLoaded', function(){
   // Dropdown click-to-open
@@ -68,7 +70,6 @@ document.addEventListener('DOMContentLoaded', function(){
     toggle.addEventListener('click', function(e){
       e.preventDefault();
       const parent = this.closest('.dropdown');
-      // toggle this, close others
       document.querySelectorAll('.dropdown.open').forEach(d=>{ if(d !== parent) d.classList.remove('open'); });
       parent.classList.toggle('open');
     });
@@ -87,11 +88,10 @@ document.addEventListener('DOMContentLoaded', function(){
   function updateCartUI(){ cartCountEl.textContent = window._cart.length; }
   updateCartUI();
 
-  // cart toggle / checkout: opens PayPal with items in cart
+  // Cart toggle / checkout
   document.getElementById('cart-toggle').addEventListener('click', function(e){
     e.preventDefault();
     if(window._cart.length === 0) { alert('Your cart is empty.'); return; }
-    // build PayPal cart URL
     let url = 'https://www.paypal.com/cgi-bin/webscr?cmd=_cart&upload=1&business=crbrown.esl@gmail.com';
     window._cart.forEach((item, i) => {
       const idx = i+1;
@@ -102,7 +102,7 @@ document.addEventListener('DOMContentLoaded', function(){
     window.open(url, '_blank');
   });
 
-  // global addToCart function so lessons pages can call it
+  // global addToCart function
   window.addToCart = function(name, price){
     window._cart.push({name, price});
     localStorage.setItem('cart', JSON.stringify(window._cart));
