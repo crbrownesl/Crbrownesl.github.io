@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Book a Lesson - Connor ESL</title>
   <link rel="stylesheet" href="css/style.css">
+  <!-- PayPal SDK (only once) -->
+  <script src="https://www.paypal.com/sdk/js?client-id=BAAkcBDlCC1EQyxwhygwlwBMYtu3mbf6oO_heeJ67csBfq6zAe5MVsso2-TihL10tgi-YfeD_vmfZrPbe0&components=hosted-buttons&enable-funding=venmo&currency=USD"></script>
 </head>
 <body>
   <!-- Header -->
@@ -30,7 +32,7 @@
   <main class="booking-page">
     <div class="hero">
       <h1>Book Your Lesson</h1>
-      <p>Select the perfect lesson for your learning goals. Click “Book Now” to reserve your spot instantly.</p>
+      <p>Select the perfect lesson for your learning goals. Click “Book Now” or pay via PayPal to reserve your spot instantly.</p>
     </div>
 
     <div class="booking-grid">
@@ -47,7 +49,16 @@
         <h3>Standard Lesson</h3>
         <p>45-minute lesson focused on speaking and grammar using Cambridge English methods.</p>
         <p class="price">$15</p>
-        <a href="https://connor-esl.neetocal.com/standard-lesson" class="btn" target="_blank">Book Now</a>
+        <div class="lesson-buttons">
+          <a href="https://connor-esl.neetocal.com/standard-lesson" class="btn" target="_blank">Book Now</a>
+          <!-- PayPal Hosted Button -->
+          <div id="paypal-container-MSCYZ5M2YKTUL"></div>
+          <script>
+            paypal.HostedButtons({
+              hostedButtonId: "MSCYZ5M2YKTUL"
+            }).render("#paypal-container-MSCYZ5M2YKTUL");
+          </script>
+        </div>
       </div>
 
       <!-- Full Lesson -->
@@ -55,7 +66,16 @@
         <h3>Full Lesson</h3>
         <p>1-hour comprehensive lesson for in-depth learning and practice.</p>
         <p class="price">$18</p>
-        <a href="https://connor-esl.neetocal.com/full-lesson" class="btn" target="_blank">Book Now</a>
+        <div class="lesson-buttons">
+          <a href="https://connor-esl.neetocal.com/full-lesson" class="btn" target="_blank">Book Now</a>
+          <!-- PayPal Hosted Button -->
+          <div id="paypal-container-EXAMPLEFULLID"></div>
+          <script>
+            paypal.HostedButtons({
+              hostedButtonId: "EXAMPLEFULLID"  // replace with your Full Lesson hosted button ID
+            }).render("#paypal-container-EXAMPLEFULLID");
+          </script>
+        </div>
       </div>
     </div>
   </main>
