@@ -200,3 +200,9 @@ footer {
         max-width: 420px;
     }
 }
+.schedule-note {
+    text-align: center;
+    margin-top: 1rem;
+    font-weight: bold;
+    color: #0077cc;
+}
