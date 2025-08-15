@@ -304,3 +304,6 @@ footer {
 .lesson-buttons iframe {
   max-height: 40px; /* keeps PayPal button roughly same height as your button */
 }
+.cart-dropdown-content .cart-item span:first-child {
+  color: #000000;
+}
