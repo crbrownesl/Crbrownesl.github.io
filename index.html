@@ -13,15 +13,28 @@
 nav ul li { position: relative; }
 nav ul li a.cart-link { display: flex; align-items: center; gap: 5px; cursor: pointer; }
 .cart-dropdown-content {
-  display: none; position: absolute; right: 0; background-color: white; min-width: 250px;
-  border: 1px solid #ccc; box-shadow: 0 8px 16px rgba(0,0,0,0.2); padding: 10px; z-index: 100;
+  display: none; 
+  position: absolute; 
+  right: 0; 
+  background-color: white; 
+  min-width: 250px;
+  border: 1px solid #ccc; 
+  box-shadow: 0 8px 16px rgba(0,0,0,0.2); 
+  padding: 10px; 
+  z-index: 100;
 }
-.cart-dropdown:hover .cart-dropdown-content { display: block; }
 .cart-item { display: flex; justify-content: space-between; padding: 5px 0; }
 .checkout-btn {
-  margin-top: 10px; display: block; width: 100%; text-align: center;
-  background-color: #0070ba; color: white; text-decoration: none; padding: 10px;
-  border-radius: 5px; font-weight: bold;
+  margin-top: 10px; 
+  display: block; 
+  width: 100%; 
+  text-align: center;
+  background-color: #0070ba; 
+  color: white; 
+  text-decoration: none; 
+  padding: 10px;
+  border-radius: 5px; 
+  font-weight: bold;
 }
 </style>
 </head>
@@ -41,7 +54,7 @@ nav ul li a.cart-link { display: flex; align-items: center; gap: 5px; cursor: po
                 <li><a href="contact.html">Contact</a></li>
                 <li><a href="book.html">Book</a></li>
                 <li class="cart-dropdown">
-                  <a class="cart-link"><i class="fas fa-shopping-cart"></i> <span id="cart-count">0</span> product(s)</a>
+                  <a class="cart-link" id="cart-toggle"><i class="fas fa-shopping-cart"></i> <span id="cart-count">0</span> product(s)</a>
                   <div class="cart-dropdown-content" id="cart-dropdown"></div>
                 </li>
             </ul>
@@ -82,9 +95,11 @@ nav ul li a.cart-link { display: flex; align-items: center; gap: 5px; cursor: po
 
 <script>
 let cart = JSON.parse(localStorage.getItem('cart')) || [];
+const dropdownEl = document.getElementById('cart-dropdown');
+const toggleBtn = document.getElementById('cart-toggle');
+
 function updateCartUI() {
   const countEl = document.getElementById('cart-count');
-  const dropdownEl = document.getElementById('cart-dropdown');
   countEl.textContent = cart.length;
   dropdownEl.innerHTML = '';
   cart.forEach((item,index)=>{
@@ -103,12 +118,23 @@ function updateCartUI() {
     dropdownEl.appendChild(checkout);
   }
 }
+
+// Toggle dropdown on click
+toggleBtn.addEventListener('click',()=>{
+  if(dropdownEl.style.display==='block'){
+    dropdownEl.style.display='none';
+  } else {
+    dropdownEl.style.display='block';
+  }
+});
+
 function addToCart(name,price){
   cart.push({name,price});
   localStorage.setItem('cart',JSON.stringify(cart));
   updateCartUI();
   alert(`${name} added to cart`);
 }
+
 function checkoutCart(e){
   e.preventDefault();
   let url='https://www.paypal.com/cgi-bin/webscr?cmd=_cart&upload=1&business=crbrown.esl@gmail.com';
@@ -117,7 +143,15 @@ function checkoutCart(e){
   });
   window.open(url,'_blank');
 }
+
 updateCartUI();
+
+// Optional: close dropdown if clicked outside
+document.addEventListener('click',(e)=>{
+  if(!toggleBtn.contains(e.target) && !dropdownEl.contains(e.target)){
+    dropdownEl.style.display='none';
+  }
+});
 </script>
 
 </body>
