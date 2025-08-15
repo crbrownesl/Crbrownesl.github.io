@@ -345,3 +345,51 @@ footer {
 .dropdown.open .dropdown-content {
   display: block;
 }
+/* style.css - put at repo root */
+:root{
+  --primary:#0070ba;
+  --nav-bg:#0a5b95;
+  --nav-hover:#005f99;
+  --accent:#FFD140;
+  --white:#fff;
+  --dark:#333;
+}
+
+*{box-sizing:border-box}
+body{font-family:Arial, sans-serif; margin:0; color:var(--dark); background:#f7f7f7; line-height:1.5}
+.container{width:90%; max-width:1200px; margin:0 auto; padding:2rem 0}
+
+/* Header / Nav */
+header.site-header{background:var(--primary); color:var(--white);}
+.header-inner{display:flex; align-items:center; justify-content:space-between; gap:1rem; padding:0.6rem 1rem; max-width:1200px; margin:0 auto;}
+.brand{display:flex; align-items:center; gap:10px; text-decoration:none; color:var(--white)}
+.brand img{height:50px; display:block}
+
+/* nav */
+.nav{list-style:none; margin:0; padding:0; display:flex; gap:8px; align-items:center}
+.nav > li{position:relative}
+.nav a{color:var(--white); text-decoration:none; padding:10px 12px; display:block; font-weight:600}
+.nav a:hover{background:rgba(255,255,255,0.08); border-radius:4px}
+
+/* dropdown (click-to-open) */
+.dropdown-toggle{cursor:pointer}
+.dropdown-menu{display:none; position:absolute; top:100%; left:0; background:var(--nav-bg); border-radius:6px; min-width:200px; box-shadow:0 8px 20px rgba(0,0,0,0.15); z-index:999}
+.dropdown-menu a{display:block; padding:10px 14px; color:var(--white); font-weight:500}
+.dropdown.open .dropdown-menu{display:block}
+
+/* cart */
+.cart-btn{display:flex; align-items:center; gap:6px}
+.cart-count{background:#fff;color:var(--primary); font-weight:700; padding:2px 7px; border-radius:12px; font-size:0.9rem}
+
+/* main content */
+.hero{background:#fff; padding:2rem; border-radius:8px; box-shadow:0 6px 18px rgba(0,0,0,0.04); margin-bottom:1.5rem}
+.lesson-section{background:#fff; padding:1.25rem; border-radius:8px; margin-bottom:1rem; box-shadow:0 6px 18px rgba(0,0,0,0.03)}
+.lesson-item{margin:1rem 0; text-align:center}
+.add-cart-btn{background:var(--accent); color:#000; border:none; padding:10px 16px; border-radius:6px; cursor:pointer; font-weight:700}
+
+/* small screens */
+@media (max-width:800px){
+  .header-inner{flex-direction:column; align-items:flex-start; gap:8px}
+  .nav{flex-wrap:wrap}
+  .dropdown-menu{position:static; width:100%}
+}
