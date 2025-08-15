@@ -1,6 +1,16 @@
 /* ================================
-   General Reset
+   Global Reset & Variables
 ================================ */
+:root {
+    --primary: #0070ba;
+    --nav-bg: #0a5b95;
+    --nav-hover: #005f99;
+    --accent: #FFD140;
+    --white: #fff;
+    --dark: #333;
+    --light-bg: #f7f7f7;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -8,37 +18,44 @@
 }
 
 /* ================================
-   Body Styling
+   Body & Containers
 ================================ */
 body {
-    font-family: 'Roboto', sans-serif;
-    background-color: #d0e7ff;
-    color: #333;
+    font-family: 'Roboto', Arial, sans-serif;
+    background: var(--light-bg);
+    color: var(--dark);
     line-height: 1.6;
 }
 
-/* ================================
-   Header Styling
-================================ */
-header {
-    background-color: #0077cc;
-    padding: 1rem 5%;
-    color: white;
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
-header .container {
+/* ================================
+   Header & Navigation
+================================ */
+header {
+    background-color: var(--primary);
+    color: var(--white);
+    padding: 0.8rem 0;
+}
+
+.header-inner {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 1rem;
     flex-wrap: wrap;
 }
 
-/* Logo + Brand Name */
 .brand {
     display: flex;
     align-items: center;
     gap: 10px;
     text-decoration: none;
+    color: var(--white);
 }
 
 .cesl-logo {
@@ -47,119 +64,89 @@ header .container {
     border-radius: 50%;
 }
 
-.logo {
-    font-size: 2rem;
+.logo-text {
+    font-size: 1.8rem;
     font-weight: bold;
-    color: white;
 }
 
-/* ================================
-   Navigation Styling
-================================ */
-nav ul {
+/* Nav Menu */
+.nav {
     list-style: none;
-    display: flex;            /* Horizontal layout */
-    flex-wrap: wrap;
-    gap: 2rem;                /* Space between items */
-    margin: 0;
-    padding: 0;
+    display: flex;
+    gap: 1rem;
     align-items: center;
+    flex-wrap: wrap;
 }
 
-nav ul li a {
+.nav li {
+    position: relative;
+}
+
+.nav a {
+    color: var(--white);
     text-decoration: none;
-    color: white;
-    font-size: 1.2rem;
     font-weight: bold;
-    transition: color 0.3s ease, text-decoration 0.3s ease;
+    padding: 10px 14px;
+    display: block;
+    border-radius: 4px;
 }
 
-nav ul li a:hover,
-nav ul li a.active {
-    text-decoration: underline;
+.nav a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
 }
 
-/* Keep last item on far right */
-nav ul li:last-child {
-    margin-left: auto;
+/* Dropdown */
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    background: var(--nav-bg);
+    top: 100%;
+    left: 0;
+    min-width: 180px;
+    border-radius: 6px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    z-index: 999;
+}
+
+.dropdown-menu a {
+    padding: 10px 14px;
+}
+
+.dropdown.open .dropdown-menu {
+    display: block;
 }
 
 /* ================================
-   Main Content
+   Hero Section
 ================================ */
-main {
-    width: 90%;
-    max-width: 1200px;
-    margin: 3rem auto;
+.hero {
+    background: var(--white);
+    padding: 3rem 2rem;
+    margin: 2rem auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
     text-align: center;
 }
 
-/* Hero Section */
-.hero {
-    background-color: white;
-    padding: 4rem 3rem;
-    border-radius: 12px;
-    box-shadow: 0 4px 30px rgba(0,0,0,0.1);
-    margin-bottom: 2rem;
-}
-
 .hero h1 {
-    font-size: 3rem;
-    color: #0077cc;
-    margin-bottom: 1rem;
-}
-
-.hero h2 {
-    font-size: 2rem;
-    color: #005fa3;
+    font-size: 2.5rem;
+    color: var(--primary);
     margin-bottom: 1rem;
 }
 
 .hero p {
-    font-size: 1.3rem;
-    margin-bottom: 2rem;
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
 }
 
-/* Content Boxes */
-.content-box {
-    background-color: white;
-    padding: 3rem 2rem;
-    border-radius: 12px;
-    box-shadow: 0 4px 25px rgba(0,0,0,0.08);
-    margin-bottom: 2rem;
-    text-align: left;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.content-box:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 30px rgba(0,0,0,0.15);
-}
-
-.content-box h2 {
-    font-size: 2rem;
-    color: #0077cc;
-    margin-bottom: 1rem;
-}
-
-.content-box p {
-    margin-bottom: 1rem;
-    font-size: 1.1rem;
-}
-
-/* Icon Styling */
-.content-box i,
-.hero i {
-    margin-right: 8px;
-    color: #0077cc;
-}
-
-/* Buttons */
+/* ================================
+   Buttons
+================================ */
 .btn {
     display: inline-block;
     padding: 12px 25px;
-    background-color: #0077cc;
-    color: white;
+    background-color: var(--primary);
+    color: var(--white);
     text-decoration: none;
     font-size: 1.1rem;
     border-radius: 6px;
@@ -167,23 +154,60 @@ main {
 }
 
 .btn:hover {
-    background-color: #005fa3;
+    background-color: var(--nav-hover);
     transform: translateY(-2px);
 }
 
-/* Pricing Packages */
+/* Lesson Buttons with PayPal */
+.lesson-buttons {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 10px;
+}
+
+.lesson-buttons iframe {
+    max-height: 40px;
+}
+
+/* ================================
+   Content Boxes
+================================ */
+.content-box {
+    background-color: var(--white);
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    margin-bottom: 2rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.content-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+}
+
+.content-box h2 {
+    color: var(--primary);
+    margin-bottom: 1rem;
+}
+
+/* ================================
+   Pricing
+================================ */
 .pricing-container {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
     gap: 2rem;
+    justify-content: center;
 }
 
 .package {
-    background-color: white;
+    background: var(--white);
     padding: 2rem;
-    border-radius: 12px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
     text-align: center;
     flex: 1 1 250px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -191,28 +215,18 @@ main {
 
 .package:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.12);
 }
 
-.package h3 {
-    font-size: 1.5rem;
-    color: #0077cc;
-    margin-bottom: 1rem;
-}
-
-.package p {
-    font-size: 1.1rem;
-    margin-bottom: 1rem;
-}
-
-/* Strike-through Pricing */
 .strike {
     text-decoration: line-through;
     color: #999;
     margin-left: 5px;
 }
 
-/* Booking Page */
+/* ================================
+   Booking Page
+================================ */
 .booking-page {
     text-align: center;
     padding: 40px 15px;
@@ -227,8 +241,8 @@ main {
 }
 
 .booking-option {
-    background: white;
-    border-radius: 12px;
+    background: var(--white);
+    border-radius: 10px;
     padding: 25px;
     width: 300px;
     box-shadow: 0 4px 15px rgba(0,0,0,0.1);
@@ -237,159 +251,38 @@ main {
 
 .booking-option:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.12);
 }
 
-.booking-option h3 {
-    margin-top: 0;
-}
-
-.price {
-    font-weight: bold;
-    margin: 10px 0;
-}
-
-/* Footer */
+/* ================================
+   Footer
+================================ */
 footer {
+    background: var(--primary);
+    color: var(--white);
     text-align: center;
     padding: 2rem 0;
-    background-color: #0077cc;
-    color: white;
     margin-top: 2rem;
 }
 
 /* ================================
    Responsive Design
 ================================ */
-@media (max-width: 992px) {
-    main {
-        width: 95%;
+@media (max-width: 800px) {
+    .header-inner {
+        flex-direction: column;
+        align-items: flex-start;
     }
-    .content-box {
-        text-align: center;
+    .nav {
+        flex-direction: column;
+        width: 100%;
     }
-}
-
-@media (max-width: 768px) {
-    .logo {
-        font-size: 1.6rem;
+    .dropdown-menu {
+        position: static;
+        width: 100%;
     }
     .booking-option,
     .package {
-        width: 90%;
+        width: 100%;
     }
-
-    /* Stack navigation vertically on mobile */
-    nav ul {
-        flex-direction: column;
-        gap: 1rem;
-        align-items: flex-start;
-    }
-    nav ul li:last-child {
-        margin-left: 0;
-    }
-}
-.lesson-buttons {
-  display: flex;
-  align-items: center;
-  gap: 10px; /* space between buttons */
-  flex-wrap: wrap; /* allow wrapping on small screens */
-  margin-top: 10px;
-}
-
-.lesson-buttons .btn {
-  flex-shrink: 0; /* prevents the Book Now button from shrinking */
-}
-
-.lesson-buttons iframe {
-  max-height: 40px; /* keeps PayPal button roughly same height as your button */
-}
-.cart-dropdown-content .cart-item span:first-child {
-  color: #000000;
-}
-.nav {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  background-color: #333;
-}
-
-.nav li {
-  position: relative;
-}
-
-.nav a {
-  color: white;
-  padding: 14px 20px;
-  text-decoration: none;
-  display: block;
-}
-
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #444;
-  min-width: 180px;
-  z-index: 1;
-}
-
-.dropdown-content li a {
-  padding: 10px;
-}
-
-.nav a:hover {
-  background-color: #555;
-}
-
-.dropdown.open .dropdown-content {
-  display: block;
-}
-/* style.css - put at repo root */
-:root{
-  --primary:#0070ba;
-  --nav-bg:#0a5b95;
-  --nav-hover:#005f99;
-  --accent:#FFD140;
-  --white:#fff;
-  --dark:#333;
-}
-
-*{box-sizing:border-box}
-body{font-family:Arial, sans-serif; margin:0; color:var(--dark); background:#f7f7f7; line-height:1.5}
-.container{width:90%; max-width:1200px; margin:0 auto; padding:2rem 0}
-
-/* Header / Nav */
-header.site-header{background:var(--primary); color:var(--white);}
-.header-inner{display:flex; align-items:center; justify-content:space-between; gap:1rem; padding:0.6rem 1rem; max-width:1200px; margin:0 auto;}
-.brand{display:flex; align-items:center; gap:10px; text-decoration:none; color:var(--white)}
-.brand img{height:50px; display:block}
-
-/* nav */
-.nav{list-style:none; margin:0; padding:0; display:flex; gap:8px; align-items:center}
-.nav > li{position:relative}
-.nav a{color:var(--white); text-decoration:none; padding:10px 12px; display:block; font-weight:600}
-.nav a:hover{background:rgba(255,255,255,0.08); border-radius:4px}
-
-/* dropdown (click-to-open) */
-.dropdown-toggle{cursor:pointer}
-.dropdown-menu{display:none; position:absolute; top:100%; left:0; background:var(--nav-bg); border-radius:6px; min-width:200px; box-shadow:0 8px 20px rgba(0,0,0,0.15); z-index:999}
-.dropdown-menu a{display:block; padding:10px 14px; color:var(--white); font-weight:500}
-.dropdown.open .dropdown-menu{display:block}
-
-/* cart */
-.cart-btn{display:flex; align-items:center; gap:6px}
-.cart-count{background:#fff;color:var(--primary); font-weight:700; padding:2px 7px; border-radius:12px; font-size:0.9rem}
-
-/* main content */
-.hero{background:#fff; padding:2rem; border-radius:8px; box-shadow:0 6px 18px rgba(0,0,0,0.04); margin-bottom:1.5rem}
-.lesson-section{background:#fff; padding:1.25rem; border-radius:8px; margin-bottom:1rem; box-shadow:0 6px 18px rgba(0,0,0,0.03)}
-.lesson-item{margin:1rem 0; text-align:center}
-.add-cart-btn{background:var(--accent); color:#000; border:none; padding:10px 16px; border-radius:6px; cursor:pointer; font-weight:700}
-
-/* small screens */
-@media (max-width:800px){
-  .header-inner{flex-direction:column; align-items:flex-start; gap:8px}
-  .nav{flex-wrap:wrap}
-  .dropdown-menu{position:static; width:100%}
 }
