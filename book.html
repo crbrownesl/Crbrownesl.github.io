@@ -36,11 +36,9 @@
   .btn:hover { background-color: #005ea6; }
   .lesson-buttons {
     display: flex;
-    align-items: center;
-    gap: 10px;
-    flex-wrap: wrap;
-    margin-top: 10px;
     justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
   }
   .pp-button {
     display: inline-block;
@@ -59,7 +57,7 @@
     cursor: pointer;
   }
   .hero { text-align: center; margin-bottom: 40px; }
-  
+
   /* Cart dropdown styles */
   .cart-dropdown {
     position: relative;
@@ -140,7 +138,7 @@
       <p>45-minute lesson focused on speaking and grammar using Cambridge English methods.</p>
       <p class="price">$15</p>
       <div class="lesson-buttons">
-        <a href="#" class="pp-button" onclick="addToCart('Standard Lesson',15)">Add to Cart</a>
+        <button class="pp-button" onclick="addToCart('Standard Lesson',15)">Add to Cart</button>
       </div>
     </div>
 
@@ -150,7 +148,7 @@
       <p>1-hour comprehensive lesson for in-depth learning and practice.</p>
       <p class="price">$18</p>
       <div class="lesson-buttons">
-        <a href="#" class="pp-button" onclick="addToCart('Full Lesson',18)">Add to Cart</a>
+        <button class="pp-button" onclick="addToCart('Full Lesson',18)">Add to Cart</button>
       </div>
     </div>
   </div>
@@ -161,7 +159,6 @@
 </footer>
 
 <script>
-  // Initialize cart from localStorage
   let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
   function updateCartUI() {
@@ -169,7 +166,7 @@
     const dropdownEl = document.getElementById('cart-dropdown');
     countEl.textContent = cart.length;
     dropdownEl.innerHTML = '';
-    cart.forEach((item, index) => {
+    cart.forEach((item,index) => {
       const div = document.createElement('div');
       div.className = 'cart-item';
       div.innerHTML = `<span>${item.name}</span><span>$${item.price.toFixed(2)}</span>`;
@@ -182,4 +179,27 @@
       checkout.className = 'checkout-btn';
       checkout.textContent = `Checkout ($${total.toFixed(2)})`;
       checkout.onclick = checkoutCart;
-      dropdownEl.append
+      dropdownEl.appendChild(checkout);
+    }
+  }
+
+  function addToCart(name, price){
+    cart.push({name, price});
+    localStorage.setItem('cart', JSON.stringify(cart));
+    updateCartUI();
+    alert(`${name} added to cart`);
+  }
+
+  function checkoutCart(e){
+    e.preventDefault();
+    let url = 'https://www.paypal.com/cgi-bin/webscr?cmd=_cart&upload=1&business=crbrown.esl@gmail.com';
+    cart.forEach((item,index)=>{
+      url += `&item_name_${index+1}=${encodeURIComponent(item.name)}&amount_${index+1}=${item.price}&quantity_${index+1}=1`;
+    });
+    window.open(url,'_blank');
+  }
+
+  updateCartUI();
+</script>
+</body>
+</html>
