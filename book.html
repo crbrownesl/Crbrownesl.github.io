@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Book a Lesson - Connor ESL</title>
   <link rel="stylesheet" href="css/style.css">
-  
-  <!-- Inline CSS for button alignment -->
+
+  <!-- Inline CSS for layout and buttons -->
   <style>
     .booking-grid {
       display: flex;
@@ -49,20 +49,29 @@
       margin-top: 10px;
       justify-content: center;
     }
-    .lesson-buttons .btn {
-      flex-shrink: 0;
-    }
-    .lesson-buttons iframe {
-      max-height: 40px;
+    /* Single PayPal button styles */
+    .pp-StandardLesson,
+    .pp-FullLesson {
+      display: inline-block;
+      text-align: center;
+      border: none;
+      border-radius: 0.25rem;
+      min-width: 11.625rem;
+      padding: 0.5rem 2rem;
+      height: 2.625rem;
+      font-weight: bold;
+      background-color: #FFD140;
+      color: #000000;
+      font-family: "Helvetica Neue", Arial, sans-serif;
+      font-size: 1rem;
+      line-height: 1.25rem;
+      cursor: pointer;
     }
     .hero {
       text-align: center;
       margin-bottom: 40px;
     }
   </style>
-
-  <!-- PayPal SDK (only once) -->
-  <script src="https://www.paypal.com/sdk/js?client-id=BAAkcBDlCC1EQyxwhygwlwBMYtu3mbf6oO_heeJ67csBfq6zAe5MVsso2-TihL10tgi-YfeD_vmfZrPbe0&components=hosted-buttons&enable-funding=venmo&currency=USD"></script>
 </head>
 <body>
   <!-- Header -->
@@ -107,13 +116,10 @@
         <p class="price">$15</p>
         <div class="lesson-buttons">
           <a href="https://docs.google.com/forms/d/1IXS4wB5cD1RJ_i687feQZYEB0rpZlYpuLhYr0x0cblw/edit?pli=1" class="btn" target="_blank">Book Now</a>
-          <!-- PayPal Hosted Button for Standard Lesson -->
-          <div id="paypal-container-MSCYZ5M2YKTUL"></div>
-          <script>
-            paypal.HostedButtons({
-              hostedButtonId: "MSCYZ5M2YKTUL" // Standard Lesson hosted button ID
-            }).render("#paypal-container-MSCYZ5M2YKTUL");
-          </script>
+          <!-- Single PayPal Button for Standard Lesson -->
+          <form action="https://www.paypal.com/ncp/payment/BXL8DBT26WMFE" method="post" target="_blank">
+            <input class="pp-StandardLesson" type="submit" value="Buy Now" />
+          </form>
         </div>
       </div>
 
@@ -124,13 +130,10 @@
         <p class="price">$18</p>
         <div class="lesson-buttons">
           <a href="https://docs.google.com/forms/d/1IXS4wB5cD1RJ_i687feQZYEB0rpZlYpuLhYr0x0cblw/edit?pli=1" class="btn" target="_blank">Book Now</a>
-          <!-- PayPal Hosted Button for Full Lesson -->
-          <div id="paypal-container-FULLLESSONID"></div>
-          <script>
-            paypal.HostedButtons({
-              hostedButtonId: "FULLLESSONID"  // Full Lesson hosted button ID
-            }).render("#paypal-container-FULLLESSONID");
-          </script>
+          <!-- Single PayPal Button for Full Lesson -->
+          <form action="https://www.paypal.com/ncp/payment/FULLLESSONID" method="post" target="_blank">
+            <input class="pp-FullLesson" type="submit" value="Buy Now" />
+          </form>
         </div>
       </div>
     </div>
