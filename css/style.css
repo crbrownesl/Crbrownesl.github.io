@@ -206,3 +206,38 @@ footer {
     font-weight: bold;
     color: #0077cc;
 }
+/* Consistent header branding */
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo {
+    font-size: 2rem;
+    font-weight: bold;
+    margin: 0;
+    white-space: nowrap;
+}
+
+.cesl-logo {
+    height: 50px;
+    width: auto;
+}
+
+/* Package deals styling */
+.package-deals {
+    margin-top: 2rem;
+}
+
+.package-item {
+    margin: 1rem 0;
+    font-size: 1.1rem;
+}
+
+.schedule-note {
+    text-align: center;
+    margin-top: 1.5rem;
+    font-weight: bold;
+    color: #0077cc;
+}
