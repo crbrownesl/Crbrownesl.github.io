@@ -49,7 +49,6 @@
       margin-top: 10px;
       justify-content: center;
     }
-    /* Single PayPal button styles */
     .pp-button {
       display: inline-block;
       text-align: center;
@@ -96,7 +95,7 @@
   <main class="booking-page">
     <div class="hero">
       <h1>Book Your Lesson</h1>
-      <p>Select the perfect lesson for your learning goals. Click “Book Now” or pay via PayPal to reserve your spot instantly.</p>
+      <p>Select the perfect lesson for your learning goals. Add lessons to your PayPal cart or book a free trial instantly.</p>
     </div>
 
     <div class="booking-grid">
@@ -115,11 +114,14 @@
         <p class="price">$15</p>
         <div class="lesson-buttons">
           <a href="https://docs.google.com/forms/d/1IXS4wB5cD1RJ_i687feQZYEB0rpZlYpuLhYr0x0cblw/edit?pli=1" class="btn" target="_blank">Book Now</a>
-          <!-- PayPal Single Button -->
+          <!-- PayPal Add to Cart Button -->
           <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
-            <input type="hidden" name="cmd" value="_s-xclick">
-            <input type="hidden" name="hosted_button_id" value="BXL8DBT26WMFE">
-            <input type="submit" class="pp-button" value="Buy Now">
+            <input type="hidden" name="cmd" value="_cart">
+            <input type="hidden" name="add" value="1">
+            <input type="hidden" name="business" value="YOUR_PAYPAL_EMAIL">
+            <input type="hidden" name="item_name" value="Standard Lesson">
+            <input type="hidden" name="amount" value="15.00">
+            <input type="submit" class="pp-button" value="Add to Cart">
           </form>
         </div>
       </div>
@@ -131,11 +133,14 @@
         <p class="price">$18</p>
         <div class="lesson-buttons">
           <a href="https://docs.google.com/forms/d/1IXS4wB5cD1RJ_i687feQZYEB0rpZlYpuLhYr0x0cblw/edit?pli=1" class="btn" target="_blank">Book Now</a>
-          <!-- PayPal Single Button -->
+          <!-- PayPal Add to Cart Button -->
           <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
-            <input type="hidden" name="cmd" value="_s-xclick">
-            <input type="hidden" name="hosted_button_id" value="FULLLESSONID">
-            <input type="submit" class="pp-button" value="Buy Now">
+            <input type="hidden" name="cmd" value="_cart">
+            <input type="hidden" name="add" value="1">
+            <input type="hidden" name="business" value="YOUR_PAYPAL_EMAIL">
+            <input type="hidden" name="item_name" value="Full Lesson">
+            <input type="hidden" name="amount" value="18.00">
+            <input type="submit" class="pp-button" value="Add to Cart">
           </form>
         </div>
       </div>
