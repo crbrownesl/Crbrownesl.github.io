@@ -1,52 +1,126 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Adults (18+) - Connor ESL</title>
-<link rel="stylesheet" href="../style.css">
-<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Adults Lessons - Connor ESL</title>
+<link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-<header>
-<a href="../index.html"><img src="../images/cesl-logo.png" alt="Connor ESL Logo" class="logo"></a>
-<nav>
-<ul>
-<li><a href="../index.html">Home</a></li>
-<li class="nav-item dropdown">
-<a class="nav-link dropdown-toggle" href="#">Lessons</a>
-<ul class="dropdown-menu">
-<li><a href="individual.html">Individual Lessons</a></li>
-<li><a href="adults.html">Adults (18+)</a></li>
-<li><a href="teens.html">Teens (13-17)</a></li>
-</ul>
-</li>
-<li><a href="cart.html"><i class="fas fa-shopping-cart"></i> Cart</a></li>
-</ul>
-</nav>
+<header class="site-header">
+  <div class="header-inner">
+    <a class="brand" href="/index.html">
+      <img src="/images/cesl-logo.png" alt="Connor ESL logo">
+      <strong>Connor ESL</strong>
+    </a>
+
+    <nav aria-label="Main navigation">
+      <ul class="nav" role="menubar">
+        <li role="none"><a role="menuitem" href="/index.html">Home</a></li>
+        <li role="none"><a role="menuitem" href="/about.html">About</a></li>
+        <li role="none"><a role="menuitem" href="/pricing.html">Pricing</a></li>
+
+        <li class="dropdown" role="none">
+          <a class="dropdown-toggle" href="#" role="menuitem" aria-haspopup="true" aria-expanded="false">Lessons <i class="fa fa-caret-down" aria-hidden="true"></i></a>
+          <div class="dropdown-menu" role="menu" aria-label="Lessons submenu">
+            <a role="menuitem" href="/lessons/individual.html">Individual Lessons</a>
+            <a role="menuitem" href="/lessons/adults.html">Adults (18+)</a>
+            <a role="menuitem" href="/lessons/teens.html">Teens (13–17)</a>
+          </div>
+        </li>
+
+        <li role="none"><a role="menuitem" href="/contact.html">Contact</a></li>
+        <li role="none">
+          <a id="cart-toggle" class="cart-btn" href="#" title="Cart (opens PayPal)" aria-label="Cart">
+            <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+            <span class="cart-count" id="cart-count">0</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
 </header>
-<main>
-<h1>Adults (18+)</h1>
-<p>My private online lessons for adults focus on practical English for everyday life, travel, work, and social interactions. Lessons combine conversation, grammar, reading, and writing. Cambridge exam prep (PET, FCE, CAE) is available.</p>
-<p><strong>Features:</strong><br>• Fully online – learn from home<br>• Tailored to your level and goals<br>• Flexible scheduling</p>
 
-<div class="lesson-item">
-<h3>5-Hour Package</h3>
-<button onclick="addToCart('Adults (18+) 5-Hour Package', 90)">Add to Cart - $90</button>
-</div>
-<div class="lesson-item">
-<h3>10-Hour Package</h3>
-<button onclick="addToCart('Adults (18+) 10-Hour Package', 170)">Add to Cart - $170</button>
-</div>
-<div class="lesson-item">
-<h3>20-Hour Package</h3>
-<button onclick="addToCart('Adults (18+) 20-Hour Package', 320)">Add to Cart - $320</button>
-</div>
+<main class="container">
+  <section class="lesson-section">
+    <h1>Adults (18+)</h1>
 
-<script>
-let cart = JSON.parse(localStorage.getItem('cart')) || [];
-function addToCart(name, price) { cart.push({name, price}); localStorage.setItem('cart', JSON.stringify(cart)); alert(name + ' added to cart'); }
-</script>
+    <p><strong>Description:</strong><br>
+    My private online lessons for adults focus on practical English skills for everyday life, travel, work, and social interactions. Lessons combine conversational practice, grammar, reading, and writing. I also offer preparation for Cambridge exams (PET, FCE, CAE) for those looking to certify their level.</p>
+
+    <p><strong>Features:</strong><br>
+    • Fully online – learn from home<br>
+    • Tailored to your level and goals<br>
+    • Flexible scheduling</p>
+
+    <div class="lesson-item">
+      <h3>5-Hour Package</h3>
+      <button class="add-cart-btn" onclick="addToCart('Adults 5-Hour Package',90)">Add to Cart – $90</button>
+    </div>
+
+    <div class="lesson-item">
+      <h3>10-Hour Package</h3>
+      <button class="add-cart-btn" onclick="addToCart('Adults 10-Hour Package',170)">Add to Cart – $170</button>
+    </div>
+
+    <div class="lesson-item">
+      <h3>20-Hour Package</h3>
+      <button class="add-cart-btn" onclick="addToCart('Adults 20-Hour Package',320)">Add to Cart – $320</button>
+    </div>
+  </section>
 </main>
+
+<footer style="text-align:center; padding:1rem; background:var(--primary); color:#fff;">
+  <p>© 2025 Connor Brown</p>
+</footer>
+
+<!-- Paste same site script as index.html (dropdown + cart) -->
+<script>
+document.addEventListener('DOMContentLoaded', function(){
+  document.querySelectorAll('.dropdown-toggle').forEach(toggle=>{
+    toggle.addEventListener('click', function(e){
+      e.preventDefault();
+      const parent = this.closest('.dropdown');
+      document.querySelectorAll('.dropdown.open').forEach(d=>{ if(d !== parent) d.classList.remove('open'); });
+      parent.classList.toggle('open');
+    });
+  });
+  document.addEventListener('click', function(e){
+    if(!e.target.closest('.dropdown')){
+      document.querySelectorAll('.dropdown.open').forEach(d=>d.classList.remove('open'));
+    }
+  });
+
+  window._cart = JSON.parse(localStorage.getItem('cart') || '[]');
+  const cartCountEl = document.getElementById('cart-count');
+  function updateCartUI(){ if(cartCountEl) cartCountEl.textContent = window._cart.length; }
+  updateCartUI();
+
+  // checkout behaviour
+  const cartToggle = document.getElementById('cart-toggle');
+  if(cartToggle){
+    cartToggle.addEventListener('click', function(e){
+      e.preventDefault();
+      if(window._cart.length === 0){ alert('Your cart is empty.'); return; }
+      let url = 'https://www.paypal.com/cgi-bin/webscr?cmd=_cart&upload=1&business=crbrown.esl@gmail.com';
+      window._cart.forEach((item, i) => {
+        const idx = i+1;
+        url += '&item_name_' + idx + '=' + encodeURIComponent(item.name);
+        url += '&amount_' + idx + '=' + item.price;
+        url += '&quantity_' + idx + '=1';
+      });
+      window.open(url, '_blank');
+    });
+  }
+
+  window.addToCart = function(name, price){
+    window._cart.push({name, price});
+    localStorage.setItem('cart', JSON.stringify(window._cart));
+    updateCartUI();
+    alert(name + ' added to cart.');
+  };
+});
+</script>
 </body>
 </html>
