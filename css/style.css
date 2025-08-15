@@ -47,15 +47,20 @@ header .container {
     color: white;
 }
 
-/* Navigation */
-nav ul {
+nav ul.nav-list {
     list-style: none;
     display: flex;
+    flex-wrap: wrap;
     gap: 2rem;
     margin: 0;
+    align-items: center;
 }
 
-nav ul li a {
+nav ul.nav-list li.nav-end {
+    margin-left: auto; /* forces 'Book' to the end */
+}
+
+nav ul.nav-list li a {
     color: white;
     text-decoration: none;
     font-size: 1.2rem;
@@ -63,9 +68,21 @@ nav ul li a {
     transition: all 0.3s ease;
 }
 
-nav ul li a:hover,
-nav ul li a.active {
+nav ul.nav-list li a:hover,
+nav ul.nav-list li a.active {
     text-decoration: underline;
+}
+
+/* Responsive tweaks */
+@media (max-width: 768px) {
+    nav ul.nav-list {
+        justify-content: flex-start;
+        gap: 1rem;
+    }
+
+    nav ul.nav-list li.nav-end {
+        margin-left: 0;
+    }
 }
 
 /* Main Content */
