@@ -307,7 +307,6 @@ footer {
 .cart-dropdown-content .cart-item span:first-child {
   color: #000000;
 }
-/* Navigation base styles */
 .nav {
   list-style: none;
   margin: 0;
@@ -320,17 +319,13 @@ footer {
   position: relative;
 }
 
-.nav > li {
-  padding: 14px 20px;
-}
-
 .nav a {
   color: white;
+  padding: 14px 20px;
   text-decoration: none;
   display: block;
 }
 
-/* Dropdown menu styles */
 .dropdown-content {
   display: none;
   position: absolute;
@@ -339,19 +334,14 @@ footer {
   z-index: 1;
 }
 
-.dropdown-content li {
+.dropdown-content li a {
   padding: 10px;
 }
 
-.dropdown-content a {
-  color: white;
-}
-
-.dropdown:hover .dropdown-content {
-  display: block;
-}
-
-/* Optional: hover effect */
 .nav a:hover {
   background-color: #555;
+}
+
+.dropdown.open .dropdown-content {
+  display: block;
 }
