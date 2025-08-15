@@ -50,8 +50,7 @@
       justify-content: center;
     }
     /* Single PayPal button styles */
-    .pp-StandardLesson,
-    .pp-FullLesson {
+    .pp-button {
       display: inline-block;
       text-align: center;
       border: none;
@@ -116,9 +115,11 @@
         <p class="price">$15</p>
         <div class="lesson-buttons">
           <a href="https://docs.google.com/forms/d/1IXS4wB5cD1RJ_i687feQZYEB0rpZlYpuLhYr0x0cblw/edit?pli=1" class="btn" target="_blank">Book Now</a>
-          <!-- Single PayPal Button for Standard Lesson -->
-          <form action="https://www.paypal.com/ncp/payment/BXL8DBT26WMFE" method="post" target="_blank">
-            <input class="pp-StandardLesson" type="submit" value="Buy Now" />
+          <!-- PayPal Single Button -->
+          <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+            <input type="hidden" name="cmd" value="_s-xclick">
+            <input type="hidden" name="hosted_button_id" value="BXL8DBT26WMFE">
+            <input type="submit" class="pp-button" value="Buy Now">
           </form>
         </div>
       </div>
@@ -130,9 +131,11 @@
         <p class="price">$18</p>
         <div class="lesson-buttons">
           <a href="https://docs.google.com/forms/d/1IXS4wB5cD1RJ_i687feQZYEB0rpZlYpuLhYr0x0cblw/edit?pli=1" class="btn" target="_blank">Book Now</a>
-          <!-- Single PayPal Button for Full Lesson -->
-          <form action="https://www.paypal.com/ncp/payment/FULLLESSONID" method="post" target="_blank">
-            <input class="pp-FullLesson" type="submit" value="Buy Now" />
+          <!-- PayPal Single Button -->
+          <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+            <input type="hidden" name="cmd" value="_s-xclick">
+            <input type="hidden" name="hosted_button_id" value="FULLLESSONID">
+            <input type="submit" class="pp-button" value="Buy Now">
           </form>
         </div>
       </div>
