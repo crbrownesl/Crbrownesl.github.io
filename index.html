@@ -1,137 +1,159 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Connor ESL — Home</title>
-<link rel="stylesheet" href="css/style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Connor ESL - Home</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="css/style.css">
 <style>
-/* TEMP FIX until your style.css loads properly */
-header img {
-  max-height: 50px;
-  width: auto;
+body { font-family: Arial, sans-serif; line-height: 1.6; background-color: #f9f9f9; color: #333; margin: 0; padding: 0; }
+.container { width: 90%; max-width: 1200px; margin: 0 auto; }
+
+/* Header/Nav */
+header { background-color: #0070ba; color: #fff; padding: 1rem 0; }
+header .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: #fff; }
+header .brand img { height: 50px; border-radius: 5px; }
+nav ul { list-style: none; display: flex; gap: 20px; align-items: center; }
+nav ul li { position: relative; }
+nav ul li a { text-decoration: none; color: #fff; font-weight: bold; }
+nav ul li a.active { text-decoration: underline; }
+
+/* Cart */
+nav ul li a.cart-link { display: flex; align-items: center; gap: 5px; cursor: pointer; color: #fff; }
+.cart-dropdown-content {
+  display: none; position: absolute; right: 0; background-color: #fff; color: #000; min-width: 250px;
+  border: 1px solid #ccc; box-shadow: 0 8px 16px rgba(0,0,0,0.2); padding: 10px; z-index: 100;
+  max-height: 300px; overflow-y: auto; border-radius: 5px;
 }
-.nav {
-  list-style: none;
-  display: flex;
-  gap: 1rem;
+.cart-item { display: flex; justify-content: space-between; padding: 5px 0; }
+.cart-item { display: flex; justify-content: space-between; padding: 5px 0; color: #000; }
+.cart-item span:first-child { font-weight: bold; }
+.remove-btn { color: red; cursor: pointer; margin-left: 5px; font-size: 0.85rem; }
+.checkout-btn {
+  margin-top: 10px; display: block; width: 100%; text-align: center;
+  background-color: #0070ba; color: white; text-decoration: none; padding: 10px;
+  border-radius: 5px; font-weight: bold;
 }
-.dropdown-menu {
-  display: none;
-  position: absolute;
-  background: white;
-  border: 1px solid #ccc;
-  padding: 0.5rem;
-}
-.dropdown.open .dropdown-menu {
-  display: block;
-}
+
+/* Hero */
+.hero { padding: 2rem 0; text-align: center; }
+.hero h1 { font-size: 2.5rem; color: #0070ba; margin-bottom: 1rem; }
+.hero h2 { margin-bottom: 1rem; }
+.hero p { font-size: 1.1rem; }
+
+/* Sections */
+section { padding: 2rem 0; }
+.content-box { background-color: #fff; padding: 2rem; border-radius: 10px; margin-bottom: 2rem; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+.content-box h2 { color: #0070ba; margin-bottom: 1rem; }
+.content-box p { margin-bottom: 1rem; }
+.btn { background-color: #FFD140; color: #000; padding: 10px 20px; border-radius: 5px; text-decoration: none; font-weight: bold; display: inline-block; }
 </style>
 </head>
 <body>
-<header class="site-header">
-  <div class="header-inner">
-    <a class="brand" href="index.html">
-      <img src="images/cesl-logo.png" alt="Connor ESL logo">
-      <strong>Connor ESL</strong>
+
+<header>
+  <div class="container nav-wrap">
+    <a href="index.html" class="brand">
+      <img src="images/cesl-logo.png" alt="Connor ESL Logo" class="cesl-logo">
+      <h1 class="logo">Connor ESL</h1>
     </a>
-
-    <nav aria-label="Main navigation">
-      <ul class="nav" role="menubar">
-        <li role="none"><a role="menuitem" href="index.html">Home</a></li>
-        <li role="none"><a role="menuitem" href="about.html">About</a></li>
-        <li role="none"><a role="menuitem" href="pricing.html">Pricing</a></li>
-
-        <li class="dropdown" role="none">
-          <a class="dropdown-toggle" href="#" role="menuitem" aria-haspopup="true" aria-expanded="false">Lessons <i class="fa fa-caret-down"></i></a>
-          <div class="dropdown-menu" role="menu" aria-label="Lessons submenu">
-            <a role="menuitem" href="lessons/individual.html">Individual Lessons</a>
-            <a role="menuitem" href="lessons/adults.html">Adults (18+)</a>
-            <a role="menuitem" href="lessons/teens.html">Teens (13–17)</a>
-          </div>
-        </li>
-
-        <li role="none"><a role="menuitem" href="contact.html">Contact</a></li>
-
-        <li role="none">
-          <a id="cart-toggle" class="cart-btn" href="#" title="Cart (opens PayPal)" aria-label="Cart">
-            <i class="fa fa-shopping-cart"></i>
-            <span class="cart-count" id="cart-count">0</span>
-          </a>
+    <nav>
+      <ul>
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="lessons.html">Lessons</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="scheduling.html">Schedule</a></li>
+        <li class="cart-dropdown">
+          <a class="cart-link" id="cart-toggle"><i class="fas fa-shopping-cart"></i> <span id="cart-count">0</span> product(s)</a>
+          <div class="cart-dropdown-content" id="cart-dropdown"></div>
         </li>
       </ul>
     </nav>
   </div>
 </header>
 
-<main class="container">
-  <section class="hero">
-    <h1>Private English Lessons (Online)</h1>
-    <p>I teach private online lessons for adults and teens — conversation, grammar, reading, writing, and Cambridge exam prep.</p>
+<section class="hero">
+  <h1>Welcome!</h1>
+  <h2>Master English with Confidence and Fun!</h2>
+  <p>Professional online English lessons focused on speaking, reading, writing, and grammar, using proven methods from Cambridge English.</p>
+</section>
+
+<main>
+  <section class="content-box">
+    <h2><i class="fa-solid fa-clock"></i> Try a Free 30-Minute Lesson!</h2>
+    <p><i class="fa-solid fa-star"></i> Get a taste of my teaching style with a <strong>free 30-minute trial lesson</strong>. Improve your speaking and grammar while having fun!</p>
+    <a href="schedule.html" class="btn"><i class="fa-solid fa-calendar-check"></i> Schedule Your Lesson</a>
   </section>
 
-  <section class="lesson-section">
-    <h2>Quick links</h2>
-    <p>
-      <a href="lessons/individual.html">Individual lessons</a> •
-      <a href="lessons/adults.html">Adults</a> •
-      <a href="lessons/teens.html">Teens</a>
-    </p>
+  <section class="content-box">
+    <h2><i class="fa-solid fa-chalkboard-teacher"></i> Why Choose Me?</h2>
+    <p><i class="fa-solid fa-location-dot"></i> Native speaker from California, TEFL Level-5 certified, teaching for over 2 years in Europe.</p>
+    <p><i class="fa-solid fa-clock"></i> Flexible scheduling and personalized lessons that improve speaking and grammar efficiently.</p>
   </section>
 </main>
 
-<footer style="text-align:center; padding:1rem; background:var(--primary); color:#fff;">
+<footer>
   <p>© 2025 Connor Brown</p>
 </footer>
 
 <script>
-document.addEventListener('DOMContentLoaded', function(){
-  // Dropdown click-to-open
-  document.querySelectorAll('.dropdown-toggle').forEach(toggle=>{
-    toggle.addEventListener('click', function(e){
-      e.preventDefault();
-      const parent = this.closest('.dropdown');
-      document.querySelectorAll('.dropdown.open').forEach(d=>{ if(d !== parent) d.classList.remove('open'); });
-      parent.classList.toggle('open');
+let cart = JSON.parse(localStorage.getItem('cart')) || [];
+const dropdownEl = document.getElementById('cart-dropdown');
+const toggleBtn = document.getElementById('cart-toggle');
+
+function updateCartUI() {
+  const countEl = document.getElementById('cart-count');
+  countEl.textContent = cart.length;
+  dropdownEl.innerHTML = '';
+  if(cart.length === 0){
+    dropdownEl.innerHTML = '<p>Your cart is empty.</p>';
+  } else {
+    cart.forEach((item,index)=>{
+      const div = document.createElement('div');
+      div.className='cart-item';
+      div.innerHTML=`<span>${item.name}</span><span>$${item.price.toFixed(2)} <span class="remove-btn" onclick="removeFromCart(${index})">&times;</span></span>`;
+      dropdownEl.appendChild(div);
     });
-  });
+    const total = cart.reduce((sum,item)=>sum+item.price,0);
+    const checkout=document.createElement('a');
+    checkout.href='#';
+    checkout.className='checkout-btn';
+    checkout.textContent=`Checkout ($${total.toFixed(2)})`;
+    checkout.onclick=checkoutCart;
+    dropdownEl.appendChild(checkout);
+  }
+}
 
-  // Close dropdown when clicking outside
-  document.addEventListener('click', function(e){
-    if(!e.target.closest('.dropdown')){
-      document.querySelectorAll('.dropdown.open').forEach(d=>d.classList.remove('open'));
-    }
-  });
-
-  // CART: persistent via localStorage
-  window._cart = JSON.parse(localStorage.getItem('cart') || '[]');
-  const cartCountEl = document.getElementById('cart-count');
-  function updateCartUI(){ cartCountEl.textContent = window._cart.length; }
+function removeFromCart(index){
+  cart.splice(index,1);
+  localStorage.setItem('cart',JSON.stringify(cart));
   updateCartUI();
+}
 
-  // Cart toggle / checkout
-  document.getElementById('cart-toggle').addEventListener('click', function(e){
-    e.preventDefault();
-    if(window._cart.length === 0) { alert('Your cart is empty.'); return; }
-    let url = 'https://www.paypal.com/cgi-bin/webscr?cmd=_cart&upload=1&business=crbrown.esl@gmail.com';
-    window._cart.forEach((item, i) => {
-      const idx = i+1;
-      url += '&item_name_' + idx + '=' + encodeURIComponent(item.name);
-      url += '&amount_' + idx + '=' + item.price;
-      url += '&quantity_' + idx + '=1';
-    });
-    window.open(url, '_blank');
+function checkoutCart(e){
+  e.preventDefault();
+  if(cart.length === 0) return alert("Your cart is empty!");
+  let url='https://www.paypal.com/cgi-bin/webscr?cmd=_cart&upload=1&business=crbrown.esl@gmail.com';
+  cart.forEach((item,index)=>{
+    url+=`&item_name_${index+1}=${encodeURIComponent(item.name)}&amount_${index+1}=${item.price}&quantity_${index+1}=1`;
   });
+  window.open(url,'_blank');
+}
 
-  // global addToCart function
-  window.addToCart = function(name, price){
-    window._cart.push({name, price});
-    localStorage.setItem('cart', JSON.stringify(window._cart));
-    updateCartUI();
-    alert(name + ' added to cart.');
-  };
+toggleBtn.addEventListener('click',()=>{
+  dropdownEl.style.display = dropdownEl.style.display==='block' ? 'none' : 'block';
+});
+
+updateCartUI();
+
+document.addEventListener('click',(e)=>{
+  if(!toggleBtn.contains(e.target) && !dropdownEl.contains(e.target)){
+    dropdownEl.style.display='none';
+  }
 });
 </script>
+
 </body>
 </html>
