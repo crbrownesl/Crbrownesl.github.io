@@ -1,91 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Book a Lesson - Connor ESL</title>
-<link rel="stylesheet" href="css/style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Schedule a Lesson - Connor ESL</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="css/style.css">
 <style>
-/* Cart styles */
+body { font-family: Arial, sans-serif; line-height: 1.6; background-color: #f9f9f9; color: #333; margin: 0; padding: 0; }
+.container { width: 90%; max-width: 1200px; margin: 0 auto; }
+
+/* Header/Nav */
+header { background-color: #0070ba; color: #fff; padding: 1rem 0; }
+header .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: #fff; }
+header .brand img { height: 50px; border-radius: 5px; }
+nav ul { list-style: none; display: flex; gap: 20px; align-items: center; }
 nav ul li { position: relative; }
-nav ul li a.cart-link { display: flex; align-items: center; gap: 5px; cursor: pointer; }
+nav ul li a { text-decoration: none; color: #fff; font-weight: bold; }
+nav ul li a.active { text-decoration: underline; }
+
+/* Cart */
+nav ul li a.cart-link { display: flex; align-items: center; gap: 5px; cursor: pointer; color: #fff; }
 .cart-dropdown-content {
-  display: none; position: absolute; right: 0; background-color: white; min-width: 250px;
+  display: none; position: absolute; right: 0; background-color: #fff; color: #000; min-width: 250px;
   border: 1px solid #ccc; box-shadow: 0 8px 16px rgba(0,0,0,0.2); padding: 10px; z-index: 100;
-  max-height: 300px; overflow-y: auto;
+  max-height: 300px; overflow-y: auto; border-radius: 5px;
 }
 .cart-item { display: flex; justify-content: space-between; padding: 5px 0; }
+.cart-item span:first-child { color: #000; font-weight: bold; }
 .remove-btn { color: red; cursor: pointer; margin-left: 5px; font-size: 0.85rem; }
-.checkout-btn {
-  margin-top: 10px; display: block; width: 100%; text-align: center;
-  background-color: #0070ba; color: white; text-decoration: none; padding: 10px;
-  border-radius: 5px; font-weight: bold;
-}
-.booking-grid { display:flex; flex-wrap:wrap; gap:20px; justify-content:center; }
-.booking-option { border:1px solid #ccc; padding:20px; border-radius:10px; width:250px; text-align:center; }
-.btn { background-color:#0070ba; color:white; padding:10px 15px; border-radius:5px; text-decoration:none; display:inline-block; margin-top:10px; }
+
+/* Main Content */
+main { padding: 2rem 0; }
+.hero { text-align: center; padding: 2rem 0; }
+.hero h1 { font-size: 2rem; color: #0070ba; margin-bottom: 1rem; }
+.hero p { font-size: 1.1rem; margin-bottom: 1.5rem; }
+.btn { background-color: #FFD140; color: #000; padding: 10px 20px; border-radius: 5px; text-decoration: none; font-weight: bold; display: inline-block; }
 </style>
 </head>
 <body>
 
 <header>
-    <div class="container nav-wrap">
-        <a href="index.html" class="brand">
-            <img src="images/cesl-logo.png" alt="Connor ESL Logo" class="cesl-logo">
-            <h1 class="logo">Connor ESL</h1>
-        </a>
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="pricing.html">Pricing</a></li>
-                <li><a href="contact.html">Contact</a></li>
-                <li><a href="scheduling.html" class="active">Schedule</a></li>
-                <li class="cart-dropdown">
-                  <a class="cart-link" id="cart-toggle"><i class="fas fa-shopping-cart"></i> <span id="cart-count">0</span> product(s)</a>
-                  <div class="cart-dropdown-content" id="cart-dropdown"></div>
-                </li>
-            </ul>
-        </nav>
-    </div>
+  <div class="container nav-wrap">
+    <a href="index.html" class="brand">
+      <img src="images/cesl-logo.png" alt="Connor ESL Logo" class="cesl-logo">
+      <h1 class="logo">Connor ESL</h1>
+    </a>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="pricing.html">Pricing</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="schedule.html" class="active">Schedule</a></li>
+        <li class="cart-dropdown">
+          <a class="cart-link" id="cart-toggle"><i class="fas fa-shopping-cart"></i> <span id="cart-count">0</span> product(s)</a>
+          <div class="cart-dropdown-content" id="cart-dropdown"></div>
+        </li>
+      </ul>
+    </nav>
+  </div>
 </header>
 
-<main class="booking-page">
-    <div class="hero">
-        <h1>Book Your Lesson</h1>
-        <p>Select the perfect lesson for your learning goals. Click “Add to Cart” to reserve your spot instantly.</p>
-    </div>
-
-    <div class="booking-grid">
-      <!-- Free Trial Lesson -->
-      <div class="booking-option">
-        <h3>Free Trial Lesson</h3>
-        <p>20-minute trial lesson to experience my teaching style. Perfect for new students.</p>
-        <p class="price">Free</p>
-        <a href="https://docs.google.com/forms/d/1IXS4wB5cD1RJ_i687feQZYEB0rpZlYpuLhYr0x0cblw/edit?pli=1" class="btn" target="_blank">Book Now</a>
-      </div>
-
-      <!-- Standard Lesson -->
-      <div class="booking-option">
-        <h3>Standard Lesson</h3>
-        <p>45-minute lesson focused on speaking and grammar using Cambridge English methods.</p>
-        <p class="price">$15</p>
-        <button class="btn" onclick="addToCart('Standard Lesson', 15)">Add to Cart</button>
-      </div>
-
-      <!-- Full Lesson -->
-      <div class="booking-option">
-        <h3>Full Lesson</h3>
-        <p>1-hour comprehensive lesson for in-depth learning and practice.</p>
-        <p class="price">$18</p>
-        <button class="btn" onclick="addToCart('Full Lesson', 18)">Add to Cart</button>
-      </div>
-    </div>
+<main class="hero">
+  <h1>Schedule Your Lesson</h1>
+  <p>To book your free trial or after making your payment for a lesson, please complete the form below. This ensures we reserve your spot and have all necessary information.</p>
+  <a href="https://docs.google.com/forms/d/1IXS4wB5cD1RJ_i687feQZYEB0rpZlYpuLhYr0x0cblw/edit?pli=1" target="_blank" class="btn"><i class="fa-solid fa-calendar-check"></i> Go to Google Form</a>
 </main>
 
 <footer>
-    <p>© 2025 Connor ESL. All rights reserved.</p>
+  <p>© 2025 Connor Brown</p>
 </footer>
 
 <script>
@@ -96,7 +80,6 @@ const toggleBtn = document.getElementById('cart-toggle');
 function updateCartUI() {
   const countEl = document.getElementById('cart-count');
   countEl.textContent = cart.length;
-
   dropdownEl.innerHTML = '';
   if(cart.length === 0){
     dropdownEl.innerHTML = '<p>Your cart is empty.</p>';
@@ -117,13 +100,6 @@ function updateCartUI() {
   }
 }
 
-function addToCart(name,price){
-  cart.push({name,price});
-  localStorage.setItem('cart',JSON.stringify(cart));
-  updateCartUI();
-  alert(`${name} added to cart`);
-}
-
 function removeFromCart(index){
   cart.splice(index,1);
   localStorage.setItem('cart',JSON.stringify(cart));
@@ -141,16 +117,11 @@ function checkoutCart(e){
 }
 
 toggleBtn.addEventListener('click',()=>{
-  if(dropdownEl.style.display==='block'){
-    dropdownEl.style.display='none';
-  } else {
-    dropdownEl.style.display='block';
-  }
+  dropdownEl.style.display = dropdownEl.style.display==='block' ? 'none' : 'block';
 });
 
 updateCartUI();
 
-// Close dropdown if clicked outside
 document.addEventListener('click',(e)=>{
   if(!toggleBtn.contains(e.target) && !dropdownEl.contains(e.target)){
     dropdownEl.style.display='none';
