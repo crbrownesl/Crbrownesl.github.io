@@ -241,3 +241,15 @@ footer {
     font-weight: bold;
     color: #0077cc;
 }
+.brand {
+    display: flex;
+    flex-direction: row !important;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: nowrap !important;
+}
+
+.brand .logo {
+    font-size: 2rem;
+    white-space: nowrap;
+}
