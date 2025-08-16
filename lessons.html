@@ -83,6 +83,8 @@ nav ul li:hover ul.dropdown { display: block; }
 .content { padding: 0 1rem; display: none; overflow: hidden; background-color: #f1f1f1; border-radius: 0 0 5px 5px; margin-bottom: 1rem; }
 .lesson-item { text-align: center; padding: 1rem; }
 .lesson-item p { max-width: 500px; margin: 0 auto; }
+.lesson-item ul { text-align: center; list-style-position: inside; padding-left: 0; }
+.lesson-item li { margin-bottom: 5px; }
 .add-cart-btn { background-color: #FFD140; color: #000; border: none; padding: 10px 20px; border-radius: 5px; font-weight: bold; cursor: pointer; font-size: 1rem; margin-top: 0.5rem; }
 
 /* Why Choose section */
@@ -146,14 +148,16 @@ nav ul li:hover ul.dropdown { display: block; }
   <!-- Adults -->
   <button class="collapsible">Adults (18+)</button>
   <div class="content">
-    <p>My private online lessons for adults focus on practical English skills for everyday life, travel, work, and social interactions. I also offer Cambridge exam prep (PET, FCE, CAE).</p>
-    <ul>
-      <li>Fully online – learn from home</li>
-      <li>Tailored to your level and goals</li>
-      <li>Flexible scheduling</li>
-    </ul>
     <div class="lesson-item">
-      <h3>5-Hour Package - $90 (Save $-)</h3>
+      <p>My private online lessons for adults focus on practical English skills for everyday life, travel, work, and social interactions. I also offer Cambridge exam prep (PET, FCE, CAE).</p>
+      <ul>
+        <li>Fully online – learn from home</li>
+        <li>Tailored to your level and goals</li>
+        <li>Flexible scheduling</li>
+      </ul>
+    </div>
+    <div class="lesson-item">
+      <h3>5-Hour Package - $90</h3>
       <button class="add-cart-btn" onclick="addToCart('Adults 5-Hour Package',90)">Add to Cart</button>
     </div>
     <div class="lesson-item">
@@ -169,12 +173,14 @@ nav ul li:hover ul.dropdown { display: block; }
   <!-- Teens -->
   <button class="collapsible">Teens (13–17)</button>
   <div class="content">
-    <p>My private online lessons for teens focus on school support, exam prep, and conversational skills. Cambridge exam prep is also available for PET or FCE certification.</p>
-    <ul>
-      <li>Fun, interactive online sessions</li>
-      <li>Tailored for teen learning styles</li>
-      <li>Focus on practical and academic English</li>
-    </ul>
+    <div class="lesson-item">
+      <p>My private online lessons for teens focus on school support, exam prep, and conversational skills. Cambridge exam prep is also available for PET or FCE certification.</p>
+      <ul>
+        <li>Fun, interactive online sessions</li>
+        <li>Tailored for teen learning styles</li>
+        <li>Focus on practical and academic English</li>
+      </ul>
+    </div>
     <div class="lesson-item">
       <h3>5-Hour Package - $90</h3>
       <button class="add-cart-btn" onclick="addToCart('Teens 5-Hour Package',90)">Add to Cart</button>
