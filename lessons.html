@@ -3,21 +3,44 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Private English Lessons - Connor ESL</title>
+<title>Lessons - Connor ESL</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <link rel="stylesheet" href="css/style.css">
 <style>
 body { font-family: Arial, sans-serif; margin: 0; padding: 0; background: #f9f9f9; color: #333; }
 .container { width: 90%; max-width: 1200px; margin: 0 auto; padding: 2rem 0; }
 
+/* Header */
 header { background: #0070ba; color: #fff; padding: 1rem 0; position: relative; }
 header .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: #fff; margin-left: 10px;}
 header .brand img { height: 50px; border-radius: 5px; }
 nav ul { list-style: none; display: flex; gap: 20px; align-items: center; margin:0; padding:0; }
+nav ul li { position: relative; }
 nav ul li a { text-decoration: none; color: #fff; font-weight: bold; }
 nav ul li a.active { text-decoration: underline; }
 nav ul li a.cart-link { display: flex; align-items: center; gap: 5px; cursor: pointer; color: #fff; }
 
+/* Dropdown Menu */
+nav ul li ul.dropdown {
+  display: none;
+  position: absolute;
+  background: #fff;
+  top: 100%;
+  left: 0;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+nav ul li ul.dropdown li a {
+  color: #333;
+  padding: 10px 15px;
+  display: block;
+}
+nav ul li:hover ul.dropdown { display: block; }
+
+/* Cart Dropdown */
 #cart-dropdown {
   display: none;
   position: absolute;
@@ -30,11 +53,13 @@ nav ul li a.cart-link { display: flex; align-items: center; gap: 5px; cursor: po
   z-index: 1000;
   padding: 10px;
 }
+#cart-dropdown p { color: #000; }
 #cart-dropdown .cart-item {
   display: flex;
   justify-content: space-between;
   padding: 5px 0;
   border-bottom: 1px solid #eee;
+  color: #000;
 }
 #cart-dropdown .remove-btn {
   cursor: pointer;
@@ -52,10 +77,12 @@ nav ul li a.cart-link { display: flex; align-items: center; gap: 5px; cursor: po
   text-decoration: none;
 }
 
+/* Lessons Sections */
 .collapsible { background-color: #0070ba; color: white; cursor: pointer; padding: 1rem; width: 100%; border: none; text-align: left; outline: none; font-size: 1.1rem; border-radius: 5px; margin-bottom: 1rem; }
 .collapsible:hover { background-color: #005f99; }
 .content { padding: 0 1rem; display: none; overflow: hidden; background-color: #f1f1f1; border-radius: 0 0 5px 5px; margin-bottom: 1rem; }
 .lesson-item { text-align: center; padding: 1rem; }
+.lesson-item p { max-width: 500px; margin: 0 auto; }
 .add-cart-btn { background-color: #FFD140; color: #000; border: none; padding: 10px 20px; border-radius: 5px; font-weight: bold; cursor: pointer; font-size: 1rem; margin-top: 0.5rem; }
 </style>
 </head>
@@ -71,12 +98,19 @@ nav ul li a.cart-link { display: flex; align-items: center; gap: 5px; cursor: po
       <ul>
         <li><a href="index.html">Home</a></li>
         <li><a href="about.html">About</a></li>
-        <li><a href="lessons.html" class="active">Lessons</a></li>
+        <li>
+          <a href="lessons.html" class="active">Lessons</a>
+          <ul class="dropdown">
+            <li><a href="lessons/individual.html">Individual Lessons</a></li>
+            <li><a href="lessons/adults.html">Adults (18+)</a></li>
+            <li><a href="lessons/teens.html">Teens (13–17)</a></li>
+          </ul>
+        </li>
         <li><a href="schedule.html">Schedule</a></li>
         <li><a href="contact.html">Contact</a></li>
         <li>
           <a class="cart-link" id="cart-toggle">
-            <i class="fas fa-shopping-cart"></i> <span id="cart-count">0</span>
+            <i class="fas fa-shopping-cart"></i> <span id="cart-count">0 product(s)</span>
           </a>
         </li>
       </ul>
@@ -89,58 +123,64 @@ nav ul li a.cart-link { display: flex; align-items: center; gap: 5px; cursor: po
   <h1>Private English Lessons (Online Only)</h1>
   <p>All lessons are private and fully online. Click on a section below to view available lessons and packages.</p>
 
-  <!-- Collapsible: Individual Lessons -->
+  <!-- Individual Lessons -->
   <button class="collapsible">Individual Lessons</button>
   <div class="content">
     <div class="lesson-item">
-      <h3>Standard Lesson (45 min)</h3>
-      <p>Focus on conversation, grammar, reading, and writing. Perfect for a single lesson or trying my teaching style.</p>
-      <button class="add-cart-btn" onclick="addToCart('Standard Lesson (45 min)',15)">Add to Cart - $15</button>
+      <h3>Standard Lesson (45 min) - $15</h3>
+      <p>Perfect for trying my teaching style or fitting in a short, focused session. Includes conversation, grammar, reading, and writing.</p>
+      <button class="add-cart-btn" onclick="addToCart('Standard Lesson (45 min)',15)">Add to Cart</button>
     </div>
     <div class="lesson-item">
-      <h3>Full Lesson (60 min)</h3>
-      <p>In-depth practice on conversation, grammar, reading, and writing.</p>
-      <button class="add-cart-btn" onclick="addToCart('Full Lesson (60 min)',18)">Add to Cart - $18</button>
+      <h3>Full Lesson (60 min) - $18</h3>
+      <p>Extra time for in-depth practice in conversation, grammar, reading, and writing — great for ongoing improvement.</p>
+      <button class="add-cart-btn" onclick="addToCart('Full Lesson (60 min)',18)">Add to Cart</button>
     </div>
   </div>
 
-  <!-- Collapsible: Adults -->
+  <!-- Adults -->
   <button class="collapsible">Adults (18+)</button>
   <div class="content">
+    <p>My private online lessons for adults focus on practical English skills for everyday life, travel, work, and social interactions. Lessons combine conversational practice, grammar, reading, and writing. I also offer Cambridge exam prep (PET, FCE, CAE).</p>
+    <ul>
+      <li>Fully online – learn from home</li>
+      <li>Tailored to your level and goals</li>
+      <li>Flexible scheduling</li>
+    </ul>
     <div class="lesson-item">
-      <h3>5-Hour Package</h3>
-      <p>Fun, interactive online sessions tailored to your goals.</p>
-      <button class="add-cart-btn" onclick="addToCart('Adults 5-Hour Package',90)">Add to Cart - $90</button>
+      <h3>5-Hour Package - $90</h3>
+      <button class="add-cart-btn" onclick="addToCart('Adults 5-Hour Package',90)">Add to Cart</button>
     </div>
     <div class="lesson-item">
-      <h3>10-Hour Package</h3>
-      <p>Fun, interactive online sessions tailored to your goals.</p>
-      <button class="add-cart-btn" onclick="addToCart('Adults 10-Hour Package',170)">Add to Cart - $170</button>
+      <h3>10-Hour Package - $170</h3>
+      <button class="add-cart-btn" onclick="addToCart('Adults 10-Hour Package',170)">Add to Cart</button>
     </div>
     <div class="lesson-item">
-      <h3>20-Hour Package</h3>
-      <p>Fun, interactive online sessions tailored to your goals.</p>
-      <button class="add-cart-btn" onclick="addToCart('Adults 20-Hour Package',320)">Add to Cart - $320</button>
+      <h3>20-Hour Package - $320</h3>
+      <button class="add-cart-btn" onclick="addToCart('Adults 20-Hour Package',320)">Add to Cart</button>
     </div>
   </div>
 
-  <!-- Collapsible: Teens -->
+  <!-- Teens -->
   <button class="collapsible">Teens (13–17)</button>
   <div class="content">
+    <p>My private online lessons for teens focus on school support, exam prep, and conversational skills. I strengthen grammar, reading, writing, and speaking confidence. Cambridge exam prep is also available for PET or FCE certification.</p>
+    <ul>
+      <li>Fun, interactive online sessions</li>
+      <li>Tailored for teen learning styles</li>
+      <li>Focus on practical and academic English</li>
+    </ul>
     <div class="lesson-item">
-      <h3>5-Hour Package</h3>
-      <p>Focus on school support, exam prep, and conversational skills.</p>
-      <button class="add-cart-btn" onclick="addToCart('Teens 5-Hour Package',90)">Add to Cart - $90</button>
+      <h3>5-Hour Package - $90</h3>
+      <button class="add-cart-btn" onclick="addToCart('Teens 5-Hour Package',90)">Add to Cart</button>
     </div>
     <div class="lesson-item">
-      <h3>10-Hour Package</h3>
-      <p>Focus on school support, exam prep, and conversational skills.</p>
-      <button class="add-cart-btn" onclick="addToCart('Teens 10-Hour Package',170)">Add to Cart - $170</button>
+      <h3>10-Hour Package - $170</h3>
+      <button class="add-cart-btn" onclick="addToCart('Teens 10-Hour Package',170)">Add to Cart</button>
     </div>
     <div class="lesson-item">
-      <h3>20-Hour Package</h3>
-      <p>Focus on school support, exam prep, and conversational skills.</p>
-      <button class="add-cart-btn" onclick="addToCart('Teens 20-Hour Package',320)">Add to Cart - $320</button>
+      <h3>20-Hour Package - $320</h3>
+      <button class="add-cart-btn" onclick="addToCart('Teens 20-Hour Package',320)">Add to Cart</button>
     </div>
   </div>
 </main>
@@ -150,7 +190,7 @@ nav ul li a.cart-link { display: flex; align-items: center; gap: 5px; cursor: po
 </footer>
 
 <script>
-// Collapsible sections
+// Collapsible
 document.querySelectorAll(".collapsible").forEach(btn => {
   btn.addEventListener("click", function() {
     this.classList.toggle("active");
@@ -159,14 +199,14 @@ document.querySelectorAll(".collapsible").forEach(btn => {
   });
 });
 
-// Cart system
+// Cart
 let cart = JSON.parse(localStorage.getItem('cart')) || [];
 const dropdownEl = document.getElementById('cart-dropdown');
 const toggleBtn = document.getElementById('cart-toggle');
 
 function updateCartUI() {
   const countEl = document.getElementById('cart-count');
-  countEl.textContent = cart.length;
+  countEl.textContent = `${cart.length} product(s)`;
   dropdownEl.innerHTML = '';
   if(cart.length === 0){
     dropdownEl.innerHTML = '<p>Your cart is empty.</p>';
