@@ -7,56 +7,51 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <link rel="stylesheet" href="css/style.css">
 <style>
-body { font-family: Arial, sans-serif; line-height: 1.6; background-color: #f9f9f9; color: #000; margin: 0; padding: 0; }
+/* Basic Reset */
+body, h1, h2, p, ul, li { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: Arial, sans-serif; line-height: 1.6; background-color: #f9f9f9; color: #000; }
 .container { width: 90%; max-width: 1200px; margin: 0 auto; }
 
 /* Header/Nav */
-header { background-color: #5a381e; color: #000; padding: 1rem 0; }
-header .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: #000; }
+header { background-color: #4b2e2e; color: #fff; padding: 1rem 0; }
+header .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: #fff; }
 header .brand img { height: 50px; border-radius: 5px; }
 nav ul { list-style: none; display: flex; gap: 20px; align-items: center; }
-nav ul li { position: relative; }
-nav ul li a { text-decoration: none; color: #000; font-weight: bold; }
+nav ul li a { text-decoration: none; color: #fff; font-weight: bold; }
 nav ul li a.active { text-decoration: underline; }
 
 /* Cart */
-nav ul li a.cart-link { display: flex; align-items: center; gap: 5px; cursor: pointer; color: #000; }
+nav ul li a.cart-link { display: flex; align-items: center; gap: 5px; cursor: pointer; color: #fff; }
 .cart-dropdown-content {
   display: none; position: absolute; right: 0; background-color: #fff; color: #000; min-width: 250px;
   border: 1px solid #ccc; box-shadow: 0 8px 16px rgba(0,0,0,0.2); padding: 10px; z-index: 100;
   max-height: 300px; overflow-y: auto; border-radius: 5px;
 }
 .cart-item { display: flex; justify-content: space-between; padding: 5px 0; color: #000; }
-.cart-item span:first-child { font-weight: bold; }
 .remove-btn { color: red; cursor: pointer; margin-left: 5px; font-size: 0.85rem; }
 .checkout-btn {
   margin-top: 10px; display: block; width: 100%; text-align: center;
-  background-color: #5a381e; color: #fff; text-decoration: none; padding: 10px;
+  background-color: #4b2e2e; color: white; text-decoration: none; padding: 10px;
   border-radius: 5px; font-weight: bold;
 }
 
-/* Buttons */
-.btn {
-  display: inline-block;
-  margin-top: 20px;
-  padding: 12px 20px;
-  background-color: #5a381e;
-  color: #fff;
-  text-decoration: none;
-  border-radius: 6px;
-  font-weight: bold;
+/* Hero Section */
+.hero { text-align: center; padding: 4rem 2rem; background: #fff; border-radius: 10px; margin-top: 2rem; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+.hero h1 { font-size: 2.5rem; margin-bottom: 1rem; color: #000; }
+.hero p { font-size: 1.2rem; margin-bottom: 2rem; color: #000; }
+.hero a {
+  background-color: #4b2e2e; color: white; padding: 12px 25px;
+  text-decoration: none; border-radius: 5px; font-size: 1.1rem; font-weight: bold;
 }
-.btn:hover { background-color: #3d2613; }
 
-/* Content Boxes */
-.content-box {
-  background: #fff;
-  padding: 30px;
-  margin: 20px auto;
-  border-radius: 8px;
-  max-width: 900px;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-}
+/* Features Section */
+.features { display: flex; flex-wrap: wrap; gap: 2rem; margin: 3rem 0; }
+.feature { flex: 1 1 250px; background: #fff; padding: 1.5rem; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+.feature h2 { font-size: 1.5rem; margin-bottom: 1rem; color: #000; }
+.feature p { color: #000; }
+
+/* Footer */
+footer { text-align: center; padding: 1.5rem 0; background-color: #4b2e2e; color: #fff; margin-top: 2rem; border-radius: 0 0 10px 10px; }
 </style>
 </head>
 <body>
@@ -83,43 +78,30 @@ nav ul li a.cart-link { display: flex; align-items: center; gap: 5px; cursor: po
   </div>
 </header>
 
-<!-- Hero Section -->
-<section class="hero" style="
-  background: url('images/classrooms.jpg') center/cover no-repeat;
-  padding: 100px 20px;
-  color: #000;
-  text-align: center;
-  position: relative;">
-  
-  <div style="
-    background: rgba(255, 255, 255, 0.9);
-    display: inline-block;
-    padding: 30px 40px;
-    border-radius: 8px;
-    max-width: 800px;">
-    <h1 style="margin-top:0; font-size: 2.5rem;">Start Your Journey to Fluent English Today with CESL</h1>
-    <p style="font-size: 1.2rem; margin-top: 10px;">
-      Personalized and private English lessons focused on speaking, reading, writing, and grammar, using proven methods from Cambridge English.
-    </p>
-  </div>
-</section>
-
-<main>
-  <section class="content-box">
-    <h2><i class="fa-solid fa-clock"></i> Try a Free 30-Minute Lesson!</h2>
-    <p><i class="fa-solid fa-star"></i> Get a taste of my teaching style with a <strong>free 30-minute trial lesson</strong>.  
-    Before we begin, I will give you a short <strong>placement test</strong> to assess your level and needs, so I can create the best learning plan for you.</p>
-    <a href="schedule.html" class="btn"><i class="fa-solid fa-calendar-check"></i> Schedule Your Free Trial</a>
+<main class="container">
+  <section class="hero">
+    <h1>Welcome to Connor ESL</h1>
+    <p>Start your journey to fluent English with customized lessons designed just for you.</p>
+    <a href="lessons.html">View Lessons</a>
   </section>
 
-  <section class="content-box">
-    <h2><i class="fa-solid fa-chalkboard-teacher"></i> Why Choose Me?</h2>
-    <p><i class="fa-solid fa-location-dot"></i> Native speaker from California, TEFL Level-5 certified, teaching for over 2 years in Europe.</p>
-    <p><i class="fa-solid fa-clock"></i> Flexible scheduling and personalized lessons that improve speaking and grammar efficiently.</p>
+  <section class="features">
+    <div class="feature">
+      <h2>Personalized Lessons</h2>
+      <p>Each session is tailored to your level and goals, focusing on grammar, speaking, and real conversation.</p>
+    </div>
+    <div class="feature">
+      <h2>Flexible Scheduling</h2>
+      <p>Book lessons at times that work for you, no matter your time zone.</p>
+    </div>
+    <div class="feature">
+      <h2>Experienced Teacher</h2>
+      <p>Native English speaker from California with TEFL Level-5 certification and years of teaching experience.</p>
+    </div>
   </section>
 </main>
 
-<footer style="background:#5a381e; color:#fff; text-align:center; padding:15px;">
+<footer>
   <p>© 2025 Connor Brown</p>
 </footer>
 
@@ -167,8 +149,7 @@ function checkoutCart(e){
   window.open(url,'_blank');
 }
 
-toggleBtn.addEventListener('click',(e)=>{
-  e.preventDefault();
+toggleBtn.addEventListener('click',()=>{
   dropdownEl.style.display = dropdownEl.style.display==='block' ? 'none' : 'block';
 });
 
