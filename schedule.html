@@ -33,10 +33,21 @@ nav ul li a.cart-link { display: flex; align-items: center; gap: 5px; cursor: po
 /* Main Content */
 main { padding: 2rem 0; text-align: center; }
 .hero h1 { font-size: 2rem; color: #0070ba; margin-bottom: 1rem; }
-.hero p { font-size: 1.1rem; margin-bottom: 1.5rem; }
+.hero p { font-size: 1.1rem; margin-bottom: 2rem; }
 
-/* NeetoCal Embed */
-#inline-embed-container { height: 80vh; width: 100%; margin-top: 30px; }
+/* Buttons */
+.schedule-btn {
+  display: inline-block;
+  background-color: #0070ba;
+  color: #fff;
+  padding: 12px 24px;
+  margin: 10px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background 0.3s;
+}
+.schedule-btn:hover { background-color: #005b95; }
 </style>
 </head>
 <body>
@@ -65,23 +76,11 @@ main { padding: 2rem 0; text-align: center; }
 
 <main class="hero">
   <h1>Schedule Your Lesson</h1>
-  <p>Please use the calendar below to book your free trial or schedule a paid lesson after checkout.</p>
+  <p>Please select one of the options below to book your lesson:</p>
 
-  <!-- NeetoCal inline embed code begins -->
-  <div id="inline-embed-container"></div>
-  <script>window.neetoCal = window.neetoCal || { embed: function(){(neetoCal.q=neetoCal.q||[]).push(arguments)} };</script>
-  <script async src="https://cdn.neetocal.com/javascript/embed.js"></script>
-  <script>
-    neetoCal.embed({
-      type: "inline",
-      id: "041a65aa-ba85-4f90-8c20-e06291351e29",
-      organization: "connor-esl",
-      elementSelector: "#inline-embed-container",
-      styles: "height: 100%; width: 100%;",
-      kind: "routingForm"
-    });
-  </script>
-  <!-- NeetoCal inline embed code ends -->
+  <a href="https://connor-esl.neetocal.com/full-lesson" target="_blank" class="schedule-btn">Full Lesson - 60 Minutes</a>
+  <a href="https://connor-esl.neetocal.com/standard-lesson" target="_blank" class="schedule-btn">Standard Lesson - 45 Minutes</a>
+  <a href="https://connor-esl.neetocal.com/admin/scheduling-links/sdbjuj5/what" target="_blank" class="schedule-btn">Free Trial - 30 Minutes</a>
 </main>
 
 <footer>
