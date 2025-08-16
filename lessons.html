@@ -10,13 +10,47 @@
 body { font-family: Arial, sans-serif; margin: 0; padding: 0; background: #f9f9f9; color: #333; }
 .container { width: 90%; max-width: 1200px; margin: 0 auto; padding: 2rem 0; }
 
-header { background: #0070ba; color: #fff; padding: 1rem 0; }
+header { background: #0070ba; color: #fff; padding: 1rem 0; position: relative; }
 header .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: #fff; margin-left: 10px;}
 header .brand img { height: 50px; border-radius: 5px; }
 nav ul { list-style: none; display: flex; gap: 20px; align-items: center; margin:0; padding:0; }
 nav ul li a { text-decoration: none; color: #fff; font-weight: bold; }
 nav ul li a.active { text-decoration: underline; }
 nav ul li a.cart-link { display: flex; align-items: center; gap: 5px; cursor: pointer; color: #fff; }
+
+#cart-dropdown {
+  display: none;
+  position: absolute;
+  right: 10px;
+  top: 70px;
+  background: #fff;
+  border: 1px solid #ccc;
+  width: 250px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  z-index: 1000;
+  padding: 10px;
+}
+#cart-dropdown .cart-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 0;
+  border-bottom: 1px solid #eee;
+}
+#cart-dropdown .remove-btn {
+  cursor: pointer;
+  color: red;
+  font-weight: bold;
+}
+.checkout-btn {
+  display: block;
+  background: #0070ba;
+  color: #fff;
+  text-align: center;
+  padding: 10px;
+  margin-top: 10px;
+  border-radius: 5px;
+  text-decoration: none;
+}
 
 .collapsible { background-color: #0070ba; color: white; cursor: pointer; padding: 1rem; width: 100%; border: none; text-align: left; outline: none; font-size: 1.1rem; border-radius: 5px; margin-bottom: 1rem; }
 .collapsible:hover { background-color: #005f99; }
@@ -40,9 +74,14 @@ nav ul li a.cart-link { display: flex; align-items: center; gap: 5px; cursor: po
         <li><a href="lessons.html" class="active">Lessons</a></li>
         <li><a href="schedule.html">Schedule</a></li>
         <li><a href="contact.html">Contact</a></li>
-        <li><a class="cart-link" id="cart-toggle"><i class="fas fa-shopping-cart"></i> <span id="cart-count">0</span></a></li>
+        <li>
+          <a class="cart-link" id="cart-toggle">
+            <i class="fas fa-shopping-cart"></i> <span id="cart-count">0</span>
+          </a>
+        </li>
       </ul>
     </nav>
+    <div id="cart-dropdown"></div>
   </div>
 </header>
 
@@ -112,8 +151,7 @@ nav ul li a.cart-link { display: flex; align-items: center; gap: 5px; cursor: po
 
 <script>
 // Collapsible sections
-const collapsibles = document.querySelectorAll(".collapsible");
-collapsibles.forEach(btn => {
+document.querySelectorAll(".collapsible").forEach(btn => {
   btn.addEventListener("click", function() {
     this.classList.toggle("active");
     const content = this.nextElementSibling;
@@ -121,7 +159,7 @@ collapsibles.forEach(btn => {
   });
 });
 
-<script>
+// Cart system
 let cart = JSON.parse(localStorage.getItem('cart')) || [];
 const dropdownEl = document.getElementById('cart-dropdown');
 const toggleBtn = document.getElementById('cart-toggle');
@@ -149,6 +187,12 @@ function updateCartUI() {
   }
 }
 
+function addToCart(name, price) {
+  cart.push({name, price});
+  localStorage.setItem('cart', JSON.stringify(cart));
+  updateCartUI();
+}
+
 function removeFromCart(index){
   cart.splice(index,1);
   localStorage.setItem('cart',JSON.stringify(cart));
@@ -169,13 +213,13 @@ toggleBtn.addEventListener('click',()=>{
   dropdownEl.style.display = dropdownEl.style.display==='block' ? 'none' : 'block';
 });
 
-updateCartUI();
-
 document.addEventListener('click',(e)=>{
   if(!toggleBtn.contains(e.target) && !dropdownEl.contains(e.target)){
     dropdownEl.style.display='none';
   }
 });
+
+updateCartUI();
 </script>
 
 </body>
