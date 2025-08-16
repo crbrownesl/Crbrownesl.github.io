@@ -14,7 +14,7 @@ body { font-family: Arial, sans-serif; line-height: 1.6; background-color: #f9f9
 header { background-color: #0070ba; color: #fff; padding: 1rem 0; }
 header .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: #fff; }
 header .brand img { height: 50px; border-radius: 5px; }
-nav ul { list-style: none; display: flex; gap: 20px; align-items: center; }
+nav ul { list-style: none; display: flex; gap: 20px; align-items: center; margin: 0; padding: 0; }
 nav ul li { position: relative; }
 nav ul li a { text-decoration: none; color: #fff; font-weight: bold; }
 nav ul li a.active { text-decoration: underline; }
@@ -31,11 +31,12 @@ nav ul li a.cart-link { display: flex; align-items: center; gap: 5px; cursor: po
 .remove-btn { color: red; cursor: pointer; margin-left: 5px; font-size: 0.85rem; }
 
 /* Main Content */
-main { padding: 2rem 0; }
-.hero { text-align: center; padding: 2rem 0; }
+main { padding: 2rem 0; text-align: center; }
 .hero h1 { font-size: 2rem; color: #0070ba; margin-bottom: 1rem; }
 .hero p { font-size: 1.1rem; margin-bottom: 1.5rem; }
-.btn { background-color: #FFD140; color: #000; padding: 10px 20px; border-radius: 5px; text-decoration: none; font-weight: bold; display: inline-block; }
+
+/* NeetoCal Embed */
+#inline-embed-container { height: 80vh; width: 100%; margin-top: 30px; }
 </style>
 </head>
 <body>
@@ -64,8 +65,23 @@ main { padding: 2rem 0; }
 
 <main class="hero">
   <h1>Schedule Your Lesson</h1>
-  <p>To book your free trial or after making your payment for a lesson, please complete the form below. This ensures we reserve your spot and have all necessary information.</p>
-  <a href="https://docs.google.com/forms/d/e/1FAIpQLSeio3sTP-5FZDduxW03vW6kDrRvvKw4ANoCUGtn51OT6kwhGA/viewform?usp=dialog" target="_blank" class="btn"><i class="fa-solid fa-calendar-check"></i> Go to Google Form</a>
+  <p>Please use the calendar below to book your free trial or schedule a paid lesson after checkout.</p>
+
+  <!-- NeetoCal inline embed code begins -->
+  <div id="inline-embed-container"></div>
+  <script>window.neetoCal = window.neetoCal || { embed: function(){(neetoCal.q=neetoCal.q||[]).push(arguments)} };</script>
+  <script async src="https://cdn.neetocal.com/javascript/embed.js"></script>
+  <script>
+    neetoCal.embed({
+      type: "inline",
+      id: "041a65aa-ba85-4f90-8c20-e06291351e29",
+      organization: "connor-esl",
+      elementSelector: "#inline-embed-container",
+      styles: "height: 100%; width: 100%;",
+      kind: "routingForm"
+    });
+  </script>
+  <!-- NeetoCal inline embed code ends -->
 </main>
 
 <footer>
