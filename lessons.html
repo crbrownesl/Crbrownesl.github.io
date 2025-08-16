@@ -7,103 +7,44 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <link rel="stylesheet" href="css/style.css">
 <style>
-body { 
-  font-family: Arial, sans-serif; 
-  margin: 0; 
-  padding: 0; 
-  background: #f9f9f9; 
-  color: #333; 
-  font-size: 1.1rem; 
-  line-height: 1.6; 
-}
+body, h1, h2, h3, p, ul, li { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: Arial, sans-serif; line-height: 1.6; background-color: #f9f9f9; color: #000; }
+.container { width: 90%; max-width: 1200px; margin: 0 auto; }
 
-.container { 
-  width: 90%; 
-  max-width: 1200px; 
-  margin: 0 auto; 
-  padding: 2rem 0; 
-}
+/* Header/Nav matching about.html */
+header { background-color: #4b2e2e; color: #fff; padding: 1rem 0; }
+header .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: #fff; }
+header .brand img { height: 50px; border-radius: 5px; }
+nav ul { list-style: none; display: flex; gap: 20px; align-items: center; }
+nav ul li { position: relative; }
+nav ul li a { text-decoration: none; color: #fff; font-weight: bold; }
+nav ul li a.active { text-decoration: underline; }
 
-/* Header and top nav */
-header {
-  background-color: #4b2e2e; /* brown color */
-  color: #fff;
-  height: 120px; /* fixed height to match other pages */
-  display: flex;
-  align-items: center;
-  padding: 0 20px;
-  box-sizing: border-box;
+/* Cart */
+nav ul li a.cart-link { display: flex; align-items: center; gap: 5px; cursor: pointer; color: #fff; }
+.cart-dropdown-content {
+  display: none; position: absolute; right: 0; background-color: #fff; color: #000; min-width: 250px;
+  border: 1px solid #ccc; box-shadow: 0 8px 16px rgba(0,0,0,0.2); padding: 10px; z-index: 100;
+  max-height: 300px; overflow-y: auto; border-radius: 5px;
 }
-
-header .brand {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-
-header .brand img {
-  max-height: 80px; /* logo height same as other pages */
-  width: auto;
-}
-
-header nav ul {
-  display: flex;
-  gap: 1.5rem;
-  list-style: none;
-  padding-left: 0;
-  margin: 0;
-  flex-wrap: wrap;
-}
-
-header nav ul li a {
-  color: #fff;
-  text-decoration: none;
-  font-weight: bold;
-}
-
-nav ul li a.active {
-  text-decoration: underline;
-}
-
-/* Cart dropdown */
-#cart-dropdown {
-  display: none;
-  position: absolute;
-  background: #fff;
-  border: 1px solid #ccc;
-  width: 260px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-  z-index: 1000;
-  padding: 12px;
-  font-size: 1rem;
-}
-#cart-dropdown p { color: #000; margin:0; }
-#cart-dropdown .cart-item {
-  display: flex;
-  justify-content: space-between;
-  padding: 8px 0;
-  border-bottom: 1px solid #eee;
-  color: #000;
-}
-#cart-dropdown .remove-btn { cursor: pointer; color: #c0392b; font-weight: bold; }
+.cart-item { display: flex; justify-content: space-between; padding: 5px 0; color: #000; }
+.cart-item span:first-child { font-weight: bold; }
+.remove-btn { color: red; cursor: pointer; margin-left: 5px; font-size: 0.85rem; }
 .checkout-btn {
-  display: block;
-  background: #0070ba;
-  color: #fff;
-  text-align: center;
-  padding: 12px;
-  margin-top: 12px;
-  border-radius: 5px;
-  text-decoration: none;
-  font-size: 1rem;
+  margin-top: 10px; display: block; width: 100%; text-align: center;
+  background-color: #4b2e2e; color: white; text-decoration: none; padding: 10px;
+  border-radius: 5px; font-weight: bold;
 }
 
-/* Lessons collapsibles */
+/* Main Content */
+main { padding: 2rem 0; }
+
+/* Collapsible Lessons */
 .collapsible { 
   background-color: #4b2e2e; 
   color: white; 
   cursor: pointer; 
-  padding: 1.2rem; 
+  padding: 1rem; 
   width: 100%; 
   border: none; 
   text-align: left; 
@@ -112,9 +53,7 @@ nav ul li a.active {
   border-radius: 5px; 
   margin-bottom: 1rem; 
 }
-.collapsible:hover { 
-  background-color: #36211b; 
-}
+.collapsible:hover { background-color: #36211b; }
 .content { 
   padding: 1.5rem; 
   display: none; 
@@ -124,39 +63,12 @@ nav ul li a.active {
   margin-bottom: 2rem; 
   box-shadow: 0 2px 6px rgba(0,0,0,0.1); 
 }
-.lesson-item { 
-  text-align: center; 
-  padding: 1.5rem 1rem; 
-}
-.lesson-item p { 
-  max-width: 600px; 
-  margin: 0.5rem auto 1.5rem; 
-  font-size: 1.05rem; 
-}
-.lesson-item h3 { 
-  margin-bottom: 0.8rem; 
-}
-.lesson-item ul { 
-  text-align: center; 
-  list-style-position: inside; 
-  padding-left: 0; 
-  margin-top: 1rem; 
-  margin-bottom: 1.5rem; 
-}
-.lesson-item li { 
-  margin-bottom: 8px; 
-}
-.add-cart-btn { 
-  background-color: #FFD140; 
-  color: #000; 
-  border: none; 
-  padding: 12px 24px; 
-  border-radius: 5px; 
-  font-weight: bold; 
-  cursor: pointer; 
-  font-size: 1rem; 
-  margin-top: 0.5rem; 
-}
+.lesson-item { text-align: center; padding: 1.5rem 1rem; }
+.lesson-item p { max-width: 600px; margin: 0.5rem auto 1.5rem; font-size: 1.05rem; }
+.lesson-item h3 { margin-bottom: 0.8rem; }
+.lesson-item ul { text-align: center; list-style-position: inside; padding-left: 0; margin: 1rem 0 1.5rem; }
+.lesson-item li { margin-bottom: 8px; }
+.add-cart-btn { background-color: #FFD140; color: #000; border: none; padding: 12px 24px; border-radius: 5px; font-weight: bold; cursor: pointer; font-size: 1rem; margin-top: 0.5rem; }
 
 /* Why Choose section */
 .why-choose {
@@ -167,63 +79,35 @@ nav ul li a.active {
   border-radius: 8px; 
   box-shadow: 0 2px 8px rgba(0,0,0,0.1); 
 }
-.why-choose h2 { 
-  color: #fff; 
-  margin-bottom: 1rem; 
-}
-.why-choose ul { 
-  list-style: disc; 
-  margin-left: 2rem; 
-  margin-bottom: 1.5rem; 
-}
+.why-choose h2 { color: #fff; margin-bottom: 1rem; }
+.why-choose ul { list-style: disc inside; margin-bottom: 1.5rem; }
 
 /* Footer */
-footer { 
-  text-align:center; 
-  padding:1rem 0; 
-  background:#4b2e2e; 
-  color:#fff; 
-  margin-top:2rem; 
-  border-radius: 0 0 10px 10px; 
-}
-
-/* Responsive */
-@media (max-width:768px){
-  header .brand {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  header nav ul {
-    flex-direction: column;
-    gap: 0.8rem;
-  }
-}
+footer { text-align: center; padding: 1.5rem 0; background-color: #4b2e2e; color: #fff; margin-top: 2rem; border-radius: 0 0 10px 10px; }
 </style>
 </head>
 <body>
 
 <header>
-  <div class="container nav-wrap" style="position:relative;">
-    <a href="index.html" class="brand">
-      <img src="images/cesl-logo.png" alt="Connor ESL Logo">
-      <h1>Connor ESL</h1>
-    </a>
-    <nav>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="lessons.html" class="active">Lessons</a></li>
-        <li><a href="schedule.html">Schedule</a></li>
-        <li><a href="contact.html">Contact</a></li>
-        <li style="position:relative;">
-          <a class="cart-link" id="cart-toggle">
-            <i class="fas fa-shopping-cart"></i> <span id="cart-count">0 product(s)</span>
-          </a>
-          <div id="cart-dropdown" style="top:100%; right:0;"></div>
-        </li>
-      </ul>
-    </nav>
-  </div>
+    <div class="container nav-wrap">
+        <a href="index.html" class="brand">
+            <img src="images/cesl-logo.png" alt="Connor ESL Logo" class="cesl-logo">
+            <h1 class="logo">Connor ESL</h1>
+        </a>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="lessons.html" class="active">Lessons</a></li>
+                <li><a href="schedule.html">Schedule</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li class="cart-dropdown">
+                  <a class="cart-link" id="cart-toggle"><i class="fas fa-shopping-cart"></i> <span id="cart-count">0</span> product(s)</a>
+                  <div class="cart-dropdown-content" id="cart-dropdown"></div>
+                </li>
+            </ul>
+        </nav>
+    </div>
 </header>
 
 <main class="container">
@@ -328,7 +212,7 @@ const toggleBtn = document.getElementById('cart-toggle');
 
 function updateCartUI() {
   const countEl = document.getElementById('cart-count');
-  countEl.textContent = `${cart.length} product(s)`;
+  countEl.textContent = cart.length;
   dropdownEl.innerHTML = '';
   if(cart.length === 0){
     dropdownEl.innerHTML = '<p>Your cart is empty.</p>';
@@ -375,13 +259,14 @@ toggleBtn.addEventListener('click',()=>{
   dropdownEl.style.display = dropdownEl.style.display==='block' ? 'none' : 'block';
 });
 
+updateCartUI();
+
 document.addEventListener('click',(e)=>{
   if(!toggleBtn.contains(e.target) && !dropdownEl.contains(e.target)){
     dropdownEl.style.display='none';
   }
 });
-
-updateCartUI();
 </script>
+
 </body>
 </html>
