@@ -7,12 +7,26 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <link rel="stylesheet" href="css/style.css">
 <style>
-body { font-family: Arial, sans-serif; margin: 0; padding: 0; background: #f9f9f9; color: #333; font-size: 1.1rem; line-height: 1.6; }
-.container { width: 90%; max-width: 1200px; margin: 0 auto; padding: 2rem 0; }
+body { 
+  font-family: Arial, sans-serif; 
+  margin: 0; 
+  padding: 0; 
+  background: #f9f9f9; 
+  color: #333; 
+  font-size: 1.1rem; 
+  line-height: 1.6; 
+}
+
+.container { 
+  width: 90%; 
+  max-width: 1200px; 
+  margin: 0 auto; 
+  padding: 2rem 0; 
+}
 
 /* Header and top nav */
 header {
-  background-color: #4b2e2e; /* your brown color */
+  background-color: #4b2e2e;
   color: #fff;
   padding: 1rem 0;
 }
@@ -61,23 +75,93 @@ nav ul li a.active {
 }
 
 /* Lessons collapsibles */
-.collapsible { background-color: #4b2e2e; color: white; cursor: pointer; padding: 1.2rem; width: 100%; border: none; text-align: left; outline: none; font-size: 1.2rem; border-radius: 5px; margin-bottom: 1rem; }
-.collapsible:hover { background-color: #36211b; }
-.content { padding: 1.5rem; display: none; overflow: hidden; background-color: #fff; border-radius: 0 0 5px 5px; margin-bottom: 2rem; box-shadow: 0 2px 6px rgba(0,0,0,0.1); }
-.lesson-item { text-align: center; padding: 1.5rem 1rem; }
-.lesson-item p { max-width: 600px; margin: 0.5rem auto 1.5rem; font-size: 1.05rem; }
-.lesson-item h3 { margin-bottom: 0.8rem; }
-.lesson-item ul { text-align: center; list-style-position: inside; padding-left: 0; margin-top: 1rem; margin-bottom: 1.5rem; }
-.lesson-item li { margin-bottom: 8px; }
-.add-cart-btn { background-color: #FFD140; color: #000; border: none; padding: 12px 24px; border-radius: 5px; font-weight: bold; cursor: pointer; font-size: 1rem; margin-top: 0.5rem; }
+.collapsible { 
+  background-color: #4b2e2e; 
+  color: white; 
+  cursor: pointer; 
+  padding: 1.2rem; 
+  width: 100%; 
+  border: none; 
+  text-align: left; 
+  outline: none; 
+  font-size: 1.2rem; 
+  border-radius: 5px; 
+  margin-bottom: 1rem; 
+}
+.collapsible:hover { 
+  background-color: #36211b; 
+}
+.content { 
+  padding: 1.5rem; 
+  display: none; 
+  overflow: hidden; 
+  background-color: #fff; 
+  border-radius: 0 0 5px 5px; 
+  margin-bottom: 2rem; 
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1); 
+}
+.lesson-item { 
+  text-align: center; 
+  padding: 1.5rem 1rem; 
+}
+.lesson-item p { 
+  max-width: 600px; 
+  margin: 0.5rem auto 1.5rem; 
+  font-size: 1.05rem; 
+}
+.lesson-item h3 { 
+  margin-bottom: 0.8rem; 
+}
+.lesson-item ul { 
+  text-align: center; 
+  list-style-position: inside; 
+  padding-left: 0; 
+  margin-top: 1rem; 
+  margin-bottom: 1.5rem; 
+}
+.lesson-item li { 
+  margin-bottom: 8px; 
+}
+.add-cart-btn { 
+  background-color: #FFD140; 
+  color: #000; 
+  border: none; 
+  padding: 12px 24px; 
+  border-radius: 5px; 
+  font-weight: bold; 
+  cursor: pointer; 
+  font-size: 1rem; 
+  margin-top: 0.5rem; 
+}
 
 /* Why Choose section */
-.why-choose { background: #fff; padding: 2.5rem; margin-top: 2.5rem; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
-.why-choose h2 { color: #0070ba; margin-bottom: 1rem; }
-.why-choose ul { list-style: disc; margin-left: 2rem; margin-bottom: 1.5rem; }
+.why-choose {
+  background-color: #4b2e2e; 
+  color: #fff; 
+  padding: 2.5rem; 
+  margin-top: 2.5rem; 
+  border-radius: 8px; 
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1); 
+}
+.why-choose h2 { 
+  color: #fff; 
+  margin-bottom: 1rem; 
+}
+.why-choose ul { 
+  list-style: disc; 
+  margin-left: 2rem; 
+  margin-bottom: 1.5rem; 
+}
 
 /* Footer */
-footer { text-align:center; padding:1rem 0; background:#4b2e2e; color:#fff; margin-top:2rem; border-radius: 0 0 10px 10px; }
+footer { 
+  text-align:center; 
+  padding:1rem 0; 
+  background:#4b2e2e; 
+  color:#fff; 
+  margin-top:2rem; 
+  border-radius: 0 0 10px 10px; 
+}
 </style>
 </head>
 <body>
