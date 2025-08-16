@@ -7,11 +7,11 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <link rel="stylesheet" href="css/style.css">
 <style>
-body { font-family: Arial, sans-serif; margin: 0; padding: 0; background: #f9f9f9; color: #333; font-size: 1.1rem; line-height: 1.6; }
+body { font-family: Arial, sans-serif; margin: 0; padding: 0; background: #fdf6f0; color: #222; font-size: 1.1rem; line-height: 1.6; }
 .container { width: 90%; max-width: 1200px; margin: 0 auto; padding: 2rem 0; }
 
 /* Header */
-header { background: #0070ba; color: #fff; padding: 1rem 0; position: relative; }
+header { background: #4b2e2e; color: #fff; padding: 1rem 0; position: relative; }
 header .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: #fff; margin-left: 10px;}
 header .brand img { height: 50px; border-radius: 5px; }
 nav ul { list-style: none; display: flex; gap: 20px; align-items: center; margin:0; padding:0; }
@@ -24,7 +24,7 @@ nav ul li a.cart-link { display: flex; align-items: center; gap: 5px; cursor: po
 nav ul li ul.dropdown {
   display: none;
   position: absolute;
-  background: #fff;
+  background: #4b2e2e;
   top: 100%;
   left: 0;
   list-style: none;
@@ -32,9 +32,10 @@ nav ul li ul.dropdown {
   margin: 0;
   border-radius: 4px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  z-index: 500;
 }
 nav ul li ul.dropdown li a {
-  color: #333;
+  color: #fff;
   padding: 10px 15px;
   display: block;
 }
@@ -64,12 +65,12 @@ nav ul li:hover ul.dropdown { display: block; }
 }
 #cart-dropdown .remove-btn {
   cursor: pointer;
-  color: red;
+  color: #c0392b;
   font-weight: bold;
 }
 .checkout-btn {
   display: block;
-  background: #0070ba;
+  background: #4b2e2e;
   color: #fff;
   text-align: center;
   padding: 12px;
@@ -80,8 +81,8 @@ nav ul li:hover ul.dropdown { display: block; }
 }
 
 /* Lessons */
-.collapsible { background-color: #0070ba; color: white; cursor: pointer; padding: 1.2rem; width: 100%; border: none; text-align: left; outline: none; font-size: 1.2rem; border-radius: 5px; margin-bottom: 1rem; }
-.collapsible:hover { background-color: #005f99; }
+.collapsible { background-color: #4b2e2e; color: white; cursor: pointer; padding: 1.2rem; width: 100%; border: none; text-align: left; outline: none; font-size: 1.2rem; border-radius: 5px; margin-bottom: 1rem; }
+.collapsible:hover { background-color: #36211b; }
 .content { padding: 1.5rem; display: none; overflow: hidden; background-color: #fff; border-radius: 0 0 5px 5px; margin-bottom: 2rem; box-shadow: 0 2px 6px rgba(0,0,0,0.1); }
 .lesson-item { text-align: center; padding: 1.5rem 1rem; }
 .lesson-item p { max-width: 600px; margin: 0.5rem auto 1.5rem; font-size: 1.05rem; }
@@ -92,8 +93,11 @@ nav ul li:hover ul.dropdown { display: block; }
 
 /* Why Choose section */
 .why-choose { background: #fff; padding: 2.5rem; margin-top: 2.5rem; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
-.why-choose h2 { color: #0070ba; margin-bottom: 1rem; }
+.why-choose h2 { color: #4b2e2e; margin-bottom: 1rem; }
 .why-choose ul { list-style: disc; margin-left: 2rem; margin-bottom: 1.5rem; }
+
+/* Footer */
+footer { text-align:center; padding:1rem; background:#4b2e2e; color:#fff; margin-top:2rem; border-radius: 0 0 10px 10px; }
 </style>
 </head>
 <body>
@@ -211,7 +215,7 @@ nav ul li:hover ul.dropdown { display: block; }
   </section>
 </main>
 
-<footer style="text-align:center; padding:1rem; background:#0070ba; color:#fff;">
+<footer>
   <p>© 2025 Connor Brown</p>
 </footer>
 
