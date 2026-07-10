@@ -15,7 +15,7 @@
             right: 0; 
             top: 40px;
             background-color: #fff;
-            min-width: 250px; 
+            min-width: 280px; 
             box-shadow: 0 8px 16px rgba(0,0,0,0.2); 
             z-index: 1000;
             padding: 1rem; 
@@ -25,13 +25,17 @@
         .cart-dropdown-content.show { display: block; }
         .cart-item { 
             display: flex; 
-            justify-content: space-between; 
+            justify-content: space-between;
+            align-items: center;
             margin-bottom: 10px; 
             border-bottom: 1px solid #ddd; 
-            padding-bottom: 5px;
+            padding-bottom: 8px;
             font-size: 0.9rem;
         }
-        .cart-total { font-weight: bold; text-align: right; margin-top: 10px; }
+        .item-details { display: flex; align-items: center; gap: 10px; }
+        .remove-btn { color: #d9534f; cursor: pointer; transition: color 0.2s; }
+        .remove-btn:hover { color: #a94442; }
+        .cart-total { font-weight: bold; text-align: right; margin-top: 10px; font-size: 1.1rem; }
         .checkout-btn { 
             display: block; 
             width: 100%; 
@@ -195,6 +199,17 @@
         document.getElementById('cart-dropdown').classList.add('show');
     }
 
+    function removeFromCart(index) {
+        // Subtract the price of the removed item
+        cartTotal -= cart[index].price;
+        // Remove the item from the array
+        cart.splice(index, 1);
+        // Update the visual cart
+        updateCartUI();
+        // Keep the dropdown open so the user sees the item was deleted
+        document.getElementById('cart-dropdown').classList.add('show');
+    }
+
     function updateCartUI() {
         document.getElementById('cart-count').innerText = cart.length;
         const cartDropdown = document.getElementById('cart-dropdown');
@@ -205,12 +220,17 @@
         }
 
         let html = '';
-        cart.forEach((item) => {
-            html += `<div class="cart-item"><span>${item.name}</span><span>$${item.price}</span></div>`;
+        cart.forEach((item, index) => {
+            html += `
+                <div class="cart-item">
+                    <span>${item.name}</span>
+                    <div class="item-details">
+                        <span>$${item.price}</span>
+                        <i class="fas fa-trash remove-btn" onclick="removeFromCart(${index})" title="Remove item"></i>
+                    </div>
+                </div>`;
         });
         html += `<div class="cart-total">Total: $${cartTotal}</div>`;
-        
-        // Update the link below if you have a specific checkout page/system
         html += `<a href="#" class="checkout-btn">Proceed to Checkout</a>`; 
         
         cartDropdown.innerHTML = html;
