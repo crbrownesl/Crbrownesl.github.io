@@ -7,28 +7,27 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="css/style.css">
     <style>
-        /* Modern Mobile-First Base */
-        body { font-family: sans-serif; line-height: 1.6; background: #f9f9f9; margin: 0; }
-        .container { width: 90%; max-width: 1000px; margin: 0 auto; }
+        /* Responsive Framework */
+        body { font-family: Arial, sans-serif; line-height: 1.6; background-color: #f9f9f9; color: #000; margin: 0; overflow-x: hidden; }
+        .container { width: 90%; max-width: 1200px; margin: 0 auto; }
 
-        /* Mobile-Responsive Header */
-        header { background: #4b2e2e; color: #fff; padding: 1rem 0; }
+        /* Header & Nav */
+        header { background-color: #4b2e2e; color: #fff; padding: 1rem 0; }
         .nav-wrap { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; }
-        
         .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: #fff; }
         .brand img { height: 50px; border-radius: 5px; }
+        nav ul { list-style: none; display: flex; flex-wrap: wrap; gap: 20px; align-items: center; margin: 0; padding: 0; }
+        nav ul li a { text-decoration: none; color: #fff; font-weight: bold; }
+        nav ul li a.active { text-decoration: underline; }
 
-        nav ul { list-style: none; display: flex; flex-wrap: wrap; gap: 15px; margin-top: 10px; }
-        nav a { color: #fff; text-decoration: none; font-weight: bold; }
-
-        /* Responsive Content */
+        /* Main Content */
         main { padding: 2rem 0; }
-        .about-section { background: #fff; padding: 2rem; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+        .about-content { background: #fff; padding: 2rem; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
         
         /* Mobile Breakpoint */
         @media (max-width: 768px) {
             .nav-wrap { flex-direction: column; text-align: center; }
-            nav ul { justify-content: center; width: 100%; }
+            nav ul { justify-content: center; width: 100%; margin-top: 15px; }
         }
     </style>
 </head>
@@ -37,37 +36,39 @@
 <header>
     <div class="container nav-wrap">
         <a href="index.html" class="brand">
-            <img src="images/cesl-logo.png" alt="Connor ESL Logo">
-            <h1>Connor ESL</h1>
+            <img src="images/cesl-logo.png" alt="Connor ESL Logo" class="cesl-logo">
+            <h1 class="logo">Connor ESL</h1>
         </a>
         <nav>
             <ul>
                 <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
+                <li><a href="about.html" class="active">About</a></li>
                 <li><a href="lessons.html">Lessons</a></li>
                 <li><a href="schedule.html">Schedule</a></li>
                 <li><a href="contact.html">Contact</a></li>
-                <li><a id="cart-toggle"><i class="fas fa-shopping-cart"></i> <span id="cart-count">0</span></a></li>
             </ul>
         </nav>
     </div>
 </header>
 
 <main class="container">
-    <section class="about-section">
+    <section class="about-content">
         <h1>About Connor ESL</h1>
-        <p>Hi! My name is Connor, a TEFL-certified teacher from California with over 2 years of online experience helping students master English.</p>
+        <p>Hi! My name is Connor and I am originally from California in the United States. I am in my second year of teaching and I have been very excited on this journey. It gives me great pleasure to know that I am sharing my knowledge from my native language to connect people from around the world.</p>
+        <p>Before I traveled here, I received a level-5 TEFL certification. I have been teaching students of all ages from kindergarten to sixth grade and Cambridge exam preparation classes from levels A2 to C1. I specialize in speaking and conversational practice as well as grammar and pronunciation refinement.</p>
         <h2>Why Choose Me?</h2>
         <ul>
             <li>Native English speaker from California</li>
             <li>TEFL Level-5 certified</li>
-            <li>Personalized speaking & grammar focus</li>
+            <li>Over 2 years teaching experience online</li>
+            <li>Personalized lessons focused on speaking and grammar</li>
+            <li>Flexible scheduling to suit your time zone</li>
         </ul>
     </section>
 </main>
 
 <footer>
-    <p>© 2026 Connor Brown</p>
+    <p style="text-align: center; padding: 1.5rem 0; background-color: #4b2e2e; color: #fff; margin-top: 2rem;">© 2026 Connor Brown</p>
 </footer>
 
 </body>
