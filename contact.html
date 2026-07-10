@@ -6,6 +6,19 @@
     <title>Contact - Connor ESL</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="css/style.css">
+    <style>
+        .cart-dropdown { position: relative; }
+        .cart-dropdown-content { display: none; position: absolute; right: 0; top: 40px; background-color: #fff; min-width: 280px; box-shadow: 0 8px 16px rgba(0,0,0,0.2); z-index: 1000; padding: 1rem; border-radius: 5px; color: #222; }
+        .cart-dropdown-content.show { display: block; }
+        .cart-item { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; border-bottom: 1px solid #ddd; padding-bottom: 8px; font-size: 0.9rem; }
+        .item-details { display: flex; align-items: center; gap: 10px; }
+        .remove-btn { color: #d9534f; cursor: pointer; transition: color 0.2s; }
+        .remove-btn:hover { color: #a94442; }
+        .cart-total { font-weight: bold; text-align: right; margin-top: 10px; font-size: 1.1rem; }
+        .checkout-btn { display: block; width: 100%; background: #4b2e2e; color: #fff; text-align: center; padding: 10px; text-decoration: none; border-radius: 5px; margin-top: 15px; font-weight: bold; border:none; cursor:pointer; font-family:inherit; font-size:1rem; }
+        .checkout-btn:hover { background: #36211b; }
+        .cart-link { cursor: pointer; }
+    </style>
 </head>
 <body>
 
@@ -15,10 +28,7 @@
             <img src="images/cesl-logo.png" alt="Connor ESL Logo" class="cesl-logo">
             <h1 class="logo">Connor ESL</h1>
         </a>
-        
-        <!-- Hamburger Button -->
         <button class="menu-toggle" aria-label="Toggle menu">☰</button>
-        
         <nav class="nav-menu">
             <ul>
                 <li><a href="index.html">Home</a></li>
@@ -26,29 +36,68 @@
                 <li><a href="lessons.html">Lessons</a></li>
                 <li><a href="schedule.html">Schedule</a></li>
                 <li><a href="contact.html" class="active">Contact</a></li>
+                <li class="cart-dropdown">
+                    <a class="cart-link" id="cart-toggle"><i class="fas fa-shopping-cart"></i> <span id="cart-count">0</span></a>
+                    <div class="cart-dropdown-content" id="cart-dropdown"></div>
+                </li>
             </ul>
         </nav>
     </div>
 </header>
 
 <main class="container">
-    <section class="contact-section" style="background: #fff; padding: 2rem; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); max-width: 600px; margin: 2rem auto; text-align: center;">
-        <h1>Contact Me</h1>
-        <p>Have questions about lessons or packages? Feel free to reach out!</p>
-        <p><strong>Email:</strong> crbrown.esl@gmail.com</p>
-        <p>I typically respond to inquiries within 24 hours.</p>
-    </section>
+    <h1 style="margin-bottom: 1rem;">Contact Me</h1>
+    <p>If you have any questions about classes, pricing, or scheduling, please send an email to <strong>crbrown.esl@gmail.com</strong>.</p>
 </main>
 
 <footer>
-    <p style="text-align: center; padding: 1.5rem 0; background-color: #4b2e2e; color: #fff; margin-top: 2rem;">© 2026 Connor Brown</p>
+    <p>© 2026 Connor Brown</p>
 </footer>
 
 <script>
-    // Mobile menu toggle logic
-    document.querySelector('.menu-toggle').addEventListener('click', () => {
-        document.querySelector('.nav-menu').classList.toggle('active');
+    const menuToggle = document.querySelector('.menu-toggle');
+    if (menuToggle) {
+        menuToggle.addEventListener('click', () => { document.querySelector('.nav-menu').classList.toggle('active'); });
+    }
+    document.querySelectorAll(".collapsible").forEach(btn => {
+        btn.addEventListener("click", function() {
+            const content = this.nextElementSibling;
+            content.style.display = content.style.display === "block" ? "none" : "block";
+        });
     });
+    let cart = JSON.parse(localStorage.getItem('cesl_cart')) || [];
+    function saveCart() { localStorage.setItem('cesl_cart', JSON.stringify(cart)); }
+    function addToCart(name, price) { cart.push({ name, price }); saveCart(); updateCartUI(); document.getElementById('cart-dropdown').classList.add('show'); }
+    function removeFromCart(index) { cart.splice(index, 1); saveCart(); updateCartUI(); document.getElementById('cart-dropdown').classList.add('show'); }
+    function updateCartUI() {
+        const cartCountElement = document.getElementById('cart-count');
+        const cartDropdown = document.getElementById('cart-dropdown');
+        if (!cartCountElement || !cartDropdown) return;
+        cartCountElement.innerText = cart.length;
+        if (cart.length === 0) { cartDropdown.innerHTML = '<p style="text-align:center; margin: 0;">Your cart is empty.</p>'; return; }
+        let html = ''; let cartTotal = 0;
+        cart.forEach((item, index) => {
+            cartTotal += item.price;
+            html += `<div class="cart-item"><span>${item.name}</span><div class="item-details"><span>$${item.price}</span><i class="fas fa-trash remove-btn" onclick="removeFromCart(${index})" title="Remove item"></i></div></div>`;
+        });
+        html += `<div class="cart-total">Total: $${cartTotal}</div><button class="checkout-btn" onclick="checkoutPayPal()">Proceed to Checkout</button>`; 
+        cartDropdown.innerHTML = html;
+    }
+    function checkoutPayPal() {
+        if (cart.length === 0) return;
+        const form = document.createElement('form'); form.method = 'POST'; form.action = 'https://www.paypal.com/cgi-bin/webscr';
+        const inputs = { cmd: '_cart', upload: '1', business: 'crbrown.esl@gmail.com', currency_code: 'USD' };
+        for (const key in inputs) { const input = document.createElement('input'); input.type = 'hidden'; input.name = key; input.value = inputs[key]; form.appendChild(input); }
+        cart.forEach((item, index) => {
+            const i = index + 1;
+            const nameInput = document.createElement('input'); nameInput.type = 'hidden'; nameInput.name = `item_name_${i}`; nameInput.value = item.name; form.appendChild(nameInput);
+            const priceInput = document.createElement('input'); priceInput.type = 'hidden'; priceInput.name = `amount_${i}`; priceInput.value = item.price; form.appendChild(priceInput);
+        });
+        document.body.appendChild(form); form.submit();
+    }
+    const cartToggle = document.getElementById('cart-toggle');
+    if (cartToggle) { cartToggle.addEventListener('click', function(e) { e.preventDefault(); document.getElementById('cart-dropdown').classList.toggle('show'); }); }
+    updateCartUI();
 </script>
 </body>
 </html>
