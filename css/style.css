@@ -1,106 +1,32 @@
-/* ================================
-   Global Reset & Variables
-================================ */
-:root {
-    --primary: #4b2e2e;
-    --nav-bg: #4b2e2e;
-    --nav-hover: #36211b;
-    --accent: #FFD140;
-    --white: #fff;
-    --dark: #222;
-    --light-bg: #fdf6f0;
+/* Global Reset */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: Arial, sans-serif; background-color: #f9f9f9; line-height: 1.6; overflow-x: hidden; }
+.container { width: 90%; max-width: 1200px; margin: 0 auto; }
+
+/* Header & Nav */
+header { background-color: #4b2e2e; color: #fff; padding: 1rem 0; }
+.nav-wrap { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; }
+.brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: #fff; }
+
+/* FIX: Logo is now constrained by height only, width auto keeps proportions */
+.cesl-logo { height: 50px; width: auto; border-radius: 5px; }
+
+nav ul { list-style: none; display: flex; gap: 20px; }
+nav a { color: #fff; text-decoration: none; font-weight: bold; }
+
+/* Hero Banner & CTA */
+.hero-banner { 
+    background: #333; color: #fff; padding: 4rem 2rem; 
+    text-align: center; border-radius: 10px; margin: 2rem 0; 
+}
+.cta-box { background: #fff; padding: 2rem; border-radius: 10px; text-align: center; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+.schedule-link { 
+    background: #4b2e2e; color: #fff; padding: 10px 20px; 
+    text-decoration: none; border-radius: 5px; display: inline-block; margin-top: 1rem; 
 }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: 'Roboto', Arial, sans-serif;
-    background: var(--light-bg);
-    color: var(--dark);
-    line-height: 1.6;
-    overflow-x: hidden;
-}
-
-.container {
-    width: 90%;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-/* ================================
-   Header & Navigation
-================================ */
-header {
-    background-color: var(--primary);
-    color: var(--white);
-    padding: 0.8rem 0;
-}
-
-/* Using .nav-wrap to match your updated HTML files */
-.nav-wrap {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 1rem;
-}
-
-.brand {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    text-decoration: none;
-    color: var(--white);
-}
-
-.cesl-logo {
-    height: 50px;
-    width: 50px;
-    object-fit: cover;
-    border-radius: 5px;
-}
-
-nav ul {
-    list-style: none;
-    display: flex;
-    gap: 1rem;
-    flex-wrap: wrap;
-}
-
-nav a {
-    color: var(--white);
-    text-decoration: none;
-    font-weight: bold;
-    padding: 10px 14px;
-    display: block;
-    border-radius: 4px;
-}
-
-nav a:hover {
-    background-color: var(--nav-hover);
-}
-
-/* ================================
-   Responsive Layouts & Media Queries
-================================ */
+/* Mobile Responsive */
 @media (max-width: 768px) {
-    .nav-wrap {
-        flex-direction: column;
-        text-align: center;
-    }
-    nav ul {
-        justify-content: center;
-        width: 100%;
-        margin-top: 1rem;
-        flex-direction: column;
-    }
-    nav a {
-        padding: 8px;
-    }
+    .nav-wrap { flex-direction: column; text-align: center; gap: 10px; }
+    nav ul { flex-direction: column; gap: 10px; }
 }
-
-/* Keep your existing .hero, .booking-grid, etc., below this line */
