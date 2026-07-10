@@ -27,49 +27,35 @@ body {
 ================================ */
 header { background-color: var(--primary); color: var(--white); padding: 1rem 0; }
 
-.nav-wrap { 
-    display: flex; 
-    justify-content: space-between; 
-    align-items: center; 
-    flex-wrap: wrap; 
-}
+.nav-wrap { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; }
 
 .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--white); }
-
 .cesl-logo { height: 50px; width: auto; border-radius: 5px; }
 
 /* Desktop Nav */
-nav ul { list-style: none; display: flex; gap: 20px; }
+nav ul { list-style: none; display: flex; gap: 20px; align-items: center; }
 nav a { color: var(--white); text-decoration: none; font-weight: bold; padding: 10px; border-radius: 4px; }
-nav a:hover { background-color: var(--nav-hover); }
+nav a:hover, nav a.active { background-color: var(--nav-hover); }
 
-/* Hamburger Button (Hidden on Desktop) */
-.menu-toggle { 
-    display: none; 
-    background: none; 
-    border: none; 
-    color: var(--white); 
-    font-size: 2rem; 
-    cursor: pointer; 
-}
+/* Hamburger Button */
+.menu-toggle { display: none; background: none; border: none; color: var(--white); font-size: 2rem; cursor: pointer; }
 
 /* ================================
-   Main Content
+   Main Components
 ================================ */
-.hero-banner { 
-    background: #333; color: var(--white); padding: 4rem 2rem; 
-    text-align: center; border-radius: 10px; margin: 2rem 0; 
+.hero-banner { background: #333; color: var(--white); padding: 4rem 2rem; text-align: center; border-radius: 10px; margin: 2rem 0; }
+.cta-box { background: var(--white); padding: 2rem; border-radius: 10px; text-align: center; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+.schedule-link, .schedule-btn { 
+    background: var(--primary); color: var(--white); padding: 12px 20px; 
+    text-decoration: none; border-radius: 5px; display: inline-block; margin: 10px auto; font-weight: bold; 
 }
+.schedule-btn { display: block; max-width: 300px; width: 90%; transition: background 0.3s; }
+.schedule-btn:hover { background-color: var(--nav-hover); }
 
-.cta-box { 
-    background: var(--white); padding: 2rem; border-radius: 10px; 
-    text-align: center; box-shadow: 0 2px 5px rgba(0,0,0,0.1); 
-}
-
-.schedule-link { 
-    background: var(--primary); color: var(--white); padding: 10px 20px; 
-    text-decoration: none; border-radius: 5px; display: inline-block; margin-top: 1rem; 
-}
+/* Lessons & Collapsible */
+.collapsible { background-color: var(--primary); color: var(--white); cursor: pointer; padding: 1rem; width: 100%; border: none; text-align: left; font-size: 1.2rem; border-radius: 5px; margin-bottom: 1rem; }
+.content { padding: 1.5rem; display: none; background-color: var(--white); border-radius: 0 0 5px 5px; margin-bottom: 2rem; box-shadow: 0 2px 6px rgba(0,0,0,0.1); }
+.add-cart-btn { background-color: var(--accent); color: var(--dark); border: none; padding: 12px 24px; border-radius: 5px; font-weight: bold; cursor: pointer; margin-top: 1rem; }
 
 footer { text-align: center; padding: 2rem 0; background: var(--primary); color: var(--white); margin-top: 2rem; }
 
@@ -79,19 +65,7 @@ footer { text-align: center; padding: 2rem 0; background: var(--primary); color:
 @media (max-width: 768px) {
     .menu-toggle { display: block; }
     
-    .nav-menu { 
-        display: none; 
-        width: 100%; 
-        text-align: center; 
-        padding-top: 1rem; 
-        background: var(--primary);
-    }
-    
+    .nav-menu { display: none; width: 100%; text-align: center; padding-top: 1rem; background: var(--primary); }
     .nav-menu.active { display: block; }
-    
-    .nav-menu ul { 
-        flex-direction: column; 
-        gap: 15px; 
-        padding-bottom: 1rem;
-    }
+    .nav-menu ul { flex-direction: column; gap: 15px; padding-bottom: 1rem; }
 }
