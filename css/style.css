@@ -7,26 +7,24 @@ body { font-family: Arial, sans-serif; background-color: #f9f9f9; line-height: 1
 header { background-color: #4b2e2e; color: #fff; padding: 1rem 0; }
 .nav-wrap { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; }
 .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: #fff; }
-
-/* FIX: Logo is now constrained by height only, width auto keeps proportions */
 .cesl-logo { height: 50px; width: auto; border-radius: 5px; }
 
+/* Navigation */
 nav ul { list-style: none; display: flex; gap: 20px; }
 nav a { color: #fff; text-decoration: none; font-weight: bold; }
 
-/* Hero Banner & CTA */
-.hero-banner { 
-    background: #333; color: #fff; padding: 4rem 2rem; 
-    text-align: center; border-radius: 10px; margin: 2rem 0; 
-}
-.cta-box { background: #fff; padding: 2rem; border-radius: 10px; text-align: center; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-.schedule-link { 
-    background: #4b2e2e; color: #fff; padding: 10px 20px; 
-    text-decoration: none; border-radius: 5px; display: inline-block; margin-top: 1rem; 
-}
+/* Hamburger Button */
+.menu-toggle { display: none; background: none; border: none; color: #fff; font-size: 2rem; cursor: pointer; }
 
-/* Mobile Responsive */
+/* Hero & Content */
+.hero-banner { background: #333; color: #fff; padding: 4rem 2rem; text-align: center; border-radius: 10px; margin: 2rem 0; }
+.cta-box { background: #fff; padding: 2rem; border-radius: 10px; text-align: center; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+.schedule-link { background: #4b2e2e; color: #fff; padding: 10px 20px; text-decoration: none; border-radius: 5px; display: inline-block; margin-top: 1rem; }
+
+/* Mobile Dropdown Logic */
 @media (max-width: 768px) {
-    .nav-wrap { flex-direction: column; text-align: center; gap: 10px; }
-    nav ul { flex-direction: column; gap: 10px; }
+    .menu-toggle { display: block; }
+    .nav-menu { display: none; width: 100%; text-align: center; padding-top: 1rem; }
+    .nav-menu.active { display: block; }
+    .nav-menu ul { flex-direction: column; gap: 15px; }
 }
