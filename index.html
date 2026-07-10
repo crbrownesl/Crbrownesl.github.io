@@ -1,26 +1,66 @@
-/* ================================
-   Mobile Responsive Logic
-================================ */
-@media (max-width: 768px) {
-    /* 1. Show the hamburger button */
-    .menu-toggle { display: block !important; }
-    
-    /* 2. Hide the nav-menu by default on mobile */
-    .nav-menu { 
-        display: none !important; 
-        width: 100%; 
-        text-align: center; 
-        padding-top: 1rem; 
-        background: #4b2e2e; /* Matches header theme */
-    }
-    
-    /* 3. The class toggled by your JavaScript */
-    .nav-menu.active { display: block !important; }
-    
-    /* 4. Vertical stack for mobile links */
-    .nav-menu ul { 
-        flex-direction: column !important; 
-        gap: 15px !important; 
-        padding-bottom: 1rem;
-    }
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connor ESL - Home</title>
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Links to your CSS file in the 'css' folder -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header>
+    <div class="container nav-wrap">
+        <a href="index.html" class="brand">
+            <img src="images/cesl-logo.png" alt="Connor ESL Logo" class="cesl-logo">
+            <h1 class="logo">Connor ESL</h1>
+        </a>
+        
+        <!-- Mobile Menu Button -->
+        <button class="menu-toggle" aria-label="Toggle menu">☰</button>
+        
+        <nav class="nav-menu">
+            <ul>
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="lessons.html">Lessons</a></li>
+                <li><a href="schedule.html">Schedule</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li class="cart-dropdown">
+                    <a class="cart-link" id="cart-toggle"><i class="fas fa-shopping-cart"></i> <span id="cart-count">0</span></a>
+                    <div class="cart-dropdown-content" id="cart-dropdown"></div>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<main class="container">
+    <section class="hero-banner">
+        <h1>Start Your Journey to Fluent English Today with CESL</h1>
+        <p>Personalized and private English lessons focused on speaking, reading, writing, and grammar.</p>
+    </section>
+
+    <section class="cta-box">
+        <h2><i class="far fa-clock"></i> Try a Free 30-Minute Lesson!</h2>
+        <p>Get a taste of my teaching style with a free 30-minute trial lesson and placement test.</p>
+        <a href="schedule.html" class="schedule-link">Schedule Your Lesson</a>
+    </section>
+</main>
+
+<footer>
+    <p>© 2026 Connor Brown</p>
+</footer>
+
+<!-- Mobile Menu Script -->
+<script>
+    document.querySelector('.menu-toggle').addEventListener('click', () => {
+        document.querySelector('.nav-menu').classList.toggle('active');
+    });
+</script>
+<!-- Assuming you have your cart logic in a separate JS file -->
+<script src="js/cart.js"></script>
+</body>
+</html>
