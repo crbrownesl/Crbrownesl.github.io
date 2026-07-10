@@ -35,35 +35,110 @@
 </header>
 
 <main class="container">
-    <h1>Private English Lessons (Online Only)</h1>
-    <p>All lessons are private and fully online. Click on a section below to view available lessons and packages.</p>
+    <h1 style="margin-bottom: 1rem;">Private English Lessons (Online Only)</h1>
+    <p style="margin-bottom: 2rem;">All lessons are private and fully online. Click on a section below to view available lessons and packages.</p>
 
-    <!-- Collapsible Sections -->
+    <!-- Individual Lessons Section -->
     <button class="collapsible">Individual Lessons</button>
     <div class="content">
-        <div class="lesson-item">
+        <div class="lesson-item" style="text-align: center; padding: 1.5rem 1rem;">
             <h3>Standard Lesson (45 min) - $15</h3>
-            <button class="add-cart-btn" onclick="addToCart('Standard Lesson (45 min)', 15)">Add to Cart</button>
+            <p style="max-width: 600px; margin: 0.5rem auto 1.5rem; font-size: 1.05rem;">Perfect for trying my teaching style or fitting in a short, focused session.</p>
+            <button class="add-cart-btn" onclick="addToCart('Standard Lesson (45 min)',15)">Add to Cart</button>
         </div>
-        <div class="lesson-item">
+        <div class="lesson-item" style="text-align: center; padding: 1.5rem 1rem;">
             <h3>Full Lesson (60 min) - $18</h3>
-            <button class="add-cart-btn" onclick="addToCart('Full Lesson (60 min)', 18)">Add to Cart</button>
+            <p style="max-width: 600px; margin: 0.5rem auto 1.5rem; font-size: 1.05rem;">Extra time for in-depth practice in conversation, grammar, reading, and writing.</p>
+            <button class="add-cart-btn" onclick="addToCart('Full Lesson (60 min)',18)">Add to Cart</button>
         </div>
     </div>
 
-    <!-- Add your other sections (Adults/Teens) here -->
+    <!-- Adults Section -->
+    <button class="collapsible">Adults (18+)</button>
+    <div class="content">
+        <div class="lesson-item" style="text-align: center; padding: 1.5rem 1rem;">
+            <p style="max-width: 600px; margin: 0.5rem auto 1.5rem; font-size: 1.05rem;">My private online lessons for adults focus on practical English skills for everyday life, travel, work, and social interactions. I also offer Cambridge exam prep (PET, FCE, CAE).</p>
+            <ul style="text-align: left; max-width: 300px; margin: 0 auto 1.5rem; padding-left: 20px;">
+                <li>Fully online – learn from home</li>
+                <li>Tailored to your level and goals</li>
+                <li>Flexible scheduling</li>
+            </ul>
+        </div>
+        <div class="lesson-item" style="text-align: center; padding: 1.5rem 1rem;">
+            <h3>5-Hour Package - $90</h3>
+            <button class="add-cart-btn" onclick="addToCart('Adults 5-Hour Package',90)">Add to Cart</button>
+        </div>
+        <div class="lesson-item" style="text-align: center; padding: 1.5rem 1rem;">
+            <h3>10-Hour Package - $170</h3>
+            <button class="add-cart-btn" onclick="addToCart('Adults 10-Hour Package',170)">Add to Cart</button>
+        </div>
+        <div class="lesson-item" style="text-align: center; padding: 1.5rem 1rem;">
+            <h3>20-Hour Package - $320</h3>
+            <button class="add-cart-btn" onclick="addToCart('Adults 20-Hour Package',320)">Add to Cart</button>
+        </div>
+    </div>
 
+    <!-- Teens Section -->
+    <button class="collapsible">Teens (13–17)</button>
+    <div class="content">
+        <div class="lesson-item" style="text-align: center; padding: 1.5rem 1rem;">
+            <p style="max-width: 600px; margin: 0.5rem auto 1.5rem; font-size: 1.05rem;">My private online lessons for teens focus on school support, exam prep, and conversational skills. Cambridge exam prep is also available for PET or FCE certification.</p>
+            <ul style="text-align: left; max-width: 300px; margin: 0 auto 1.5rem; padding-left: 20px;">
+                <li>Fun, interactive online sessions</li>
+                <li>Tailored for teen learning styles</li>
+                <li>Focus on practical and academic English</li>
+            </ul>
+        </div>
+        <div class="lesson-item" style="text-align: center; padding: 1.5rem 1rem;">
+            <h3>5-Hour Package - $90</h3>
+            <button class="add-cart-btn" onclick="addToCart('Teens 5-Hour Package',90)">Add to Cart</button>
+        </div>
+        <div class="lesson-item" style="text-align: center; padding: 1.5rem 1rem;">
+            <h3>10-Hour Package - $170</h3>
+            <button class="add-cart-btn" onclick="addToCart('Teens 10-Hour Package',170)">Add to Cart</button>
+        </div>
+        <div class="lesson-item" style="text-align: center; padding: 1.5rem 1rem;">
+            <h3>20-Hour Package - $320</h3>
+            <button class="add-cart-btn" onclick="addToCart('Teens 20-Hour Package',320)">Add to Cart</button>
+        </div>
+    </div>
+
+    <!-- Why Choose Me Section -->
+    <section class="why-choose" style="background-color: #4b2e2e; color: #fff; padding: 2.5rem; margin-top: 2.5rem; border-radius: 8px;">
+        <h2>Why Choose My Private Classes?</h2>
+        <ul style="margin-top: 1rem; padding-left: 20px; line-height: 1.8;">
+            <li><strong>Adaptability:</strong> Online classes that adapt to your schedule and needs.</li>
+            <li><strong>Personalized Programs:</strong> Designed to help you achieve your specific goals.</li>
+            <li><strong>Exclusive Attention:</strong> Classes for 1 person, so you get all the focus.</li>
+            <li><strong>Qualified Teacher:</strong> With extensive experience teaching English as a second language.</li>
+        </ul>
+    </section>
 </main>
 
-<footer><p>© 2026 Connor Brown</p></footer>
+<footer>
+    <p>© 2026 Connor Brown</p>
+</footer>
 
-<!-- Mobile Menu Script -->
 <script>
+    // 1. Mobile Menu Toggle Script
     document.querySelector('.menu-toggle').addEventListener('click', () => {
         document.querySelector('.nav-menu').classList.toggle('active');
     });
+
+    // 2. Collapsible Lessons Script (This is what makes the buttons open and close)
+    document.querySelectorAll(".collapsible").forEach(btn => {
+        btn.addEventListener("click", function() {
+            const content = this.nextElementSibling;
+            if (content.style.display === "block") {
+                content.style.display = "none";
+            } else {
+                content.style.display = "block";
+            }
+        });
+    });
 </script>
 
-<!-- Add your existing cart script here or link to an external JS file -->
+<!-- Cart Logic Script -->
+<script src="js/cart.js"></script>
 </body>
 </html>
