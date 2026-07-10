@@ -6,6 +6,49 @@
     <title>Lessons - Connor ESL</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* Cart Dropdown Styles */
+        .cart-dropdown { position: relative; }
+        .cart-dropdown-content {
+            display: none; 
+            position: absolute; 
+            right: 0; 
+            top: 40px;
+            background-color: #fff;
+            min-width: 250px; 
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2); 
+            z-index: 1000;
+            padding: 1rem; 
+            border-radius: 5px; 
+            color: #222;
+        }
+        .cart-dropdown-content.show { display: block; }
+        .cart-item { 
+            display: flex; 
+            justify-content: space-between; 
+            margin-bottom: 10px; 
+            border-bottom: 1px solid #ddd; 
+            padding-bottom: 5px;
+            font-size: 0.9rem;
+        }
+        .cart-total { font-weight: bold; text-align: right; margin-top: 10px; }
+        .checkout-btn { 
+            display: block; 
+            width: 100%; 
+            background: #4b2e2e; 
+            color: #fff; 
+            text-align: center; 
+            padding: 10px; 
+            text-decoration: none; 
+            border-radius: 5px; 
+            margin-top: 15px;
+            font-weight: bold;
+        }
+        .checkout-btn:hover { background: #36211b; }
+        
+        /* Cursor fix for cart icon */
+        .cart-link { cursor: pointer; }
+    </style>
 </head>
 <body>
 
@@ -27,7 +70,9 @@
                 <li><a href="contact.html">Contact</a></li>
                 <li class="cart-dropdown">
                     <a class="cart-link" id="cart-toggle"><i class="fas fa-shopping-cart"></i> <span id="cart-count">0</span></a>
-                    <div class="cart-dropdown-content" id="cart-dropdown"></div>
+                    <div class="cart-dropdown-content" id="cart-dropdown">
+                        <!-- Cart items will inject here -->
+                    </div>
                 </li>
             </ul>
         </nav>
@@ -44,12 +89,12 @@
         <div class="lesson-item" style="text-align: center; padding: 1.5rem 1rem;">
             <h3>Standard Lesson (45 min) - $15</h3>
             <p style="max-width: 600px; margin: 0.5rem auto 1.5rem; font-size: 1.05rem;">Perfect for trying my teaching style or fitting in a short, focused session.</p>
-            <button class="add-cart-btn" onclick="addToCart('Standard Lesson (45 min)',15)">Add to Cart</button>
+            <button class="add-cart-btn" onclick="addToCart('Standard Lesson (45 min)', 15)">Add to Cart</button>
         </div>
         <div class="lesson-item" style="text-align: center; padding: 1.5rem 1rem;">
             <h3>Full Lesson (60 min) - $18</h3>
             <p style="max-width: 600px; margin: 0.5rem auto 1.5rem; font-size: 1.05rem;">Extra time for in-depth practice in conversation, grammar, reading, and writing.</p>
-            <button class="add-cart-btn" onclick="addToCart('Full Lesson (60 min)',18)">Add to Cart</button>
+            <button class="add-cart-btn" onclick="addToCart('Full Lesson (60 min)', 18)">Add to Cart</button>
         </div>
     </div>
 
@@ -66,15 +111,15 @@
         </div>
         <div class="lesson-item" style="text-align: center; padding: 1.5rem 1rem;">
             <h3>5-Hour Package - $90</h3>
-            <button class="add-cart-btn" onclick="addToCart('Adults 5-Hour Package',90)">Add to Cart</button>
+            <button class="add-cart-btn" onclick="addToCart('Adults 5-Hour Package', 90)">Add to Cart</button>
         </div>
         <div class="lesson-item" style="text-align: center; padding: 1.5rem 1rem;">
             <h3>10-Hour Package - $170</h3>
-            <button class="add-cart-btn" onclick="addToCart('Adults 10-Hour Package',170)">Add to Cart</button>
+            <button class="add-cart-btn" onclick="addToCart('Adults 10-Hour Package', 170)">Add to Cart</button>
         </div>
         <div class="lesson-item" style="text-align: center; padding: 1.5rem 1rem;">
             <h3>20-Hour Package - $320</h3>
-            <button class="add-cart-btn" onclick="addToCart('Adults 20-Hour Package',320)">Add to Cart</button>
+            <button class="add-cart-btn" onclick="addToCart('Adults 20-Hour Package', 320)">Add to Cart</button>
         </div>
     </div>
 
@@ -91,15 +136,15 @@
         </div>
         <div class="lesson-item" style="text-align: center; padding: 1.5rem 1rem;">
             <h3>5-Hour Package - $90</h3>
-            <button class="add-cart-btn" onclick="addToCart('Teens 5-Hour Package',90)">Add to Cart</button>
+            <button class="add-cart-btn" onclick="addToCart('Teens 5-Hour Package', 90)">Add to Cart</button>
         </div>
         <div class="lesson-item" style="text-align: center; padding: 1.5rem 1rem;">
             <h3>10-Hour Package - $170</h3>
-            <button class="add-cart-btn" onclick="addToCart('Teens 10-Hour Package',170)">Add to Cart</button>
+            <button class="add-cart-btn" onclick="addToCart('Teens 10-Hour Package', 170)">Add to Cart</button>
         </div>
         <div class="lesson-item" style="text-align: center; padding: 1.5rem 1rem;">
             <h3>20-Hour Package - $320</h3>
-            <button class="add-cart-btn" onclick="addToCart('Teens 20-Hour Package',320)">Add to Cart</button>
+            <button class="add-cart-btn" onclick="addToCart('Teens 20-Hour Package', 320)">Add to Cart</button>
         </div>
     </div>
 
@@ -125,7 +170,7 @@
         document.querySelector('.nav-menu').classList.toggle('active');
     });
 
-    // 2. Collapsible Lessons Script (This is what makes the buttons open and close)
+    // 2. Collapsible Lessons Script
     document.querySelectorAll(".collapsible").forEach(btn => {
         btn.addEventListener("click", function() {
             const content = this.nextElementSibling;
@@ -136,9 +181,49 @@
             }
         });
     });
-</script>
 
-<!-- Cart Logic Script -->
-<script src="js/cart.js"></script>
+    // 3. Shopping Cart Logic
+    let cart = [];
+    let cartTotal = 0;
+
+    function addToCart(name, price) {
+        cart.push({ name, price });
+        cartTotal += price;
+        updateCartUI();
+        
+        // Open the cart dropdown automatically when an item is added
+        document.getElementById('cart-dropdown').classList.add('show');
+    }
+
+    function updateCartUI() {
+        document.getElementById('cart-count').innerText = cart.length;
+        const cartDropdown = document.getElementById('cart-dropdown');
+        
+        if (cart.length === 0) {
+            cartDropdown.innerHTML = '<p style="text-align:center; margin: 0;">Your cart is empty.</p>';
+            return;
+        }
+
+        let html = '';
+        cart.forEach((item) => {
+            html += `<div class="cart-item"><span>${item.name}</span><span>$${item.price}</span></div>`;
+        });
+        html += `<div class="cart-total">Total: $${cartTotal}</div>`;
+        
+        // Update the link below if you have a specific checkout page/system
+        html += `<a href="#" class="checkout-btn">Proceed to Checkout</a>`; 
+        
+        cartDropdown.innerHTML = html;
+    }
+
+    // Toggle Cart Dropdown manually by clicking the icon
+    document.getElementById('cart-toggle').addEventListener('click', function(e) {
+        e.preventDefault();
+        document.getElementById('cart-dropdown').classList.toggle('show');
+    });
+
+    // Initialize empty cart state on page load
+    updateCartUI();
+</script>
 </body>
 </html>
