@@ -6,30 +6,6 @@
     <title>Contact - Connor ESL</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="css/style.css">
-    <style>
-        /* Responsive Framework */
-        body { font-family: Arial, sans-serif; line-height: 1.6; background-color: #f9f9f9; color: #000; margin: 0; overflow-x: hidden; }
-        .container { width: 90%; max-width: 1200px; margin: 0 auto; }
-
-        /* Header & Nav */
-        header { background-color: #4b2e2e; color: #fff; padding: 1rem 0; }
-        .nav-wrap { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; }
-        .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: #fff; }
-        .brand img { height: 50px; border-radius: 5px; }
-        nav ul { list-style: none; display: flex; flex-wrap: wrap; gap: 20px; align-items: center; margin: 0; padding: 0; }
-        nav ul li a { text-decoration: none; color: #fff; font-weight: bold; }
-        nav ul li a.active { text-decoration: underline; }
-
-        /* Main Content */
-        main { padding: 2rem 0; }
-        .contact-section { background: #fff; padding: 2rem; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); max-width: 600px; margin: 0 auto; text-align: center; }
-        
-        /* Mobile Breakpoint */
-        @media (max-width: 768px) {
-            .nav-wrap { flex-direction: column; text-align: center; }
-            nav ul { justify-content: center; width: 100%; margin-top: 15px; }
-        }
-    </style>
 </head>
 <body>
 
@@ -39,7 +15,11 @@
             <img src="images/cesl-logo.png" alt="Connor ESL Logo" class="cesl-logo">
             <h1 class="logo">Connor ESL</h1>
         </a>
-        <nav>
+        
+        <!-- Hamburger Button -->
+        <button class="menu-toggle" aria-label="Toggle menu">☰</button>
+        
+        <nav class="nav-menu">
             <ul>
                 <li><a href="index.html">Home</a></li>
                 <li><a href="about.html">About</a></li>
@@ -52,7 +32,7 @@
 </header>
 
 <main class="container">
-    <section class="contact-section">
+    <section class="contact-section" style="background: #fff; padding: 2rem; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); max-width: 600px; margin: 2rem auto; text-align: center;">
         <h1>Contact Me</h1>
         <p>Have questions about lessons or packages? Feel free to reach out!</p>
         <p><strong>Email:</strong> crbrown.esl@gmail.com</p>
@@ -64,5 +44,11 @@
     <p style="text-align: center; padding: 1.5rem 0; background-color: #4b2e2e; color: #fff; margin-top: 2rem;">© 2026 Connor Brown</p>
 </footer>
 
+<script>
+    // Mobile menu toggle logic
+    document.querySelector('.menu-toggle').addEventListener('click', () => {
+        document.querySelector('.nav-menu').classList.toggle('active');
+    });
+</script>
 </body>
 </html>
