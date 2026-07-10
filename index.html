@@ -7,24 +7,30 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="css/style.css">
     <style>
-        /* Responsive Framework */
-        body { font-family: Arial, sans-serif; line-height: 1.6; background-color: #fdf6f0; color: #222; margin: 0; overflow-x: hidden; }
+        /* Shared Responsive Styles */
+        body { font-family: Arial, sans-serif; line-height: 1.6; background-color: #f9f9f9; color: #000; margin: 0; overflow-x: hidden; }
         .container { width: 90%; max-width: 1200px; margin: 0 auto; }
-
-        /* Header & Nav */
         header { background-color: #4b2e2e; color: #fff; padding: 1rem 0; }
         .nav-wrap { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; }
         .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: #fff; }
-        .brand img { height: 50px; border-radius: 5px; }
         nav ul { list-style: none; display: flex; flex-wrap: wrap; gap: 20px; align-items: center; margin: 0; padding: 0; }
         nav ul li a { text-decoration: none; color: #fff; font-weight: bold; }
         nav ul li a.active { text-decoration: underline; }
 
-        /* Content */
-        main { padding: 2rem 0; text-align: center; }
-        .hero { padding: 4rem 1rem; }
-        
-        /* Mobile Breakpoint */
+        /* Original Home Content Styling */
+        .hero-banner { 
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('images/classroom-bg.jpg'); 
+            background-size: cover; 
+            background-position: center; 
+            color: #fff; 
+            padding: 4rem 2rem; 
+            text-align: center; 
+            border-radius: 10px; 
+            margin: 2rem 0; 
+        }
+        .cta-box { background: #fff; padding: 2rem; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); text-align: center; }
+        .schedule-link { background: #4b2e2e; color: #fff; padding: 10px 20px; text-decoration: none; border-radius: 5px; display: inline-block; margin-top: 1rem; }
+
         @media (max-width: 768px) {
             .nav-wrap { flex-direction: column; text-align: center; }
             nav ul { justify-content: center; width: 100%; margin-top: 15px; }
@@ -52,10 +58,15 @@
 </header>
 
 <main class="container">
-    <section class="hero">
-        <h1>Welcome to Connor ESL</h1>
-        <p>Private, personalized English lessons to help you achieve your goals.</p>
-        <a href="lessons.html" style="background:#4b2e2e; color:#fff; padding:10px 20px; text-decoration:none; border-radius:5px;">View Lessons</a>
+    <section class="hero-banner">
+        <h1>Start Your Journey to Fluent English Today with CESL</h1>
+        <p>Personalized and private English lessons focused on speaking, reading, writing, and grammar.</p>
+    </section>
+
+    <section class="cta-box">
+        <h2><i class="far fa-clock"></i> Try a Free 30-Minute Lesson!</h2>
+        <p>Get a taste of my teaching style with a free 30-minute trial lesson and placement test.</p>
+        <a href="schedule.html" class="schedule-link">Schedule Your Lesson</a>
     </section>
 </main>
 
