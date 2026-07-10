@@ -17,14 +17,12 @@
     box-sizing: border-box;
 }
 
-/* ================================
-   Body & Containers
-================================ */
 body {
     font-family: 'Roboto', Arial, sans-serif;
     background: var(--light-bg);
     color: var(--dark);
     line-height: 1.6;
+    overflow-x: hidden; /* Prevents horizontal scroll */
 }
 
 .container {
@@ -60,26 +58,16 @@ header {
 
 .cesl-logo {
     height: 50px;
-    width: auto;
+    width: 50px; /* Fixed square for consistency */
+    object-fit: cover;
     border-radius: 50%;
 }
 
-.logo-text {
-    font-size: 1.8rem;
-    font-weight: bold;
-}
-
-/* Nav Menu */
 .nav {
     list-style: none;
     display: flex;
     gap: 1rem;
-    align-items: center;
     flex-wrap: wrap;
-}
-
-.nav li {
-    position: relative;
 }
 
 .nav a {
@@ -91,198 +79,51 @@ header {
     border-radius: 4px;
 }
 
-.nav a:hover {
-    background-color: rgba(255, 255, 255, 0.1);
-}
-
-/* Dropdown */
-.dropdown-menu {
-    display: none;
-    position: absolute;
-    background: var(--nav-bg);
-    top: 100%;
-    left: 0;
-    min-width: 180px;
-    border-radius: 6px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    z-index: 999;
-}
-
-.dropdown-menu a {
-    padding: 10px 14px;
-}
-
-.dropdown.open .dropdown-menu {
-    display: block;
-}
-
 /* ================================
    Hero Section
 ================================ */
 .hero {
     background: var(--white);
-    padding: 3rem 2rem;
-    margin: 2rem auto;
+    padding: 2rem 1rem; /* Reduced padding for mobile */
+    margin: 1rem auto;
     border-radius: 10px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
     text-align: center;
 }
 
 .hero h1 {
-    font-size: 2.5rem;
-    color: var(--primary);
-    margin-bottom: 1rem;
-}
-
-.hero p {
-    font-size: 1.2rem;
-    margin-bottom: 1.5rem;
-}
-
-/* ================================
-   Buttons
-================================ */
-.btn {
-    display: inline-block;
-    padding: 12px 25px;
-    background-color: var(--primary);
-    color: var(--white);
-    text-decoration: none;
-    font-size: 1.1rem;
-    border-radius: 6px;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-}
-
-.btn:hover {
-    background-color: var(--nav-hover);
-    transform: translateY(-2px);
-}
-
-/* Lesson Buttons with PayPal */
-.lesson-buttons {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    flex-wrap: wrap;
-    margin-top: 10px;
-}
-
-.lesson-buttons iframe {
-    max-height: 40px;
-}
-
-/* ================================
-   Content Boxes
-================================ */
-.content-box {
-    background-color: var(--white);
-    padding: 2rem;
-    border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-    margin-bottom: 2rem;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.content-box:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.12);
-}
-
-.content-box h2 {
+    font-size: clamp(1.5rem, 5vw, 2.5rem); /* Responsive font size */
     color: var(--primary);
     margin-bottom: 1rem;
 }
 
 /* ================================
-   Pricing
+   Responsive Layouts
 ================================ */
-.pricing-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 2rem;
-    justify-content: center;
-}
-
-.package {
-    background: var(--white);
-    padding: 2rem;
-    border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-    text-align: center;
-    flex: 1 1 250px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.package:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.12);
-}
-
-.strike {
-    text-decoration: line-through;
-    color: #999;
-    margin-left: 5px;
-}
-
-/* ================================
-   Booking Page
-================================ */
-.booking-page {
-    text-align: center;
-    padding: 40px 15px;
-}
-
-.booking-grid {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 25px;
-    margin-top: 30px;
-}
-
-.booking-option {
-    background: var(--white);
-    border-radius: 10px;
-    padding: 25px;
-    width: 300px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.booking-option:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.12);
-}
-
-/* ================================
-   Footer
-================================ */
-footer {
-    background: var(--primary);
-    color: var(--white);
-    text-align: center;
-    padding: 2rem 0;
+.booking-grid, .pricing-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
     margin-top: 2rem;
 }
 
+.booking-option, .package {
+    background: var(--white);
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
 /* ================================
-   Responsive Design
+   Media Queries
 ================================ */
-@media (max-width: 800px) {
+@media (max-width: 768px) {
     .header-inner {
-        flex-direction: column;
-        align-items: flex-start;
+        justify-content: center;
+        text-align: center;
     }
     .nav {
-        flex-direction: column;
+        justify-content: center;
         width: 100%;
-    }
-    .dropdown-menu {
-        position: static;
-        width: 100%;
-    }
-    .booking-option,
-    .package {
-        width: 100%;
+        margin-top: 1rem;
     }
 }
