@@ -1,30 +1,97 @@
-/* Global Reset */
+/* ================================
+   Global Reset & Variables
+================================ */
+:root {
+    --primary: #4b2e2e;
+    --nav-hover: #36211b;
+    --accent: #FFD140;
+    --white: #fff;
+    --dark: #222;
+    --light-bg: #fdf6f0;
+}
+
 * { margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: Arial, sans-serif; background-color: #f9f9f9; line-height: 1.6; overflow-x: hidden; }
+
+body { 
+    font-family: Arial, sans-serif; 
+    background-color: var(--light-bg); 
+    color: var(--dark); 
+    line-height: 1.6; 
+    overflow-x: hidden; 
+}
+
 .container { width: 90%; max-width: 1200px; margin: 0 auto; }
 
-/* Header & Nav */
-header { background-color: #4b2e2e; color: #fff; padding: 1rem 0; }
-.nav-wrap { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; }
-.brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: #fff; }
+/* ================================
+   Header & Navigation
+================================ */
+header { background-color: var(--primary); color: var(--white); padding: 1rem 0; }
+
+.nav-wrap { 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    flex-wrap: wrap; 
+}
+
+.brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--white); }
+
 .cesl-logo { height: 50px; width: auto; border-radius: 5px; }
 
-/* Navigation */
+/* Desktop Nav */
 nav ul { list-style: none; display: flex; gap: 20px; }
-nav a { color: #fff; text-decoration: none; font-weight: bold; }
+nav a { color: var(--white); text-decoration: none; font-weight: bold; padding: 10px; border-radius: 4px; }
+nav a:hover { background-color: var(--nav-hover); }
 
-/* Hamburger Button */
-.menu-toggle { display: none; background: none; border: none; color: #fff; font-size: 2rem; cursor: pointer; }
+/* Hamburger Button (Hidden on Desktop) */
+.menu-toggle { 
+    display: none; 
+    background: none; 
+    border: none; 
+    color: var(--white); 
+    font-size: 2rem; 
+    cursor: pointer; 
+}
 
-/* Hero & Content */
-.hero-banner { background: #333; color: #fff; padding: 4rem 2rem; text-align: center; border-radius: 10px; margin: 2rem 0; }
-.cta-box { background: #fff; padding: 2rem; border-radius: 10px; text-align: center; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-.schedule-link { background: #4b2e2e; color: #fff; padding: 10px 20px; text-decoration: none; border-radius: 5px; display: inline-block; margin-top: 1rem; }
+/* ================================
+   Main Content
+================================ */
+.hero-banner { 
+    background: #333; color: var(--white); padding: 4rem 2rem; 
+    text-align: center; border-radius: 10px; margin: 2rem 0; 
+}
 
-/* Mobile Dropdown Logic */
+.cta-box { 
+    background: var(--white); padding: 2rem; border-radius: 10px; 
+    text-align: center; box-shadow: 0 2px 5px rgba(0,0,0,0.1); 
+}
+
+.schedule-link { 
+    background: var(--primary); color: var(--white); padding: 10px 20px; 
+    text-decoration: none; border-radius: 5px; display: inline-block; margin-top: 1rem; 
+}
+
+footer { text-align: center; padding: 2rem 0; background: var(--primary); color: var(--white); margin-top: 2rem; }
+
+/* ================================
+   Mobile Responsive Logic
+================================ */
 @media (max-width: 768px) {
     .menu-toggle { display: block; }
-    .nav-menu { display: none; width: 100%; text-align: center; padding-top: 1rem; }
+    
+    .nav-menu { 
+        display: none; 
+        width: 100%; 
+        text-align: center; 
+        padding-top: 1rem; 
+        background: var(--primary);
+    }
+    
     .nav-menu.active { display: block; }
-    .nav-menu ul { flex-direction: column; gap: 15px; }
+    
+    .nav-menu ul { 
+        flex-direction: column; 
+        gap: 15px; 
+        padding-bottom: 1rem;
+    }
 }
