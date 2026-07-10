@@ -15,14 +15,10 @@
             <img src="images/cesl-logo.png" alt="Connor ESL Logo" class="cesl-logo">
             <h1 class="logo">Connor ESL</h1>
         </a>
-       <header>
-    <div class="container nav-wrap">
-        <a href="index.html" class="brand">
-            <img src="images/cesl-logo.png" alt="Connor ESL Logo" class="cesl-logo">
-            <h1 class="logo">Connor ESL</h1>
-        </a>
-        <!-- Add the button here -->
+        
+        <!-- Hamburger Button -->
         <button class="menu-toggle" aria-label="Toggle menu">☰</button>
+        
         <nav class="nav-menu">
             <ul>
                 <li><a href="index.html" class="active">Home</a></li>
@@ -52,5 +48,12 @@
     <p>© 2026 Connor Brown</p>
 </footer>
 
+<script>
+    const toggle = document.querySelector('.menu-toggle');
+    const menu = document.querySelector('.nav-menu');
+    toggle.addEventListener('click', () => {
+        menu.classList.toggle('active');
+    });
+</script>
 </body>
 </html>
