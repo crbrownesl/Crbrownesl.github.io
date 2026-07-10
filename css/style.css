@@ -2,34 +2,16 @@
    Global Reset & Variables
 ================================ */
 :root {
-    --primary: #0070ba;
-    --nav-bg: #0a5b95;
-    --nav-hover: #005f99;
+    --primary: #4b2e2e;      /* Updated to your maroon theme */
+    --nav-bg: #4b2e2e;
+    --nav-hover: #36211b;
     --accent: #FFD140;
     --white: #fff;
-    --dark: #333;
-    --light-bg: #f7f7f7;
+    --dark: #222;
+    --light-bg: #fdf6f0;     /* Updated to match your schedule page background */
 }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: 'Roboto', Arial, sans-serif;
-    background: var(--light-bg);
-    color: var(--dark);
-    line-height: 1.6;
-    overflow-x: hidden; /* Prevents horizontal scroll */
-}
-
-.container {
-    width: 90%;
-    max-width: 1200px;
-    margin: 0 auto;
-}
+/* ... keep the rest of your existing CSS as is ... */
 
 /* ================================
    Header & Navigation
@@ -40,14 +22,7 @@ header {
     padding: 0.8rem 0;
 }
 
-.header-inner {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 1rem;
-    flex-wrap: wrap;
-}
-
+/* Ensure the brand matches your HTML */
 .brand {
     display: flex;
     align-items: center;
@@ -56,74 +31,19 @@ header {
     color: var(--white);
 }
 
-.cesl-logo {
-    height: 50px;
-    width: 50px; /* Fixed square for consistency */
-    object-fit: cover;
-    border-radius: 50%;
-}
-
-.nav {
-    list-style: none;
-    display: flex;
-    gap: 1rem;
-    flex-wrap: wrap;
-}
-
-.nav a {
-    color: var(--white);
-    text-decoration: none;
-    font-weight: bold;
-    padding: 10px 14px;
-    display: block;
-    border-radius: 4px;
-}
-
-/* ================================
-   Hero Section
-================================ */
-.hero {
-    background: var(--white);
-    padding: 2rem 1rem; /* Reduced padding for mobile */
-    margin: 1rem auto;
-    border-radius: 10px;
-    text-align: center;
-}
-
-.hero h1 {
-    font-size: clamp(1.5rem, 5vw, 2.5rem); /* Responsive font size */
-    color: var(--primary);
-    margin-bottom: 1rem;
-}
-
-/* ================================
-   Responsive Layouts
-================================ */
-.booking-grid, .pricing-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 1.5rem;
-    margin-top: 2rem;
-}
-
-.booking-option, .package {
-    background: var(--white);
-    padding: 1.5rem;
-    border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-}
-
-/* ================================
-   Media Queries
-================================ */
+/* Fix for mobile navigation stacking */
 @media (max-width: 768px) {
     .header-inner {
-        justify-content: center;
+        flex-direction: column;
         text-align: center;
     }
     .nav {
         justify-content: center;
         width: 100%;
         margin-top: 1rem;
+        flex-direction: column; /* Stacks links vertically on mobile */
+    }
+    .nav a {
+        padding: 8px;
     }
 }
