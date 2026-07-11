@@ -26,15 +26,17 @@
         .original-price { color: #999; text-decoration: line-through; margin-right: 10px; font-size: 0.9em; }
 
         .cart-link { cursor: pointer; color: #fff; }
-        .nav-menu ul li {
-    position: relative; /* This ensures the dropdown is anchored to the icon, not the whole page */
+        header nav ul li {
+    position: relative; 
 }
 .cart-dropdown-content { 
     display: none; 
     position: absolute; 
-    top: 45px; /* Adjust as needed */
-    right: -50px; /* Pulls it inward from the right edge */
-    width: 250px; /* Fixed width prevents it from overflowing */
+    top: 45px; 
+    /* This centers the box under the icon regardless of the list item width */
+    left: 50%; 
+    transform: translateX(-80%); 
+    width: 250px; 
     background-color: #fff; 
     color: #000; 
     border: 1px solid #ccc; 
