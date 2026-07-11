@@ -91,16 +91,20 @@
 
 <script>
     const cartToggle = document.getElementById('cart-toggle');
-    const cartDropdown = document.getElementById('cart-dropdown');
-    let cart = JSON.parse(localStorage.getItem('cesl_cart')) || [];
+const cartDropdown = document.getElementById('cart-dropdown');
 
-    cartToggle.addEventListener('click', (e) => { e.preventDefault(); cartDropdown.classList.toggle('show'); });
+// Toggle dropdown on icon click
+cartToggle.addEventListener('click', (e) => { 
+    e.preventDefault(); 
+    cartDropdown.classList.toggle('show'); 
+});
 
-    function removeItem(index) {
-        cart.splice(index, 1);
-        localStorage.setItem('cesl_cart', JSON.stringify(cart));
-        updateCartUI();
+// Close when clicking outside
+window.addEventListener('click', (e) => {
+    if (!cartToggle.contains(e.target) && !cartDropdown.contains(e.target)) {
+        cartDropdown.classList.remove('show');
     }
+});
 
     function updateCartUI() {
         const countEl = document.getElementById('cart-count');
