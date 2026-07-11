@@ -27,21 +27,26 @@
         .add-cart-btn { background-color: #20c997; color: #fff; border: none; padding: 12px 24px; border-radius: 5px; font-weight: bold; cursor: pointer; }
         .original-price { color: #999; text-decoration: line-through; margin-right: 10px; font-size: 0.9em; }
 
-        /* Cart */
+        /* Cart & Translate */
         .header-right { display: flex; align-items: center; gap: 15px; }
         .hamburger { display: none; cursor: pointer; font-size: 1.8rem; color: #20c997; }
         .cart-link { cursor: pointer; color: #fff; }
         .cart-dropdown-content { display: none; position: absolute; top: 100%; right: 0; background-color: #fff; color: #000; width: 300px; border: 1px solid #ccc; box-shadow: 0 8px 16px rgba(0,0,0,0.2); z-index: 1000; padding: 15px; border-radius: 8px; margin-top: 10px; box-sizing: border-box; }
         .cart-dropdown-content.show { display: block; }
-        .cart-item-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
-        .checkout-btn { display: block; width: 100%; text-align: center; background: #20c997; color: #fff; text-decoration: none; padding: 12px; margin-top: 15px; border-radius: 5px; font-weight: bold; }
+        .cart-item-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+        .cart-total { border-top: 1px solid #ddd; padding: 10px 0; margin-top: 10px; display: flex; justify-content: space-between; font-weight: bold; }
+        .checkout-btn { display: block; width: 100%; text-align: center; background: #20c997; color: #fff; text-decoration: none; padding: 10px; border-radius: 5px; font-weight: bold; box-sizing: border-box; }
+        
+        #google_translate_element { margin-left: 10px; }
+        .goog-te-gadget-simple { background-color: #1a2a3a !important; border: 1px solid #20c997 !important; padding: 5px !important; border-radius: 5px !important; }
+        .goog-te-gadget-simple span { color: #fff !important; }
 
         @media (max-width: 768px) {
             .hamburger { display: block; }
             .nav-menu { display: none; width: 100%; position: absolute; top: 100%; left: 0; background: #1a2a3a; padding: 1rem 0; z-index: 1001; }
             .nav-menu.active { display: block; }
             .nav-menu ul { flex-direction: column; gap: 15px; text-align: center; }
-            .cart-dropdown-content { position: fixed; top: 70px; left: 50%; transform: translateX(-50%); width: 90vw !important; }
+            .cart-dropdown-content { position: fixed; top: 70px; left: 50%; transform: translateX(-50%); width: 90vw !important; right: auto !important; }
         }
     </style>
 </head>
@@ -60,6 +65,7 @@
                 <li><a href="lessons.html" class="active">Lessons</a></li>
                 <li><a href="schedule.html">Schedule</a></li>
                 <li><a href="contact.html">Contact</a></li>
+                <li><div id="google_translate_element"></div></li>
             </ul>
         </nav>
         <div class="header-right">
@@ -78,8 +84,8 @@
         <h2>Why Choose My Private Classes?</h2>
         <ul>
             <li><strong>Convenience:</strong> All lessons are conducted live over Zoom.</li>
-            <li><strong>Resources:</strong> I utilize a wide variety of professional English books from Oxford to Cambridge.</li>
-            <li><strong>Personalized Programs:</strong> Designed to help you achieve your specific goals.</li>
+            <li><strong>Resources:</strong> I utilize a wide variety of professional English books.</li>
+            <li><strong>Personalized Programs:</strong> Designed to help you achieve your goals.</li>
         </ul>
     </section>
 
@@ -96,6 +102,13 @@
         <div class="lesson-item"><h3>20-Hour Package - <span class="original-price">$360</span> $320</h3><button class="add-cart-btn" onclick="addToCart('20-Hour Package', 320)">Add to Cart</button></div>
     </div>
 </main>
+
+<script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({pageLanguage: 'en', includedLanguages: 'es,fr,de,it,pt,zh-CN,ja,ko'}, 'google_translate_element');
+    }
+</script>
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
 <script>
     const hamburger = document.getElementById('hamburger');
@@ -132,9 +145,9 @@
         let total = 0;
         cart.forEach((item, index) => {
             total += item.price;
-            html += `<div class="cart-item-row"><span>${item.name} - $${item.price}</span><span class="remove-btn" onclick="removeItem(${index})" style="color:red; cursor:pointer;"><i class="fas fa-trash"></i></span></div>`;
+            html += `<div class="cart-item-row"><span>${item.name}</span> <span>$${item.price}</span><span class="remove-btn" onclick="removeItem(${index})" style="color:red; cursor:pointer;"><i class="fas fa-trash"></i></span></div>`;
         });
-        html += `</div><div class="cart-total"><strong>Total: $${total}</strong></div><a href="checkout.html" class="checkout-btn">Checkout</a>`;
+        html += `</div><div class="cart-total"><span>Total:</span> <span>$${total}</span></div><a href="checkout.html" class="checkout-btn">Checkout</a>`;
         cartDropdown.innerHTML = html;
     }
     updateCartUI();
