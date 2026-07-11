@@ -10,17 +10,17 @@
         .container { width: 90%; max-width: 1200px; margin: 0 auto; }
         header { background-color: #1a2a3a; color: #fff; padding: 1rem 0; }
         
-        /* Header & Nav */
         .nav-wrap { display: flex; justify-content: space-between; align-items: center; position: relative; }
         .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: #fff; }
         .cesl-logo { width: 50px !important; height: 50px !important; object-fit: contain; }
+        
         .header-right { display: flex; align-items: center; gap: 15px; }
         .hamburger { display: none; cursor: pointer; font-size: 1.8rem; color: #20c997; }
         .nav-menu { display: flex; align-items: center; }
         nav ul { list-style: none; display: flex; gap: 20px; align-items: center; margin: 0; padding: 0; }
         nav ul li a { text-decoration: none; color: #fff; font-weight: bold; }
 
-        /* Hero Section with Correct Image Path */
+        /* Hero Section */
         .hero { 
             background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('images/classrooms.jpg'); 
             background-size: cover; 
@@ -32,14 +32,16 @@
             margin-top: 20px; 
         }
 
-        /* Info Grid */
         .info-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-top: 2rem; }
         .info-box { background: #fff; padding: 2rem; border-radius: 8px; box-shadow: 0 2px 6px rgba(0,0,0,0.1); }
 
         /* Free Lesson Section */
-        .trial-section { margin-top: 3rem; padding: 2rem; background: #fff; border-radius: 8px; text-align: center; border-left: 5px solid #20c997; }
+        .trial-section { margin-top: 3rem; padding: 2rem; background: #fff; border-radius: 8px; box-shadow: 0 2px 6px rgba(0,0,0,0.1); }
 
-        /* Cart */
+        /* Google Translate & Cart */
+        #google_translate_element { margin-left: 10px; }
+        .goog-te-gadget-simple { background-color: #1a2a3a !important; border: 1px solid #20c997 !important; padding: 5px !important; border-radius: 5px !important; }
+        .goog-te-gadget-simple span { color: #fff !important; }
         .cart-link { cursor: pointer; color: #fff; }
         .cart-dropdown-content { display: none; position: absolute; top: 60px; right: 0; width: 300px; background-color: #fff; color: #333; border: 1px solid #ddd; box-shadow: 0 4px 12px rgba(0,0,0,0.15); z-index: 9999; padding: 15px; border-radius: 8px; }
         .cart-dropdown-content.show { display: block; }
@@ -68,6 +70,7 @@
                 <li><a href="lessons.html">Lessons</a></li>
                 <li><a href="schedule.html">Schedule</a></li>
                 <li><a href="contact.html">Contact</a></li>
+                <li><div id="google_translate_element"></div></li>
             </ul>
         </nav>
         <div class="header-right">
@@ -100,9 +103,16 @@
     <section class="trial-section">
         <h3><i class="fas fa-clock"></i> Try a Free 30-Minute Lesson!</h3>
         <p>Get a taste of my teaching style with a free 30-minute trial lesson and placement test.</p>
-        <a href="schedule.html" style="color: #20c997; font-weight: bold; text-decoration: underline;">Schedule Your Lesson</a>
+        <a href="schedule.html">Schedule Your Lesson</a>
     </section>
 </main>
+
+<script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({pageLanguage: 'en', includedLanguages: 'es,fr,de,it,pt,zh-CN,ja,ko'}, 'google_translate_element');
+    }
+</script>
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
 <script>
     const hamburger = document.getElementById('hamburger');
