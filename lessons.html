@@ -69,7 +69,6 @@
     <h1>Private English Lessons (Online Only)</h1>
     <p>All lessons are private and fully online. Click on a section below to view available lessons and packages.</p>
 
-    <!-- Individual Lessons -->
     <button class="collapsible">Individual Lessons</button>
     <div class="content">
         <div class="lesson-item">
@@ -84,7 +83,6 @@
         </div>
     </div>
 
-    <!-- Adults -->
     <button class="collapsible">Adults (18+)</button>
     <div class="content">
         <div class="lesson-item">
@@ -105,7 +103,6 @@
         </div>
     </div>
 
-    <!-- Teens -->
     <button class="collapsible">Teens (13–17)</button>
     <div class="content">
         <div class="lesson-item">
@@ -158,7 +155,8 @@
     }
 
     function updateCartUI() {
-        document.getElementById('cart-count').innerText = cart.length;
+        const countEl = document.getElementById('cart-count');
+        if (countEl) countEl.innerText = cart.length;
         if (cart.length === 0) {
             cartDropdown.innerHTML = '<p style="text-align:center; padding:10px;">Your cart is empty.</p>';
             return;
