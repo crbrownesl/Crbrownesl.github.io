@@ -133,18 +133,41 @@
             content.style.display = content.style.display === "block" ? "none" : "block";
         });
     });
-    const cartToggle = document.getElementById('cart-toggle');
+   const cartToggle = document.getElementById('cart-toggle');
     const cartDropdown = document.getElementById('cart-dropdown');
     let cart = JSON.parse(localStorage.getItem('cesl_cart')) || [];
-    cartToggle.addEventListener('click', (e) => { e.preventDefault(); cartDropdown.classList.toggle('show'); });
-    function addToCart(name, price) { cart.push({ name, price }); localStorage.setItem('cesl_cart', JSON.stringify(cart)); updateCartUI(); }
-    function removeItem(index) { cart.splice(index, 1); localStorage.setItem('cesl_cart', JSON.stringify(cart)); updateCartUI(); }
+
+    // Toggle dropdown on icon click
+    cartToggle.addEventListener('click', (e) => { 
+        e.preventDefault(); 
+        cartDropdown.classList.toggle('show'); 
+    });
+
+    // Close when clicking outside
+    window.addEventListener('click', (e) => {
+        if (!cartToggle.contains(e.target) && !cartDropdown.contains(e.target)) {
+            cartDropdown.classList.remove('show');
+        }
+    });
+
+    function removeItem(index) { 
+        cart.splice(index, 1); 
+        localStorage.setItem('cesl_cart', JSON.stringify(cart)); 
+        updateCartUI(); 
+    }
+
     function updateCartUI() {
         const countEl = document.getElementById('cart-count');
         if (countEl) countEl.innerText = cart.length;
-        if (cart.length === 0) { cartDropdown.innerHTML = '<p style="text-align:center; padding:10px;">Your cart is empty.</p>'; return; }
+        if (cart.length === 0) {
+            cartDropdown.innerHTML = '<p style="text-align:center; padding:10px;">Your cart is empty.</p>';
+            return;
+        }
         let html = '';
-        cart.forEach((item, index) => { html += `<div style="display:flex; justify-content:space-between; padding:5px 0;">${item.name} <span class="remove-btn" onclick="removeItem(${index})"><i class="fas fa-trash"></i></span></div>`; });
+        cart.forEach((item, index) => {
+            html += `<div style="display:flex; justify-content:space-between; padding:5px 0;">
+                     ${item.name} <span class="remove-btn" onclick="removeItem(${index})"><i class="fas fa-trash"></i></span></div>`;
+        });
         html += `<a href="checkout.html" class="checkout-btn">Checkout</a>`;
         cartDropdown.innerHTML = html;
     }
