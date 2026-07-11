@@ -17,7 +17,10 @@
 
 <header>
     <div class="container nav-wrap">
-        <a href="index.html" class="brand"><h1>Connor ESL</h1></a>
+        <a href="index.html" class="brand">
+            <img src="images/cesl-logo.png" alt="Connor ESL Logo" class="cesl-logo">
+            <h1>Connor ESL</h1>
+        </a>
         <nav>
             <ul>
                 <li><a href="index.html">Home</a></li>
@@ -25,6 +28,10 @@
                 <li><a href="lessons.html">Lessons</a></li>
                 <li><a href="schedule.html">Schedule</a></li>
                 <li><a href="contact.html">Contact</a></li>
+                <li>
+                    <a class="cart-link" id="cart-toggle"><i class="fas fa-shopping-cart"></i> (<span id="cart-count">0</span>)</a>
+                    <div class="cart-dropdown-content" id="cart-dropdown"></div>
+                </li>
             </ul>
         </nav>
     </div>
