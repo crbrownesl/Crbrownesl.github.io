@@ -10,26 +10,28 @@
         .container { width: 90%; max-width: 1200px; margin: 0 auto; }
         header { background-color: #1a2a3a; color: #fff; padding: 1rem 0; }
         
-        .nav-wrap { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; position: relative; }
+        /* Header & Nav Layout */
+        .nav-wrap { display: flex; justify-content: space-between; align-items: center; position: relative; }
         .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: #fff; }
         .cesl-logo { width: 50px !important; height: 50px !important; object-fit: contain; }
         
-        /* Hamburger Styles */
+        .header-right { display: flex; align-items: center; gap: 15px; }
         .hamburger { display: none; cursor: pointer; font-size: 1.8rem; color: #20c997; }
+        
         .nav-menu { display: flex; align-items: center; }
-        nav ul { list-style: none; display: flex; flex-wrap: wrap; gap: 20px; align-items: center; margin: 0; padding: 0; }
+        nav ul { list-style: none; display: flex; gap: 20px; align-items: center; margin: 0; padding: 0; }
         nav ul li a { text-decoration: none; color: #fff; font-weight: bold; }
         nav ul li a.active { color: #20c997; text-decoration: underline; }
 
         /* Contact Page Styling */
-        .contact-section { background: #fff; padding: 2rem; border-radius: 8px; box-shadow: 0 2px 6px rgba(0,0,0,0.1); margin-top: 2rem; display: flex; flex-direction: column; gap: 15px; align-items: flex-start; }
-        .contact-item { font-size: 1.2rem; display: flex; align-items: flex-start; gap: 15px; word-break: break-all; }
-        .whatsapp-btn { background-color: #25d366; color: #fff; padding: 12px 25px; text-decoration: none; border-radius: 5px; font-weight: bold; display: inline-flex; align-items: center; gap: 10px; margin-top: 10px; }
+        .contact-section { background: #fff; padding: 2rem; border-radius: 8px; box-shadow: 0 2px 6px rgba(0,0,0,0.1); margin-top: 2rem; display: flex; flex-direction: column; gap: 20px; }
+        .contact-item { font-size: 1.1rem; display: flex; align-items: flex-start; gap: 15px; flex-wrap: wrap; }
+        .whatsapp-btn { background-color: #25d366; color: #fff; padding: 12px 25px; text-decoration: none; border-radius: 5px; font-weight: bold; display: inline-flex; align-items: center; gap: 10px; width: fit-content; }
         .whatsapp-btn:hover { background-color: #128c7e; }
 
         /* Cart Dropdown Styles */
         .cart-link { cursor: pointer; color: #fff; }
-        .cart-dropdown-content { display: none; position: absolute; top: 100%; right: 0; width: 300px; background-color: #fff; color: #333; border: 1px solid #ddd; box-shadow: 0 4px 12px rgba(0,0,0,0.15); z-index: 9999; padding: 15px; border-radius: 8px; box-sizing: border-box; margin-top: 10px; }
+        .cart-dropdown-content { display: none; position: absolute; top: 60px; right: 0; width: 300px; background-color: #fff; color: #333; border: 1px solid #ddd; box-shadow: 0 4px 12px rgba(0,0,0,0.15); z-index: 9999; padding: 15px; border-radius: 8px; box-sizing: border-box; }
         .cart-dropdown-content.show { display: block; }
         .cart-item-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; font-size: 0.95rem; }
         .cart-total { border-top: 1px solid #eee; padding-top: 10px; margin-top: 10px; font-weight: bold; display: flex; justify-content: space-between; }
@@ -37,26 +39,17 @@
         .checkout-btn { display: block; width: 100%; text-align: center; background: #20c997; color: #fff; text-decoration: none; padding: 12px; margin-top: 15px; border-radius: 5px; font-weight: bold; box-sizing: border-box; }
         
         #google_translate_element { margin-left: 10px; }
-        .goog-te-gadget-simple { background-color: #1a2a3a !important; border: 1px solid #20c997 !important; padding: 5px !important; border-radius: 5px !important; }
-        .goog-te-gadget-simple span { color: #fff !important; }
 
-        /* Update this specific block in your Mobile Responsive media query */
-@media (max-width: 768px) {
-    .hamburger { display: block; }
-    .nav-menu { display: none; width: 100%; position: absolute; top: 100%; left: 0; background: #1a2a3a; padding: 1rem 0; z-index: 1001; }
-    .nav-menu.active { display: block; }
-    .nav-menu ul { flex-direction: column; gap: 15px; text-align: center; }
-
-    /* Fix for Cart Dropdown Positioning */
-    .cart-dropdown-content { 
-        position: fixed; /* Fix to viewport */
-        top: 70px;       /* Distance from top */
-        left: 50%;       /* Center horizontally */
-        transform: translateX(-50%); /* Shift back to center */
-        width: 90vw !important; 
-        max-width: 400px;
-        right: auto !important; 
-    }
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .hamburger { display: block; }
+            .nav-menu { display: none; width: 100%; position: absolute; top: 100%; left: 0; background: #1a2a3a; padding: 1rem 0; z-index: 1001; }
+            .nav-menu.active { display: block; }
+            .nav-menu ul { flex-direction: column; gap: 15px; text-align: center; }
+            
+            .cart-dropdown-content { position: fixed; top: 70px; left: 50%; transform: translateX(-50%); width: 90vw !important; right: auto !important; max-width: 400px; }
+            .contact-item { font-size: 1rem; }
+        }
     </style>
 </head>
 <body>
@@ -68,22 +61,24 @@
             <h1 style="margin: 0; font-size: 1.5rem;">Connor ESL</h1>
         </a>
         
-        <div class="hamburger" id="hamburger"><i class="fas fa-bars"></i></div>
-
-        <nav class="nav-menu">
+        <nav class="nav-menu" id="nav-menu">
             <ul id="nav-list">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="about.html">About</a></li>
                 <li><a href="lessons.html">Lessons</a></li>
                 <li><a href="schedule.html">Schedule</a></li>
                 <li><a href="contact.html" class="active">Contact</a></li>
-                <li style="position: relative; display: flex; align-items: center;">
-                    <a class="cart-link" id="cart-toggle"><i class="fas fa-shopping-cart"></i> (<span id="cart-count">0</span>)</a>
-                    <div class="cart-dropdown-content" id="cart-dropdown"></div>
-                    <div id="google_translate_element"></div>
-                </li>
+                <li><div id="google_translate_element"></div></li>
             </ul>
         </nav>
+
+        <div class="header-right">
+            <div style="position: relative;">
+                <a class="cart-link" id="cart-toggle"><i class="fas fa-shopping-cart"></i> (<span id="cart-count">0</span>)</a>
+                <div class="cart-dropdown-content" id="cart-dropdown"></div>
+            </div>
+            <div class="hamburger" id="hamburger"><i class="fas fa-bars"></i></div>
+        </div>
     </div>
 </header>
 
@@ -113,8 +108,8 @@
 
 <script>
     const hamburger = document.getElementById('hamburger');
-    const navList = document.getElementById('nav-list');
-    hamburger.addEventListener('click', () => { navList.classList.toggle('active'); });
+    const navMenu = document.getElementById('nav-menu');
+    hamburger.addEventListener('click', () => { navMenu.classList.toggle('active'); });
 
     const cartToggle = document.getElementById('cart-toggle');
     const cartDropdown = document.getElementById('cart-dropdown');
