@@ -5,19 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact - Connor ESL</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="css/style.css">
     <style>
-        .cart-dropdown { position: relative; }
-        .cart-dropdown-content { display: none; position: absolute; right: 0; top: 40px; background-color: #fff; min-width: 280px; box-shadow: 0 8px 16px rgba(0,0,0,0.2); z-index: 1000; padding: 1rem; border-radius: 5px; color: #222; }
+        /* Shared Styles */
+        body { font-family: Arial, sans-serif; line-height: 1.6; background-color: #f9f9f9; color: #000; margin: 0; }
+        .container { width: 90%; max-width: 1200px; margin: 0 auto; }
+        header { background-color: #1a2a3a; color: #fff; padding: 1rem 0; }
+        .nav-wrap { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; }
+        .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: #fff; }
+        .cesl-logo { width: 50px !important; height: 50px !important; object-fit: contain; }
+        .nav-menu ul { list-style: none; display: flex; flex-wrap: wrap; gap: 20px; align-items: center; margin: 0; padding: 0; }
+        .nav-menu a { text-decoration: none; color: #fff; font-weight: bold; }
+        .nav-menu a.active { color: #20c997; text-decoration: underline; }
+
+        /* Contact Page Styling */
+        .contact-section { background: #fff; padding: 2rem; border-radius: 8px; box-shadow: 0 2px 6px rgba(0,0,0,0.1); margin-top: 2rem; display: flex; flex-direction: column; gap: 15px; align-items: flex-start; }
+        .contact-item { font-size: 1.2rem; display: flex; align-items: center; gap: 15px; }
+        .whatsapp-btn { background-color: #25d366; color: #fff; padding: 12px 25px; text-decoration: none; border-radius: 5px; font-weight: bold; display: inline-flex; align-items: center; gap: 10px; margin-top: 10px; }
+        .whatsapp-btn:hover { background-color: #128c7e; }
+
+        /* Cart Dropdown */
+        .cart-link { cursor: pointer; color: #fff; }
+        .cart-dropdown-content { display: none; position: absolute; right: 0; background-color: #fff; color: #000; min-width: 280px; border: 1px solid #ccc; box-shadow: 0 8px 16px rgba(0,0,0,0.2); z-index: 1000; padding: 1rem; border-radius: 5px; }
         .cart-dropdown-content.show { display: block; }
-        .cart-item { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; border-bottom: 1px solid #ddd; padding-bottom: 8px; font-size: 0.9rem; }
-        .item-details { display: flex; align-items: center; gap: 10px; }
-        .remove-btn { color: #d9534f; cursor: pointer; transition: color 0.2s; }
-        .remove-btn:hover { color: #a94442; }
-        .cart-total { font-weight: bold; text-align: right; margin-top: 10px; font-size: 1.1rem; }
-        .checkout-btn { display: block; width: 100%; background: #4b2e2e; color: #fff; text-align: center; padding: 10px; text-decoration: none; border-radius: 5px; margin-top: 15px; font-weight: bold; border:none; cursor:pointer; font-family:inherit; font-size:1rem; }
-        .checkout-btn:hover { background: #36211b; }
-        .cart-link { cursor: pointer; }
+        .remove-btn { color: #d9534f; cursor: pointer; margin-left: 10px; }
+        .checkout-btn { display: block; width: 100%; text-align: center; background: #20c997; color: #fff; text-decoration: none; padding: 10px; margin-top: 10px; border-radius: 5px; border: none; font-weight: bold; }
     </style>
 </head>
 <body>
@@ -26,9 +37,8 @@
     <div class="container nav-wrap">
         <a href="index.html" class="brand">
             <img src="images/cesl-logo.png" alt="Connor ESL Logo" class="cesl-logo">
-            <h1 class="logo">Connor ESL</h1>
+            <h1 style="margin: 0; font-size: 1.5rem;">Connor ESL</h1>
         </a>
-        <button class="menu-toggle" aria-label="Toggle menu">☰</button>
         <nav class="nav-menu">
             <ul>
                 <li><a href="index.html">Home</a></li>
@@ -36,8 +46,8 @@
                 <li><a href="lessons.html">Lessons</a></li>
                 <li><a href="schedule.html">Schedule</a></li>
                 <li><a href="contact.html" class="active">Contact</a></li>
-                <li class="cart-dropdown">
-                    <a class="cart-link" id="cart-toggle"><i class="fas fa-shopping-cart"></i> <span id="cart-count">0</span></a>
+                <li style="position: relative;">
+                    <a class="cart-link" id="cart-toggle"><i class="fas fa-shopping-cart"></i> (<span id="cart-count">0</span>)</a>
                     <div class="cart-dropdown-content" id="cart-dropdown"></div>
                 </li>
             </ul>
@@ -46,57 +56,50 @@
 </header>
 
 <main class="container">
-    <h1 style="margin-bottom: 1rem;">Contact Me</h1>
-    <p>If you have any questions about classes, pricing, or scheduling, please send an email to <strong>crbrown.esl@gmail.com</strong>.</p>
+    <h1>Contact Me</h1>
+    <p>Have questions? Reach out through any of the channels below.</p>
+    
+    <div class="contact-section">
+        <div class="contact-item"><i class="fas fa-envelope"></i> <strong>Email:</strong> crbrown.esl@gmail.com</div>
+        <div class="contact-item"><i class="fas fa-phone"></i> <strong>Phone:</strong> +507 6810-3205</div>
+        <a href="https://wa.me/50768103205" class="whatsapp-btn" target="_blank">
+            <i class="fab fa-whatsapp"></i> Chat on WhatsApp
+        </a>
+    </div>
 </main>
 
-<footer>
-    <p>© 2026 Connor Brown</p>
+<footer class="container" style="margin-top: 40px; text-align: center; padding-bottom: 20px;">
+    <p>&copy; 2026 Connor Brown</p>
 </footer>
 
 <script>
-    const menuToggle = document.querySelector('.menu-toggle');
-    if (menuToggle) {
-        menuToggle.addEventListener('click', () => { document.querySelector('.nav-menu').classList.toggle('active'); });
-    }
-    document.querySelectorAll(".collapsible").forEach(btn => {
-        btn.addEventListener("click", function() {
-            const content = this.nextElementSibling;
-            content.style.display = content.style.display === "block" ? "none" : "block";
-        });
-    });
+    const cartToggle = document.getElementById('cart-toggle');
+    const cartDropdown = document.getElementById('cart-dropdown');
     let cart = JSON.parse(localStorage.getItem('cesl_cart')) || [];
-    function saveCart() { localStorage.setItem('cesl_cart', JSON.stringify(cart)); }
-    function addToCart(name, price) { cart.push({ name, price }); saveCart(); updateCartUI(); document.getElementById('cart-dropdown').classList.add('show'); }
-    function removeFromCart(index) { cart.splice(index, 1); saveCart(); updateCartUI(); document.getElementById('cart-dropdown').classList.add('show'); }
+
+    cartToggle.addEventListener('click', (e) => { e.preventDefault(); cartDropdown.classList.toggle('show'); });
+
+    function removeItem(index) {
+        cart.splice(index, 1);
+        localStorage.setItem('cesl_cart', JSON.stringify(cart));
+        updateCartUI();
+    }
+
     function updateCartUI() {
-        const cartCountElement = document.getElementById('cart-count');
-        const cartDropdown = document.getElementById('cart-dropdown');
-        if (!cartCountElement || !cartDropdown) return;
-        cartCountElement.innerText = cart.length;
-        if (cart.length === 0) { cartDropdown.innerHTML = '<p style="text-align:center; margin: 0;">Your cart is empty.</p>'; return; }
-        let html = ''; let cartTotal = 0;
+        const countEl = document.getElementById('cart-count');
+        if (countEl) countEl.innerText = cart.length;
+        if (cart.length === 0) {
+            cartDropdown.innerHTML = '<p style="text-align:center; padding:10px;">Your cart is empty.</p>';
+            return;
+        }
+        let html = '';
         cart.forEach((item, index) => {
-            cartTotal += item.price;
-            html += `<div class="cart-item"><span>${item.name}</span><div class="item-details"><span>$${item.price}</span><i class="fas fa-trash remove-btn" onclick="removeFromCart(${index})" title="Remove item"></i></div></div>`;
+            html += `<div style="display:flex; justify-content:space-between; padding:5px 0;">
+                     ${item.name} <span class="remove-btn" onclick="removeItem(${index})"><i class="fas fa-trash"></i></span></div>`;
         });
-        html += `<div class="cart-total">Total: $${cartTotal}</div><button class="checkout-btn" onclick="checkoutPayPal()">Proceed to Checkout</button>`; 
+        html += `<a href="checkout.html" class="checkout-btn">Checkout</a>`;
         cartDropdown.innerHTML = html;
     }
-    function checkoutPayPal() {
-        if (cart.length === 0) return;
-        const form = document.createElement('form'); form.method = 'POST'; form.action = 'https://www.paypal.com/cgi-bin/webscr';
-        const inputs = { cmd: '_cart', upload: '1', business: 'crbrown.esl@gmail.com', currency_code: 'USD' };
-        for (const key in inputs) { const input = document.createElement('input'); input.type = 'hidden'; input.name = key; input.value = inputs[key]; form.appendChild(input); }
-        cart.forEach((item, index) => {
-            const i = index + 1;
-            const nameInput = document.createElement('input'); nameInput.type = 'hidden'; nameInput.name = `item_name_${i}`; nameInput.value = item.name; form.appendChild(nameInput);
-            const priceInput = document.createElement('input'); priceInput.type = 'hidden'; priceInput.name = `amount_${i}`; priceInput.value = item.price; form.appendChild(priceInput);
-        });
-        document.body.appendChild(form); form.submit();
-    }
-    const cartToggle = document.getElementById('cart-toggle');
-    if (cartToggle) { cartToggle.addEventListener('click', function(e) { e.preventDefault(); document.getElementById('cart-dropdown').classList.toggle('show'); }); }
     updateCartUI();
 </script>
 </body>
