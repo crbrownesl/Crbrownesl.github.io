@@ -24,28 +24,67 @@
         .whatsapp-btn:hover { background-color: #128c7e; }
 
         /* Cart Dropdown & Translate Styles */
+        /* Cart & Translate Styles */
         .cart-link { cursor: pointer; color: #fff; }
-        .cart-dropdown-content { 
-    display: none; 
-    position: absolute; 
-    top: 40px; /* Adjust this value to bring it down from the header */
-    right: 0; 
-    background-color: #fff; 
-    color: #000; 
-    min-width: 280px; /* Slightly wider to prevent text wrapping issues */
-    border: 1px solid #ccc; 
-    box-shadow: 0 8px 16px rgba(0,0,0,0.2); 
-    z-index: 1000; 
-    padding: 1rem; 
-    border-radius: 5px; 
-}
-        .cart-dropdown-content.show { display: block; }
-        .remove-btn { color: #d9534f; cursor: pointer; margin-left: 10px; }
-        .checkout-btn { display: block; width: 100%; text-align: center; background: #20c997; color: #fff; text-decoration: none; padding: 10px; margin-top: 10px; border-radius: 5px; border: none; }
         
+        .cart-dropdown-content { 
+            display: none; 
+            position: absolute; 
+            top: 40px; /* Adjust this value to bring it down from the header */
+            right: 0; 
+            background-color: #fff; 
+            color: #000; 
+            min-width: 280px; /* Slightly wider to prevent text wrapping issues */
+            border: 1px solid #ccc; 
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2); 
+            z-index: 1000; 
+            padding: 1rem; 
+            border-radius: 5px; 
+            box-sizing: border-box; /* Keeps everything contained */
+        }
+        
+        .cart-dropdown-content.show { display: block; }
+        
+        /* THESE ARE BACK - They format the rows and create the gap! */
+        .cart-item-row { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center;
+            margin-bottom: 10px; 
+            font-size: 0.95rem; 
+        }
+        
+        .cart-total { 
+            border-top: 1px solid #eee; 
+            padding-top: 10px; 
+            margin-top: 10px; 
+            font-weight: bold; 
+            display: flex; 
+            justify-content: space-between; 
+        }
+
+        .remove-btn { color: #d9534f; cursor: pointer; margin-left: 10px; }
+
+        .checkout-btn { 
+            display: block; 
+            width: 100%; 
+            text-align: center; 
+            background: #20c997; 
+            color: #fff; 
+            text-decoration: none; 
+            padding: 12px; 
+            margin-top: 15px; 
+            border-radius: 5px; 
+            font-weight: bold;
+            /* This prevents the button from spilling over the edge */
+            box-sizing: border-box; 
+        } /* The missing closing bracket is now here! */
+
+        /* Fixes for Google Translate widget */
         #google_translate_element { margin-left: 10px; }
         .goog-te-gadget-simple { background-color: #1a2a3a !important; border: 1px solid #20c997 !important; padding: 5px !important; border-radius: 5px !important; }
         .goog-te-gadget-simple span { color: #fff !important; }
+    </style>
     </style>
 </head>
 <body>
