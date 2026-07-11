@@ -45,7 +45,6 @@
         .checkout-btn { display: block; width: 100%; text-align: center; background: #20c997; color: #fff; text-decoration: none; padding: 10px; margin-top: 10px; border-radius: 5px; }
         .remove-btn { color: #d9534f; cursor: pointer; margin-left: 10px; }
 
-        /* Google Translate Styles */
         #google_translate_element { margin-left: 10px; }
         .goog-te-gadget-simple { background-color: #1a2a3a !important; border: 1px solid #20c997 !important; padding: 5px !important; border-radius: 5px !important; }
         .goog-te-gadget-simple span { color: #fff !important; }
@@ -95,23 +94,23 @@
     <div class="content">
         <div class="lesson-item">
             <h3>Standard Lesson (45 min) - $15</h3>
-            <button class="add-cart-btn" onclick="addToCart('Standard Lesson (45 min)',15)">Add to Cart</button>
+            <button class="add-cart-btn" onclick="addToCart('Standard Lesson (45 min)', 15)">Add to Cart</button>
         </div>
         <div class="lesson-item">
             <h3>Full Lesson (60 min) - $18</h3>
-            <button class="add-cart-btn" onclick="addToCart('Full Lesson (60 min)',18)">Add to Cart</button>
+            <button class="add-cart-btn" onclick="addToCart('Full Lesson (60 min)', 18)">Add to Cart</button>
         </div>
         <div class="lesson-item">
             <h3>Extended Lesson (2 hours) - $35</h3>
-            <button class="add-cart-btn" onclick="addToCart('Extended Lesson (2 hours)',35)">Add to Cart</button>
+            <button class="add-cart-btn" onclick="addToCart('Extended Lesson (2 hours)', 35)">Add to Cart</button>
         </div>
     </div>
 
     <button class="collapsible">Package Deals</button>
     <div class="content">
-        <div class="lesson-item"><h3>5-Hour Package - $90</h3><button class="add-cart-btn" onclick="addToCart('5-Hour Package',90)">Add to Cart</button></div>
-        <div class="lesson-item"><h3>10-Hour Package - <span class="original-price">$180</span> $170</h3><button class="add-cart-btn" onclick="addToCart('10-Hour Package',170)">Add to Cart</button></div>
-        <div class="lesson-item"><h3>20-Hour Package - <span class="original-price">$360</span> $320</h3><button class="add-cart-btn" onclick="addToCart('20-Hour Package',320)">Add to Cart</button></div>
+        <div class="lesson-item"><h3>5-Hour Package - $90</h3><button class="add-cart-btn" onclick="addToCart('5-Hour Package', 90)">Add to Cart</button></div>
+        <div class="lesson-item"><h3>10-Hour Package - <span class="original-price">$180</span> $170</h3><button class="add-cart-btn" onclick="addToCart('10-Hour Package', 170)">Add to Cart</button></div>
+        <div class="lesson-item"><h3>20-Hour Package - <span class="original-price">$360</span> $320</h3><button class="add-cart-btn" onclick="addToCart('20-Hour Package', 320)">Add to Cart</button></div>
     </div>
 </main>
 
@@ -133,17 +132,24 @@
             content.style.display = content.style.display === "block" ? "none" : "block";
         });
     });
-   const cartToggle = document.getElementById('cart-toggle');
+
+    const cartToggle = document.getElementById('cart-toggle');
     const cartDropdown = document.getElementById('cart-dropdown');
     let cart = JSON.parse(localStorage.getItem('cesl_cart')) || [];
 
-    // Toggle dropdown on icon click
+    // ADDED FUNCTION
+    function addToCart(name, price) {
+        cart.push({ name: name, price: price });
+        localStorage.setItem('cesl_cart', JSON.stringify(cart));
+        updateCartUI();
+        alert(name + ' added to cart!');
+    }
+
     cartToggle.addEventListener('click', (e) => { 
         e.preventDefault(); 
         cartDropdown.classList.toggle('show'); 
     });
 
-    // Close when clicking outside
     window.addEventListener('click', (e) => {
         if (!cartToggle.contains(e.target) && !cartDropdown.contains(e.target)) {
             cartDropdown.classList.remove('show');
