@@ -82,4 +82,75 @@
         </nav>
     </div>
 </header>
-<!-- Rest of the content remains the same -->
+
+<main class="container">
+    <section class="hero">
+        <h1>Start Your Journey to Fluent English Today with CESL</h1>
+        <p>Personalized and private English lessons focused on speaking, reading, writing, and grammar.</p>
+    </section>
+
+    <div class="info-grid">
+        <div class="info-box">
+            <h3>Custom Learning Paths</h3>
+            <p>Lessons tailored to your unique goals, whether you need business English, academic support, or conversational practice.</p>
+        </div>
+        <div class="info-box">
+            <h3>Flexible Scheduling</h3>
+            <p>Book lessons that fit your busy life. My online platform allows you to manage your time and learning progress seamlessly.</p>
+        </div>
+    </div>
+
+    <div class="promo-box">
+        <h2><i class="far fa-clock"></i> Try a Free 30-Minute Lesson!</h2>
+        <p>Get a taste of my teaching style with a free 30-minute trial lesson and placement test.</p>
+        <a href="schedule.html" class="cta-btn">Schedule Your Lesson</a>
+    </div>
+</main>
+
+<footer class="container" style="margin-top: 40px; text-align: center; padding-bottom: 20px;">
+    <p>&copy; 2026 Connor Brown</p>
+</footer>
+
+<script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({pageLanguage: 'en', includedLanguages: 'es,fr,de,it,pt,zh-CN,ja,ko'}, 'google_translate_element');
+    }
+</script>
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+<script>
+    const hamburger = document.getElementById('hamburger');
+    const navList = document.getElementById('nav-list');
+    hamburger.addEventListener('click', () => { navList.classList.toggle('active'); });
+
+    const cartToggle = document.getElementById('cart-toggle');
+    const cartDropdown = document.getElementById('cart-dropdown');
+    let cart = JSON.parse(localStorage.getItem('cesl_cart')) || [];
+
+    cartToggle.addEventListener('click', (e) => { e.preventDefault(); cartDropdown.classList.toggle('show'); });
+
+    window.addEventListener('click', (e) => {
+        if (!cartToggle.contains(e.target) && !cartDropdown.contains(e.target)) {
+            cartDropdown.classList.remove('show');
+        }
+    });
+
+    function removeItem(index) { cart.splice(index, 1); localStorage.setItem('cesl_cart', JSON.stringify(cart)); updateCartUI(); }
+
+    function updateCartUI() {
+        const countEl = document.getElementById('cart-count');
+        if (countEl) countEl.innerText = cart.length;
+        if (cart.length === 0) { cartDropdown.innerHTML = '<p style="text-align:center;">Your cart is empty.</p>'; return; }
+        let html = '<div style="max-height: 200px; overflow-y: auto;">';
+        let total = 0;
+        cart.forEach((item, index) => {
+            total += item.price;
+            html += `<div class="cart-item-row"><span>${item.name} - $${item.price}</span><span class="remove-btn" onclick="removeItem(${index})" style="color:red; cursor:pointer;"><i class="fas fa-trash"></i></span></div>`;
+        });
+        html += `</div><div class="cart-total"><span>Total:</span> <span>$${total}</span></div><a href="checkout.html" class="checkout-btn">Checkout</a>`;
+        cartDropdown.innerHTML = html;
+    }
+    updateCartUI();
+</script>
+</body>
+</html>
