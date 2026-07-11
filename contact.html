@@ -40,16 +40,23 @@
         .goog-te-gadget-simple { background-color: #1a2a3a !important; border: 1px solid #20c997 !important; padding: 5px !important; border-radius: 5px !important; }
         .goog-te-gadget-simple span { color: #fff !important; }
 
-        /* Mobile Responsive */
-        @media (max-width: 768px) {
-            .hamburger { display: block; }
-            .nav-menu { width: 100%; }
-            nav ul { display: none; flex-direction: column; width: 100%; background: #1a2a3a; padding: 1rem 0; margin-top: 10px; }
-            nav ul.active { display: flex; }
-            .nav-wrap { flex-direction: row; justify-content: space-between; }
-            .brand { width: auto; }
-            .cart-dropdown-content { right: auto; left: 50%; transform: translateX(-50%); }
-        }
+        /* Update this specific block in your Mobile Responsive media query */
+@media (max-width: 768px) {
+    .hamburger { display: block; }
+    .nav-menu { display: none; width: 100%; position: absolute; top: 100%; left: 0; background: #1a2a3a; padding: 1rem 0; z-index: 1001; }
+    .nav-menu.active { display: block; }
+    .nav-menu ul { flex-direction: column; gap: 15px; text-align: center; }
+
+    /* Fix for Cart Dropdown Positioning */
+    .cart-dropdown-content { 
+        position: fixed; /* Fix to viewport */
+        top: 70px;       /* Distance from top */
+        left: 50%;       /* Center horizontally */
+        transform: translateX(-50%); /* Shift back to center */
+        width: 90vw !important; 
+        max-width: 400px;
+        right: auto !important; 
+    }
     </style>
 </head>
 <body>
