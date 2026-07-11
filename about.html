@@ -8,26 +8,26 @@
     <style>
         body { font-family: Arial, sans-serif; line-height: 1.6; background-color: #f9f9f9; color: #000; margin: 0; }
         .container { width: 90%; max-width: 1200px; margin: 0 auto; }
+        
         header { background-color: #1a2a3a; color: #fff; padding: 1rem 0; }
         .nav-wrap { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; }
         .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: #fff; }
         .cesl-logo { width: 50px !important; height: 50px !important; object-fit: contain; }
-        .nav-menu ul { list-style: none; display: flex; flex-wrap: wrap; gap: 20px; align-items: center; margin: 0; padding: 0; }
-        .nav-menu a { text-decoration: none; color: #fff; font-weight: bold; }
-        .nav-menu a.active { color: #20c997; text-decoration: underline; }
+        nav ul { list-style: none; display: flex; flex-wrap: wrap; gap: 20px; align-items: center; margin: 0; padding: 0; }
+        nav ul li a { text-decoration: none; color: #fff; font-weight: bold; }
+        nav ul li a.active { color: #20c997; text-decoration: underline; }
 
         .about-content { background: #fff; padding: 2rem; border-radius: 8px; box-shadow: 0 2px 6px rgba(0,0,0,0.1); margin-top: 2rem; }
-        
-        /* Cart Dropdown Styles */
+
         .cart-link { cursor: pointer; color: #fff; }
         .cart-dropdown-content { 
             display: none; 
             position: absolute; 
-            top: 100%; 
+            top: 100%;
             right: 0; 
             background-color: #fff; 
             color: #000; 
-            min-width: 280px; 
+            min-width: 250px; 
             border: 1px solid #ccc; 
             box-shadow: 0 8px 16px rgba(0,0,0,0.2); 
             z-index: 1000; 
@@ -36,13 +36,8 @@
             margin-top: 10px;
         }
         .cart-dropdown-content.show { display: block; }
+        .checkout-btn { display: block; width: 100%; text-align: center; background: #20c997; color: #fff; text-decoration: none; padding: 10px; margin-top: 10px; border-radius: 5px; }
         .remove-btn { color: #d9534f; cursor: pointer; margin-left: 10px; }
-        .checkout-btn { display: block; width: 100%; text-align: center; background: #20c997; color: #fff; text-decoration: none; padding: 10px; margin-top: 10px; border-radius: 5px; border: none; }
-        
-        /* Google Translate Styles */
-        #google_translate_element { margin-left: 10px; }
-        .goog-te-gadget-simple { background-color: #1a2a3a !important; border: 1px solid #20c997 !important; padding: 5px !important; border-radius: 5px !important; }
-        .goog-te-gadget-simple span { color: #fff !important; }
     </style>
 </head>
 <body>
@@ -53,17 +48,16 @@
             <img src="images/cesl-logo.png" alt="Connor ESL Logo" class="cesl-logo">
             <h1 style="margin: 0; font-size: 1.5rem;">Connor ESL</h1>
         </a>
-        <nav class="nav-menu">
+        <nav>
             <ul>
                 <li><a href="index.html">Home</a></li>
                 <li><a href="about.html" class="active">About</a></li>
                 <li><a href="lessons.html">Lessons</a></li>
                 <li><a href="schedule.html">Schedule</a></li>
                 <li><a href="contact.html">Contact</a></li>
-                <li style="position: relative; display: flex; align-items: center;">
+                <li style="position: relative;">
                     <a class="cart-link" id="cart-toggle"><i class="fas fa-shopping-cart"></i> (<span id="cart-count">0</span>)</a>
                     <div class="cart-dropdown-content" id="cart-dropdown"></div>
-                    <div id="google_translate_element"></div>
                 </li>
             </ul>
         </nav>
@@ -83,45 +77,28 @@
     <p>&copy; 2026 Connor Brown</p>
 </footer>
 
-<script type="text/javascript">
-    function googleTranslateElementInit() {
-      new google.translate.TranslateElement({pageLanguage: 'en', includedLanguages: 'es,fr,de,it,pt,zh-CN,ja,ko'}, 'google_translate_element');
-    }
-</script>
-<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-
 <script>
     const cartToggle = document.getElementById('cart-toggle');
     const cartDropdown = document.getElementById('cart-dropdown');
     let cart = JSON.parse(localStorage.getItem('cesl_cart')) || [];
-
+    
     cartToggle.addEventListener('click', (e) => { e.preventDefault(); cartDropdown.classList.toggle('show'); });
 
-    // Close the cart when clicking outside of it
+    // Close when clicking outside
     window.addEventListener('click', (e) => {
         if (!cartToggle.contains(e.target) && !cartDropdown.contains(e.target)) {
             cartDropdown.classList.remove('show');
         }
     });
 
-    function removeItem(index) {
-        cart.splice(index, 1);
-        localStorage.setItem('cesl_cart', JSON.stringify(cart));
-        updateCartUI();
-    }
-
+    function removeItem(index) { cart.splice(index, 1); localStorage.setItem('cesl_cart', JSON.stringify(cart)); updateCartUI(); }
+    
     function updateCartUI() {
         const countEl = document.getElementById('cart-count');
         if (countEl) countEl.innerText = cart.length;
-        if (cart.length === 0) {
-            cartDropdown.innerHTML = '<p style="text-align:center; padding:10px;">Your cart is empty.</p>';
-            return;
-        }
+        if (cart.length === 0) { cartDropdown.innerHTML = '<p style="text-align:center; padding:10px;">Your cart is empty.</p>'; return; }
         let html = '';
-        cart.forEach((item, index) => {
-            html += `<div style="display:flex; justify-content:space-between; padding:5px 0;">
-                     ${item.name} <span class="remove-btn" onclick="removeItem(${index})"><i class="fas fa-trash"></i></span></div>`;
-        });
+        cart.forEach((item, index) => { html += `<div style="display:flex; justify-content:space-between; padding:5px 0;">${item.name} <span class="remove-btn" onclick="removeItem(${index})"><i class="fas fa-trash"></i></span></div>`; });
         html += `<a href="checkout.html" class="checkout-btn">Checkout</a>`;
         cartDropdown.innerHTML = html;
     }
