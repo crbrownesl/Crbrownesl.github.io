@@ -6,16 +6,21 @@
     <title>Checkout - Connor ESL</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* Shared Palette/Nav Styles */
         body { font-family: Arial, sans-serif; line-height: 1.6; background-color: #f9f9f9; color: #000; margin: 0; }
         .container { width: 90%; max-width: 1200px; margin: 0 auto; }
         header { background-color: #1a2a3a; color: #fff; padding: 1rem 0; }
-        .nav-wrap { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; }
+        .nav-wrap { display: flex; justify-content: space-between; align-items: center; position: relative; }
         .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: #fff; }
         .cesl-logo { width: 50px !important; height: 50px !important; object-fit: contain; }
-        nav ul { list-style: none; display: flex; flex-wrap: wrap; gap: 20px; align-items: center; margin: 0; padding: 0; }
+        
+        /* Navigation Styles */
+        .nav-menu { display: flex; align-items: center; }
+        nav ul { list-style: none; display: flex; gap: 20px; align-items: center; margin: 0; padding: 0; }
         nav ul li a { text-decoration: none; color: #fff; font-weight: bold; }
         
+        .header-right { display: flex; align-items: center; gap: 15px; }
+        .hamburger { display: none; cursor: pointer; font-size: 1.8rem; color: #20c997; }
+
         /* Checkout Specific Styles */
         .checkout-container { width: 90%; max-width: 800px; margin: 2rem auto; padding: 2rem; background: #fff; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
         .cart-item { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #eee; }
@@ -23,14 +28,14 @@
         .paypal-btn { background-color: #20c997; color: #fff; border: none; padding: 15px 30px; border-radius: 5px; font-weight: bold; cursor: pointer; font-size: 1.1rem; }
         .remove-btn { color: #d9534f; cursor: pointer; }
 
-        /* Google Translate Styles */
         #google_translate_element { margin-left: 10px; }
-        .goog-te-gadget-simple { background-color: #1a2a3a !important; border: 1px solid #20c997 !important; padding: 5px !important; border-radius: 5px !important; }
-        .goog-te-gadget-simple span { color: #fff !important; }
 
+        /* Mobile Responsive */
         @media (max-width: 768px) {
-            .nav-wrap { flex-direction: column; text-align: center; }
-            nav ul { justify-content: center; width: 100%; margin-top: 15px; }
+            .hamburger { display: block; }
+            .nav-menu { display: none; width: 100%; position: absolute; top: 100%; left: 0; background: #1a2a3a; padding: 1rem 0; z-index: 1001; }
+            .nav-menu.active { display: block; }
+            .nav-menu ul { flex-direction: column; gap: 15px; text-align: center; }
         }
     </style>
 </head>
@@ -42,8 +47,9 @@
             <img src="images/cesl-logo.png" alt="Connor ESL Logo" class="cesl-logo">
             <h1 style="margin: 0; font-size: 1.5rem;">Connor ESL</h1>
         </a>
-        <nav>
-            <ul style="display: flex; align-items: center;">
+        
+        <nav class="nav-menu" id="nav-menu">
+            <ul>
                 <li><a href="index.html">Home</a></li>
                 <li><a href="about.html">About</a></li>
                 <li><a href="lessons.html">Lessons</a></li>
@@ -52,6 +58,10 @@
                 <li><div id="google_translate_element"></div></li>
             </ul>
         </nav>
+
+        <div class="header-right">
+            <div class="hamburger" id="hamburger"><i class="fas fa-bars"></i></div>
+        </div>
     </div>
 </header>
 
@@ -74,7 +84,6 @@
     <p>&copy; 2026 Connor Brown</p>
 </footer>
 
-<!-- Google Translate Scripts -->
 <script type="text/javascript">
     function googleTranslateElementInit() {
       new google.translate.TranslateElement({pageLanguage: 'en', includedLanguages: 'es,fr,de,it,pt,zh-CN,ja,ko'}, 'google_translate_element');
@@ -83,6 +92,11 @@
 <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
 <script>
+    // Hamburger Menu Logic
+    const hamburger = document.getElementById('hamburger');
+    const navMenu = document.getElementById('nav-menu');
+    hamburger.addEventListener('click', () => { navMenu.classList.toggle('active'); });
+
     let cart = JSON.parse(localStorage.getItem('cesl_cart')) || [];
     
     function renderCheckout() {
