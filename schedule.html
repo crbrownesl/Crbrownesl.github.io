@@ -9,17 +9,19 @@
         body { font-family: Arial, sans-serif; line-height: 1.6; background-color: #f9f9f9; color: #000; margin: 0; }
         .container { width: 90%; max-width: 1200px; margin: 0 auto; }
         header { background-color: #1a2a3a; color: #fff; padding: 1rem 0; }
-        
-        .nav-wrap { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; position: relative; }
+        .nav-wrap { display: flex; justify-content: space-between; align-items: center; position: relative; }
         .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: #fff; }
         .cesl-logo { width: 50px !important; height: 50px !important; object-fit: contain; }
         
-        /* Hamburger Styles */
-        .hamburger { display: none; cursor: pointer; font-size: 1.8rem; color: #20c997; }
+        /* Navigation Styles */
         .nav-menu { display: flex; align-items: center; }
-        nav ul { list-style: none; display: flex; flex-wrap: wrap; gap: 20px; align-items: center; margin: 0; padding: 0; }
-        nav ul li a { text-decoration: none; color: #fff; font-weight: bold; }
-        nav ul li a.active { color: #20c997; text-decoration: underline; }
+        .nav-menu ul { list-style: none; display: flex; gap: 20px; align-items: center; margin: 0; padding: 0; }
+        .nav-menu a { text-decoration: none; color: #fff; font-weight: bold; }
+        .nav-menu a.active { color: #20c997; text-decoration: underline; }
+
+        /* Container for Cart and Hamburger together */
+        .header-right { display: flex; align-items: center; gap: 15px; }
+        .hamburger { display: none; cursor: pointer; font-size: 1.8rem; color: #20c997; }
 
         /* Schedule Page Specific */
         .instruction-box { background: #fff; padding: 2rem; border-radius: 8px; border-left: 5px solid #20c997; box-shadow: 0 2px 6px rgba(0,0,0,0.1); margin-bottom: 2rem; }
@@ -27,9 +29,9 @@
         .lesson-btn { padding: 15px 20px; background-color: #20c997; color: #ffffff; text-decoration: none; border-radius: 8px; font-weight: bold; text-align: center; transition: background-color 0.3s ease; }
         .lesson-btn:hover { background-color: #17a589; }
 
-        /* Cart Dropdown Styles */
+        /* Cart & Translate Styles */
         .cart-link { cursor: pointer; color: #fff; }
-        .cart-dropdown-content { display: none; position: absolute; top: 100%; right: 0; width: 300px; background-color: #fff; color: #333; border: 1px solid #ddd; box-shadow: 0 4px 12px rgba(0,0,0,0.15); z-index: 9999; padding: 15px; border-radius: 8px; box-sizing: border-box; margin-top: 10px; }
+        .cart-dropdown-content { display: none; position: absolute; top: 100%; right: 0; background-color: #fff; color: #000; width: 300px; border: 1px solid #ccc; box-shadow: 0 8px 16px rgba(0,0,0,0.2); z-index: 1000; padding: 15px; border-radius: 8px; margin-top: 10px; box-sizing: border-box; }
         .cart-dropdown-content.show { display: block; }
         .cart-item-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; font-size: 0.95rem; }
         .cart-total { border-top: 1px solid #eee; padding-top: 10px; margin-top: 10px; font-weight: bold; display: flex; justify-content: space-between; }
@@ -43,12 +45,10 @@
         /* Mobile Responsive */
         @media (max-width: 768px) {
             .hamburger { display: block; }
-            .nav-menu { width: 100%; }
-            nav ul { display: none; flex-direction: column; width: 100%; background: #1a2a3a; padding: 1rem 0; margin-top: 10px; }
-            nav ul.active { display: flex; }
-            .nav-wrap { flex-direction: row; justify-content: space-between; }
-            .brand { width: auto; }
-            .cart-dropdown-content { right: auto; left: 50%; transform: translateX(-50%); }
+            .nav-menu { display: none; width: 100%; position: absolute; top: 100%; left: 0; background: #1a2a3a; padding: 1rem 0; z-index: 1001; }
+            .nav-menu.active { display: block; }
+            .nav-menu ul { flex-direction: column; gap: 15px; text-align: center; }
+            .cart-dropdown-content { right: 50% !important; transform: translateX(50%) !important; width: 90vw !important; }
         }
     </style>
 </head>
@@ -61,22 +61,24 @@
             <h1 style="margin: 0; font-size: 1.5rem;">Connor ESL</h1>
         </a>
         
-        <div class="hamburger" id="hamburger"><i class="fas fa-bars"></i></div>
-
-        <nav class="nav-menu">
+        <nav class="nav-menu" id="nav-menu">
             <ul id="nav-list">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="about.html">About</a></li>
                 <li><a href="lessons.html">Lessons</a></li>
                 <li><a href="schedule.html" class="active">Schedule</a></li>
                 <li><a href="contact.html">Contact</a></li>
-                <li style="position: relative; display: flex; align-items: center;">
-                    <a class="cart-link" id="cart-toggle"><i class="fas fa-shopping-cart"></i> (<span id="cart-count">0</span>)</a>
-                    <div class="cart-dropdown-content" id="cart-dropdown"></div>
-                    <div id="google_translate_element"></div>
-                </li>
+                <li><div id="google_translate_element"></div></li>
             </ul>
         </nav>
+
+        <div class="header-right">
+            <div style="position: relative;">
+                <a class="cart-link" id="cart-toggle"><i class="fas fa-shopping-cart"></i> (<span id="cart-count">0</span>)</a>
+                <div class="cart-dropdown-content" id="cart-dropdown"></div>
+            </div>
+            <div class="hamburger" id="hamburger"><i class="fas fa-bars"></i></div>
+        </div>
     </div>
 </header>
 
@@ -111,8 +113,8 @@
 
 <script>
     const hamburger = document.getElementById('hamburger');
-    const navList = document.getElementById('nav-list');
-    hamburger.addEventListener('click', () => { navList.classList.toggle('active'); });
+    const navMenu = document.getElementById('nav-menu');
+    hamburger.addEventListener('click', () => { navMenu.classList.toggle('active'); });
 
     const cartToggle = document.getElementById('cart-toggle');
     const cartDropdown = document.getElementById('cart-dropdown');
@@ -136,7 +138,7 @@
         let total = 0;
         cart.forEach((item, index) => {
             total += item.price;
-            html += `<div class="cart-item-row"><span>${item.name} - $${item.price}</span><span class="remove-btn" onclick="removeItem(${index})"><i class="fas fa-trash"></i></span></div>`;
+            html += `<div class="cart-item-row"><span>${item.name} - $${item.price}</span><span class="remove-btn" onclick="removeItem(${index})" style="color:red; cursor:pointer;"><i class="fas fa-trash"></i></span></div>`;
         });
         html += `</div><div class="cart-total"><span>Total:</span> <span>$${total}</span></div><a href="checkout.html" class="checkout-btn">Checkout</a>`;
         cartDropdown.innerHTML = html;
