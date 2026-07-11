@@ -179,19 +179,35 @@
     }
 
     function updateCartUI() {
-        const countEl = document.getElementById('cart-count');
-        if (countEl) countEl.innerText = cart.length;
-        if (cart.length === 0) {
-            cartDropdown.innerHTML = '<p style="text-align:center; padding:10px;">Your cart is empty.</p>';
-            return;
-        }
-        let html = '';
-        cart.forEach((item, index) => {
-            html += `<div style="display:flex; justify-content:space-between; padding:5px 0;">
-                     ${item.name} <span class="remove-btn" onclick="removeItem(${index})"><i class="fas fa-trash"></i></span></div>`;
-        });
-        html += `<a href="checkout.html" class="checkout-btn">Checkout</a>`;
-        cartDropdown.innerHTML = html;
+    const countEl = document.getElementById('cart-count');
+    if (countEl) countEl.innerText = cart.length;
+
+    if (cart.length === 0) {
+        cartDropdown.innerHTML = '<p style="text-align:center;">Your cart is empty.</p>';
+        return;
+    }
+
+    let html = '<div style="max-height: 200px; overflow-y: auto;">';
+    let total = 0;
+
+    cart.forEach((item, index) => {
+        total += item.price;
+        html += `
+            <div class="cart-item-row">
+                <span>${item.name} - $${item.price}</span>
+                <span class="remove-btn" onclick="removeItem(${index})" style="color:red; cursor:pointer;">
+                    <i class="fas fa-trash"></i>
+                </span>
+            </div>`;
+    });
+    
+    html += `</div>
+             <div class="cart-total">
+                <span>Total:</span> <span>$${total}</span>
+             </div>
+             <a href="checkout.html" class="checkout-btn">Checkout</a>`;
+             
+    cartDropdown.innerHTML = html;
     }
     updateCartUI();
 </script>
