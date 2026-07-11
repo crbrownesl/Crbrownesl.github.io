@@ -47,7 +47,15 @@
 
 <main class="container">
     <h1 style="margin-bottom: 1rem;">About Connor</h1>
-    <p>Welcome! I'm Connor, a dedicated online ESL teacher with a passion for helping students achieve their language goals. With years of experience and specialized lesson plans, I provide a comfortable, engaging environment for you to master the English language.</p>
+    <p>Welcome! I'm Connor, a dedicated online ESL teacher with <strong>over 3 years of experience</strong> helping students achieve their language goals. I provide a comfortable, engaging, and fully personalized environment for you to master the English language.</p>
+    
+    <h2 style="margin-top: 2rem;">Why Learn With Me?</h2>
+    <ul style="line-height: 1.8; margin-bottom: 2rem;">
+        <li><strong>Expertise:</strong> With 3+ years of teaching experience, I have developed effective methods to simplify complex grammar and improve conversational fluency.</li>
+        <li><strong>Exam Preparation:</strong> I specialize in Cambridge exam preparation (PET, FCE, CAE), providing targeted strategies to help you succeed.</li>
+        <li><strong>Proven Professionalism:</strong> My background as an independent contractor means I am highly organized, punctual, and committed to managing our lessons with professional efficiency.</li>
+        <li><strong>Personalized Approach:</strong> Every student is different. I tailor my programs to your specific needs, whether you are a teen looking for school support or an adult preparing for travel or professional certification.</li>
+    </ul>
 </main>
 
 <footer>
@@ -59,15 +67,8 @@
     if (menuToggle) {
         menuToggle.addEventListener('click', () => { document.querySelector('.nav-menu').classList.toggle('active'); });
     }
-    document.querySelectorAll(".collapsible").forEach(btn => {
-        btn.addEventListener("click", function() {
-            const content = this.nextElementSibling;
-            content.style.display = content.style.display === "block" ? "none" : "block";
-        });
-    });
     let cart = JSON.parse(localStorage.getItem('cesl_cart')) || [];
     function saveCart() { localStorage.setItem('cesl_cart', JSON.stringify(cart)); }
-    function addToCart(name, price) { cart.push({ name, price }); saveCart(); updateCartUI(); document.getElementById('cart-dropdown').classList.add('show'); }
     function removeFromCart(index) { cart.splice(index, 1); saveCart(); updateCartUI(); document.getElementById('cart-dropdown').classList.add('show'); }
     function updateCartUI() {
         const cartCountElement = document.getElementById('cart-count');
