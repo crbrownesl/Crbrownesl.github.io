@@ -1,28 +1,38 @@
-/* --- Academic and Energetic Palette --- */
+/* ==========================================================================
+   Connor ESL - Main Stylesheet
+   Palette: Academic and Energetic (Deep Navy & Vibrant Teal)
+   ========================================================================== */
+
 :root {
     --primary-navy: #1a2a3a;
     --accent-teal: #20c997;
     --accent-teal-hover: #17a589;
     --bg-light: #f8f9fa;
-    --text-dark: #333;
+    --text-dark: #333333;
+    --text-muted: #666666;
 }
 
+/* --- Global Elements --- */
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: var(--bg-light);
     color: var(--text-dark);
     line-height: 1.8;
     margin: 0;
+    padding: 0;
 }
 
-/* Container and Layout */
 .container {
     max-width: 1100px;
     margin: 0 auto;
     padding: 0 20px;
 }
 
-/* Header & Logo Fix */
+main {
+    padding: 3rem 0;
+}
+
+/* --- Header & Navigation --- */
 header {
     background-color: var(--primary-navy);
     color: #ffffff;
@@ -35,41 +45,64 @@ header {
     align-items: center;
 }
 
+/* Brand & Logo Layout */
 .brand {
     display: flex;
     align-items: center;
     text-decoration: none;
     color: #ffffff;
+    max-width: 300px; /* Prevents the container from expanding unexpectedly */
 }
 
 .cesl-logo {
-    max-width: 50px; /* Fixed logo size */
-    height: auto;
+    display: block;
+    width: 50px !important;       /* Hard width constraint */
+    height: 50px !important;      /* Hard height constraint */
+    object-fit: contain;          /* Preserves image aspect ratio */
     margin-right: 12px;
 }
 
 .logo {
     font-size: 1.5rem;
     margin: 0;
+    font-weight: 700;
+    color: #ffffff;
 }
 
-/* Nav Menu */
+/* Navigation Links */
 .nav-menu ul {
     list-style: none;
     padding: 0;
     display: flex;
-    gap: 20px;
+    gap: 24px;
     margin: 0;
+    align-items: center;
 }
 
 .nav-menu a {
     color: #ffffff;
     text-decoration: none;
     font-weight: 500;
+    transition: color 0.2s ease;
 }
 
-/* Buttons */
+.nav-menu a:hover,
+.nav-menu a.active {
+    color: var(--accent-teal);
+}
+
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: #ffffff;
+    font-size: 1.8rem;
+    cursor: pointer;
+}
+
+/* --- Buttons --- */
 .add-cart-btn, .checkout-btn {
+    display: inline-block;
     background-color: var(--accent-teal);
     color: #ffffff;
     border: none;
@@ -77,44 +110,143 @@ header {
     padding: 12px 24px;
     cursor: pointer;
     font-weight: bold;
-    transition: background-color 0.3s ease;
+    font-family: inherit;
+    font-size: 1rem;
+    text-decoration: none;
+    text-align: center;
+    transition: background-color 0.3s ease, transform 0.1s ease;
 }
 
 .add-cart-btn:hover, .checkout-btn:hover {
     background-color: var(--accent-teal-hover);
 }
 
-/* Cart Dropdown */
-.cart-dropdown { position: relative; }
+.add-cart-btn:active, .checkout-btn:active {
+    transform: scale(0.98);
+}
+
+/* --- Shopping Cart Dropdown --- */
+.cart-dropdown {
+    position: relative;
+}
+
+.cart-link {
+    cursor: pointer;
+}
+
 .cart-dropdown-content {
     display: none;
     position: absolute;
     right: 0;
-    top: 50px;
+    top: 45px;
     background-color: #ffffff;
-    min-width: 280px;
-    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
-    padding: 1rem;
+    min-width: 290px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    padding: 1.2rem;
     border-radius: 8px;
     color: var(--text-dark);
     z-index: 1000;
 }
-.cart-dropdown-content.show { display: block; }
+
+.cart-dropdown-content.show {
+    display: block;
+}
+
 .cart-item {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-bottom: 8px;
-    margin-bottom: 8px;
-    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #eeeeee;
+    font-size: 0.95rem;
 }
-.remove-btn { color: #d9534f; cursor: pointer; }
 
-/* Section Overrides */
+.item-details {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.remove-btn {
+    color: #d9534f;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.remove-btn:hover {
+    color: #b52b27;
+}
+
+.cart-total {
+    font-weight: bold;
+    text-align: right;
+    margin-top: 12px;
+    font-size: 1.1rem;
+}
+
+/* --- Content Sections --- */
 .why-choose {
     background-color: var(--primary-navy) !important;
     color: #ffffff;
     padding: 2.5rem;
     border-radius: 8px;
-    margin-top: 2rem;
+    margin: 2.5rem 0;
+}
+
+.why-choose h2 {
+    margin-top: 0;
+    color: var(--accent-teal);
+}
+
+/* --- Footer --- */
+footer {
+    background-color: var(--primary-navy);
+    color: #ffffff;
+    text-align: center;
+    padding: 1.5rem 0;
+    margin-top: 4rem;
+    font-size: 0.9rem;
+}
+
+footer p {
+    margin: 0;
+}
+
+/* --- Responsive Design --- */
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: block;
+    }
+
+    .nav-menu {
+        display: none;
+        width: 100%;
+    }
+
+    .nav-menu.active {
+        display: block;
+    }
+
+    .nav-wrap {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+
+    .nav-menu ul {
+        flex-direction: column;
+        width: 100%;
+        gap: 10px;
+        padding-top: 10px;
+    }
+
+    .nav-menu li {
+        width: 100%;
+    }
+
+    .cart-dropdown-content {
+        right: auto;
+        left: 0;
+    }
 }
