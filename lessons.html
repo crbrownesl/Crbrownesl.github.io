@@ -26,16 +26,19 @@
         .original-price { color: #999; text-decoration: line-through; margin-right: 10px; font-size: 0.9em; }
 
         .cart-link { cursor: pointer; color: #fff; }
-        header nav ul li {
-    position: relative; 
-    display: flex; 
+/* 1. Only style the list item container */
+header nav ul li {
+    position: relative;
+    display: flex;
     align-items: center;
-    top: 50px; 
-    
-    /* Center the box relative to the cart icon */
-    left: 50%; 
-    transform: translateX(-50%); 
-    
+}
+
+/* 2. Style the dropdown box separately */
+.cart-dropdown-content { 
+    display: none; 
+    position: absolute; 
+    top: 45px; /* Adjust distance from the nav bar */
+    right: 0;  /* Anchors it to the right of the nav icon */
     width: 300px; 
     background-color: #fff; 
     color: #333; 
