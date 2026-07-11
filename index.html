@@ -14,6 +14,9 @@
         .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: #fff; }
         .cesl-logo { width: 50px !important; height: 50px !important; object-fit: contain; }
         
+        /* New Container for Cart & Hamburger */
+        .header-right { display: flex; align-items: center; gap: 15px; }
+
         /* Navigation Styles */
         .nav-menu { display: flex; align-items: center; }
         .nav-menu ul { list-style: none; display: flex; gap: 20px; align-items: center; margin: 0; padding: 0; }
@@ -43,7 +46,7 @@
         .goog-te-gadget-simple { background-color: #1a2a3a !important; border: 1px solid #20c997 !important; padding: 5px !important; border-radius: 5px !important; }
         .goog-te-gadget-simple span { color: #fff !important; }
 
-        /* Mobile Responsive Centering */
+        /* Mobile Responsive */
         @media (max-width: 768px) {
             .hamburger { display: block; }
             .nav-menu ul { display: none; flex-direction: column; width: 100%; background: #1a2a3a; padding: 1rem 0; position: absolute; top: 100%; left: 0; z-index: 1001; }
@@ -62,7 +65,13 @@
             <h1 style="margin: 0; font-size: 1.5rem;">Connor ESL</h1>
         </a>
         
-        <div class="hamburger" id="hamburger"><i class="fas fa-bars"></i></div>
+        <div class="header-right">
+            <div style="position: relative;">
+                <a class="cart-link" id="cart-toggle"><i class="fas fa-shopping-cart"></i> (<span id="cart-count">0</span>)</a>
+                <div class="cart-dropdown-content" id="cart-dropdown"></div>
+            </div>
+            <div class="hamburger" id="hamburger"><i class="fas fa-bars"></i></div>
+        </div>
 
         <nav class="nav-menu">
             <ul id="nav-list">
@@ -71,11 +80,7 @@
                 <li><a href="lessons.html">Lessons</a></li>
                 <li><a href="schedule.html">Schedule</a></li>
                 <li><a href="contact.html">Contact</a></li>
-                <li style="position: relative; display: flex; align-items: center;">
-                    <a class="cart-link" id="cart-toggle"><i class="fas fa-shopping-cart"></i> (<span id="cart-count">0</span>)</a>
-                    <div class="cart-dropdown-content" id="cart-dropdown"></div>
-                    <div id="google_translate_element"></div>
-                </li>
+                <li><div id="google_translate_element"></div></li>
             </ul>
         </nav>
     </div>
@@ -117,12 +122,10 @@
 <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
 <script>
-    // Hamburger Menu Logic
     const hamburger = document.getElementById('hamburger');
     const navList = document.getElementById('nav-list');
     hamburger.addEventListener('click', () => { navList.classList.toggle('active'); });
 
-    // Cart Logic
     const cartToggle = document.getElementById('cart-toggle');
     const cartDropdown = document.getElementById('cart-dropdown');
     let cart = JSON.parse(localStorage.getItem('cesl_cart')) || [];
