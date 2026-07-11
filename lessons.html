@@ -29,14 +29,15 @@
         .cart-dropdown-content { 
     display: none; 
     position: absolute; 
-    top: 40px; /* Adjust this value to bring it down from the header */
+    /* Increase this value to move the box further down */
+    top: 60px; 
     right: 0; 
     background-color: #fff; 
     color: #000; 
-    min-width: 280px; /* Slightly wider to prevent text wrapping issues */
+    min-width: 280px; 
     border: 1px solid #ccc; 
     box-shadow: 0 8px 16px rgba(0,0,0,0.2); 
-    z-index: 1000; 
+    z-index: 9999; /* Ensure it stays on top */
     padding: 1rem; 
     border-radius: 5px; 
 }
