@@ -66,3 +66,10 @@ header a {
 .remove-btn {
     color: #d9534f;
 }
+/* Logo Sizing Fix */
+.cesl-logo {
+    max-width: 50px; /* Adjust this number to make it smaller or larger */
+    height: auto;
+    vertical-align: middle;
+    margin-right: 10px;
+}
