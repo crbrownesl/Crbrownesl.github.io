@@ -33,13 +33,28 @@
         .promo-box { background: #1a2a3a; color: #fff; padding: 2rem; border-radius: 8px; margin: 2rem 0; text-align: center; }
         .cta-btn { background-color: #20c997; color: #fff; padding: 15px 30px; text-decoration: none; border-radius: 5px; font-weight: bold; display: inline-block; margin-top: 1rem; }
         
-        /* Cart & Translate Styles */
+        /* Cart Dropdown Styles */
         .cart-link { cursor: pointer; color: #fff; }
-        .cart-dropdown-content { display: none; position: absolute; right: 0; background-color: #fff; color: #000; min-width: 280px; border: 1px solid #ccc; box-shadow: 0 8px 16px rgba(0,0,0,0.2); z-index: 1000; padding: 1rem; border-radius: 5px; }
+        .cart-dropdown-content { 
+            display: none; 
+            position: absolute; 
+            top: 100%; 
+            right: 0; 
+            background-color: #fff; 
+            color: #000; 
+            min-width: 280px; 
+            border: 1px solid #ccc; 
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2); 
+            z-index: 1000; 
+            padding: 1rem; 
+            border-radius: 5px; 
+            margin-top: 10px;
+        }
         .cart-dropdown-content.show { display: block; }
         .remove-btn { color: #d9534f; cursor: pointer; margin-left: 10px; }
         .checkout-btn { display: block; width: 100%; text-align: center; background: #20c997; color: #fff; text-decoration: none; padding: 10px; margin-top: 10px; border-radius: 5px; border: none; }
         
+        /* Google Translate Styles */
         #google_translate_element { margin-left: 10px; }
         .goog-te-gadget-simple { background-color: #1a2a3a !important; border: 1px solid #20c997 !important; padding: 5px !important; border-radius: 5px !important; }
         .goog-te-gadget-simple span { color: #fff !important; }
@@ -111,6 +126,13 @@
     let cart = JSON.parse(localStorage.getItem('cesl_cart')) || [];
 
     cartToggle.addEventListener('click', (e) => { e.preventDefault(); cartDropdown.classList.toggle('show'); });
+
+    // Close the cart when clicking outside of it
+    window.addEventListener('click', (e) => {
+        if (!cartToggle.contains(e.target) && !cartDropdown.contains(e.target)) {
+            cartDropdown.classList.remove('show');
+        }
+    });
 
     function removeItem(index) {
         cart.splice(index, 1);
