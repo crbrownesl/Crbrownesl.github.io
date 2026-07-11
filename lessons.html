@@ -87,6 +87,38 @@ header nav ul li {
         #google_translate_element { margin-left: 10px; }
         .goog-te-gadget-simple { background-color: #1a2a3a !important; border: 1px solid #20c997 !important; padding: 5px !important; border-radius: 5px !important; }
         .goog-te-gadget-simple span { color: #fff !important; }
+    /* Mobile Responsive Centering */
+        @media (max-width: 768px) {
+            .nav-wrap {
+                flex-direction: column; /* Stacks the logo and the menu */
+                justify-content: center;
+            }
+            
+            .brand {
+                margin-bottom: 15px; /* Adds breathing room below the logo */
+                justify-content: center;
+                width: 100%;
+            }
+            
+            nav ul {
+                justify-content: center; /* Centers the navigation links */
+                width: 100%;
+            }
+            
+            /* Centers the cart and Google Translate elements */
+            nav ul li:last-child {
+                width: 100%;
+                justify-content: center;
+                margin-top: 10px;
+            }
+            
+            /* Center the cart dropdown box on mobile so it doesn't go off-screen */
+            .cart-dropdown-content {
+                right: auto;
+                left: 50%;
+                transform: translateX(-50%);
+            }
+        }
     </style>
 </head>
 <body>
