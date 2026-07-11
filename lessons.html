@@ -3,21 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lessons - Connor ESL</title>
+    <title>Schedule a Lesson - Connor ESL</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="css/style.css">
     <style>
-        .cart-dropdown { position: relative; }
-        .cart-dropdown-content { display: none; position: absolute; right: 0; top: 40px; background-color: #fff; min-width: 280px; box-shadow: 0 8px 16px rgba(0,0,0,0.2); z-index: 1000; padding: 1rem; border-radius: 5px; color: #222; }
-        .cart-dropdown-content.show { display: block; }
-        .cart-item { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; border-bottom: 1px solid #ddd; padding-bottom: 8px; font-size: 0.9rem; }
-        .item-details { display: flex; align-items: center; gap: 10px; }
-        .remove-btn { color: #d9534f; cursor: pointer; transition: color 0.2s; }
-        .remove-btn:hover { color: #a94442; }
-        .cart-total { font-weight: bold; text-align: right; margin-top: 10px; font-size: 1.1rem; }
-        .checkout-btn { display: block; width: 100%; background: #4b2e2e; color: #fff; text-align: center; padding: 10px; text-decoration: none; border-radius: 5px; margin-top: 15px; font-weight: bold; border:none; cursor:pointer; font-family:inherit; font-size:1rem; }
-        .checkout-btn:hover { background: #36211b; }
-        .cart-link { cursor: pointer; }
+        /* Palette Overrides to match Academic/Energetic theme */
+        body { background-color: #f8f9fa; color: #333333; margin: 0; padding: 0; }
+        
+        /* Logo constraints */
+        .brand img { 
+            width: 50px !important; 
+            height: 50px !important; 
+            object-fit: contain; 
+            margin-right: 12px;
+        }
+
+        .lesson-options { display: flex; gap: 20px; margin-top: 20px; flex-wrap: wrap; }
+        
+        /* Updated buttons to match Teal accent */
+        .lesson-btn { 
+            padding: 15px 20px; 
+            background-color: #20c997; 
+            color: #ffffff; 
+            text-decoration: none; 
+            border-radius: 8px; 
+            font-weight: bold; 
+            transition: background-color 0.3s ease;
+        }
+        .lesson-btn:hover { background-color: #17a589; }
     </style>
 </head>
 <body>
@@ -26,15 +39,14 @@
     <div class="container nav-wrap">
         <a href="index.html" class="brand">
             <img src="images/cesl-logo.png" alt="Connor ESL Logo" class="cesl-logo">
-            <h1 class="logo">Connor ESL</h1>
+            <span style="color: #ffffff; font-size: 1.5rem; font-weight: 700;">Connor ESL</span>
         </a>
-        <button class="menu-toggle" aria-label="Toggle menu">☰</button>
         <nav class="nav-menu">
             <ul>
                 <li><a href="index.html">Home</a></li>
                 <li><a href="about.html">About</a></li>
-                <li><a href="lessons.html" class="active">Lessons</a></li>
-                <li><a href="schedule.html">Schedule</a></li>
+                <li><a href="lessons.html">Lessons</a></li>
+                <li><a href="schedule.html" class="active">Schedule</a></li>
                 <li><a href="contact.html">Contact</a></li>
                 <li class="cart-dropdown">
                     <a class="cart-link" id="cart-toggle"><i class="fas fa-shopping-cart"></i> <span id="cart-count">0</span></a>
@@ -46,133 +58,45 @@
 </header>
 
 <main class="container">
-    <h1 style="margin-bottom: 1rem;">Private English Lessons (Online Only)</h1>
-    <p style="margin-bottom: 2rem;">All lessons are private and fully online. Click on a section below to view available lessons and packages.</p>
-
-    <!-- Individual Lessons Section -->
-    <button class="collapsible">Individual Lessons</button>
-    <div class="content">
-        <div class="lesson-item" style="text-align: center; padding: 1.5rem 1rem;">
-            <h3>Standard Lesson (45 min) - $15</h3>
-            <p style="max-width: 600px; margin: 0.5rem auto 1.5rem; font-size: 1.05rem;">Perfect for trying my teaching style or fitting in a short, focused session.</p>
-            <button class="add-cart-btn" onclick="addToCart('Standard Lesson (45 min)', 15)">Add to Cart</button>
-        </div>
-        <div class="lesson-item" style="text-align: center; padding: 1.5rem 1rem;">
-            <h3>Full Lesson (60 min) - $18</h3>
-            <p style="max-width: 600px; margin: 0.5rem auto 1.5rem; font-size: 1.05rem;">Extra time for in-depth practice in conversation, grammar, reading, and writing.</p>
-            <button class="add-cart-btn" onclick="addToCart('Full Lesson (60 min)', 18)">Add to Cart</button>
-        </div>
+    <h1>Schedule Your Lesson</h1>
+    <p>Select the lesson duration below to book directly on my calendar.</p>
+    
+    <div class="lesson-options">
+        <a href="https://connor-esl.neetocal.com/full-lesson" class="lesson-btn">60-Minute Lesson</a>
+        <a href="https://connor-esl.neetocal.com/standard-lesson" class="lesson-btn">45-Minute Lesson</a>
+        <a href="https://connor-esl.neetocal.com/free-trial" class="lesson-btn">30-Minute Free Trial</a>
     </div>
-
-    <!-- Adults Section -->
-    <button class="collapsible">Adults (18+)</button>
-    <div class="content">
-        <div class="lesson-item" style="text-align: center; padding: 1.5rem 1rem;">
-            <p style="max-width: 600px; margin: 0.5rem auto 1.5rem; font-size: 1.05rem;">My private online lessons for adults focus on practical English skills for everyday life, travel, work, and social interactions. I also offer Cambridge exam prep (PET, FCE, CAE).</p>
-            <ul style="text-align: left; max-width: 300px; margin: 0 auto 1.5rem; padding-left: 20px;">
-                <li>Fully online – learn from home</li>
-                <li>Tailored to your level and goals</li>
-                <li>Flexible scheduling</li>
-            </ul>
-        </div>
-        <div class="lesson-item" style="text-align: center; padding: 1.5rem 1rem;">
-            <h3>5-Hour Package - $90</h3>
-            <button class="add-cart-btn" onclick="addToCart('Adults 5-Hour Package', 90)">Add to Cart</button>
-        </div>
-        <div class="lesson-item" style="text-align: center; padding: 1.5rem 1rem;">
-            <h3>10-Hour Package - $170</h3>
-            <button class="add-cart-btn" onclick="addToCart('Adults 10-Hour Package', 170)">Add to Cart</button>
-        </div>
-        <div class="lesson-item" style="text-align: center; padding: 1.5rem 1rem;">
-            <h3>20-Hour Package - $320</h3>
-            <button class="add-cart-btn" onclick="addToCart('Adults 20-Hour Package', 320)">Add to Cart</button>
-        </div>
-    </div>
-
-    <!-- Teens Section -->
-    <button class="collapsible">Teens (13–17)</button>
-    <div class="content">
-        <div class="lesson-item" style="text-align: center; padding: 1.5rem 1rem;">
-            <p style="max-width: 600px; margin: 0.5rem auto 1.5rem; font-size: 1.05rem;">My private online lessons for teens focus on school support, exam prep, and conversational skills. Cambridge exam prep is also available for PET or FCE certification.</p>
-            <ul style="text-align: left; max-width: 300px; margin: 0 auto 1.5rem; padding-left: 20px;">
-                <li>Fun, interactive online sessions</li>
-                <li>Tailored for teen learning styles</li>
-                <li>Focus on practical and academic English</li>
-            </ul>
-        </div>
-        <div class="lesson-item" style="text-align: center; padding: 1.5rem 1rem;">
-            <h3>5-Hour Package - $90</h3>
-            <button class="add-cart-btn" onclick="addToCart('Teens 5-Hour Package', 90)">Add to Cart</button>
-        </div>
-        <div class="lesson-item" style="text-align: center; padding: 1.5rem 1rem;">
-            <h3>10-Hour Package - $170</h3>
-            <button class="add-cart-btn" onclick="addToCart('Teens 10-Hour Package', 170)">Add to Cart</button>
-        </div>
-        <div class="lesson-item" style="text-align: center; padding: 1.5rem 1rem;">
-            <h3>20-Hour Package - $320</h3>
-            <button class="add-cart-btn" onclick="addToCart('Teens 20-Hour Package', 320)">Add to Cart</button>
-        </div>
-    </div>
-
-    <section class="why-choose" style="background-color: #4b2e2e; color: #fff; padding: 2.5rem; margin-top: 2.5rem; border-radius: 8px;">
-        <h2>Why Choose My Private Classes?</h2>
-        <ul style="margin-top: 1rem; padding-left: 20px; line-height: 1.8;">
-            <li><strong>Adaptability:</strong> Online classes that adapt to your schedule and needs.</li>
-            <li><strong>Personalized Programs:</strong> Designed to help you achieve your specific goals.</li>
-            <li><strong>Exclusive Attention:</strong> Classes for 1 person, so you get all the focus.</li>
-            <li><strong>Qualified Teacher:</strong> With extensive experience teaching English as a second language.</li>
-        </ul>
-    </section>
 </main>
 
-<footer>
-    <p>© 2026 Connor Brown</p>
-</footer>
-
 <script>
-    const menuToggle = document.querySelector('.menu-toggle');
-    if (menuToggle) {
-        menuToggle.addEventListener('click', () => { document.querySelector('.nav-menu').classList.toggle('active'); });
-    }
-    document.querySelectorAll(".collapsible").forEach(btn => {
-        btn.addEventListener("click", function() {
-            const content = this.nextElementSibling;
-            content.style.display = content.style.display === "block" ? "none" : "block";
+    // Cart functionality
+    const cartToggle = document.getElementById('cart-toggle');
+    const cartDropdown = document.getElementById('cart-dropdown');
+    
+    if (cartToggle) {
+        cartToggle.addEventListener('click', function(e) {
+            e.preventDefault();
+            cartDropdown.classList.toggle('show');
         });
-    });
+    }
+
     let cart = JSON.parse(localStorage.getItem('cesl_cart')) || [];
-    function saveCart() { localStorage.setItem('cesl_cart', JSON.stringify(cart)); }
-    function addToCart(name, price) { cart.push({ name, price }); saveCart(); updateCartUI(); document.getElementById('cart-dropdown').classList.add('show'); }
-    function removeFromCart(index) { cart.splice(index, 1); saveCart(); updateCartUI(); document.getElementById('cart-dropdown').classList.add('show'); }
     function updateCartUI() {
         const cartCountElement = document.getElementById('cart-count');
-        const cartDropdown = document.getElementById('cart-dropdown');
         if (!cartCountElement || !cartDropdown) return;
         cartCountElement.innerText = cart.length;
-        if (cart.length === 0) { cartDropdown.innerHTML = '<p style="text-align:center; margin: 0;">Your cart is empty.</p>'; return; }
-        let html = ''; let cartTotal = 0;
+        if (cart.length === 0) {
+            cartDropdown.innerHTML = '<p style="text-align:center; margin: 0; padding: 10px;">Your cart is empty.</p>';
+            return;
+        }
+        let html = '';
         cart.forEach((item, index) => {
-            cartTotal += item.price;
-            html += `<div class="cart-item"><span>${item.name}</span><div class="item-details"><span>$${item.price}</span><i class="fas fa-trash remove-btn" onclick="removeFromCart(${index})" title="Remove item"></i></div></div>`;
+            html += `<div class="cart-item"><span>${item.name}</span></div>`;
         });
-        html += `<div class="cart-total">Total: $${cartTotal}</div><button class="checkout-btn" onclick="checkoutPayPal()">Proceed to Checkout</button>`; 
         cartDropdown.innerHTML = html;
     }
-    function checkoutPayPal() {
-        if (cart.length === 0) return;
-        const form = document.createElement('form'); form.method = 'POST'; form.action = 'https://www.paypal.com/cgi-bin/webscr';
-        const inputs = { cmd: '_cart', upload: '1', business: 'crbrown.esl@gmail.com', currency_code: 'USD' };
-        for (const key in inputs) { const input = document.createElement('input'); input.type = 'hidden'; input.name = key; input.value = inputs[key]; form.appendChild(input); }
-        cart.forEach((item, index) => {
-            const i = index + 1;
-            const nameInput = document.createElement('input'); nameInput.type = 'hidden'; nameInput.name = `item_name_${i}`; nameInput.value = item.name; form.appendChild(nameInput);
-            const priceInput = document.createElement('input'); priceInput.type = 'hidden'; priceInput.name = `amount_${i}`; priceInput.value = item.price; form.appendChild(priceInput);
-        });
-        document.body.appendChild(form); form.submit();
-    }
-    const cartToggle = document.getElementById('cart-toggle');
-    if (cartToggle) { cartToggle.addEventListener('click', function(e) { e.preventDefault(); document.getElementById('cart-dropdown').classList.toggle('show'); }); }
     updateCartUI();
 </script>
+
 </body>
 </html>
