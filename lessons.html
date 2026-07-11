@@ -201,7 +201,7 @@ header nav ul li {
         updateCartUI(); 
     }
 
-   function updateCartUI() {
+  function updateCartUI() {
     const countEl = document.getElementById('cart-count');
     if (countEl) countEl.innerText = cart.length;
 
@@ -217,7 +217,7 @@ header nav ul li {
         total += item.price;
         html += `
             <div class="cart-item-row">
-                <span>${item.name} ($${item.price})</span>
+                <span>${item.name} - $${item.price}</span>
                 <span class="remove-btn" onclick="removeItem(${index})" style="color:red; cursor:pointer;">
                     <i class="fas fa-trash"></i>
                 </span>
@@ -231,6 +231,7 @@ header nav ul li {
              <a href="checkout.html" class="checkout-btn">Checkout</a>`;
              
     cartDropdown.innerHTML = html;
+}
 }
     updateCartUI();
 </script>
