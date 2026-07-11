@@ -9,7 +9,7 @@
         body { font-family: Arial, sans-serif; line-height: 1.6; background-color: #f9f9f9; color: #000; margin: 0; }
         .container { width: 90%; max-width: 1200px; margin: 0 auto; }
         header { background-color: #1a2a3a; color: #fff; padding: 1rem 0; }
-        .nav-wrap { display: flex; justify-content: space-between; align-items: center; }
+        .nav-wrap { display: flex; justify-content: space-between; align-items: center; position: relative; }
         .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: #fff; }
         .cesl-logo { width: 50px !important; height: 50px !important; object-fit: contain; }
         
@@ -19,9 +19,17 @@
         .nav-menu a { text-decoration: none; color: #fff; font-weight: bold; }
         .nav-menu a.active { color: #20c997; text-decoration: underline; }
 
-        /* Desktop: Hamburger hidden, Header-right hidden */
         .header-right { display: flex; align-items: center; gap: 15px; }
         .hamburger { display: none; cursor: pointer; font-size: 1.8rem; color: #20c997; }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .hamburger { display: block; }
+            .nav-menu { display: none; width: 100%; position: absolute; top: 100%; left: 0; background: #1a2a3a; padding: 1rem 0; z-index: 1001; }
+            .nav-menu.active { display: block; }
+            .nav-menu ul { flex-direction: column; gap: 15px; text-align: center; }
+            .cart-dropdown-content { right: 50% !important; transform: translateX(50%) !important; width: 90vw !important; }
+        }
 
         /* Hero & Sections */
         .hero { text-align: center; padding: 100px 20px !important; background: linear-gradient(rgba(26, 42, 58, 0.7), rgba(26, 42, 58, 0.7)), url('images/classrooms.jpg') !important; background-size: cover !important; background-position: center !important; color: #fff !important; border-radius: 8px !important; margin-top: 20px !important; }
@@ -42,15 +50,6 @@
         #google_translate_element { margin-left: 10px; }
         .goog-te-gadget-simple { background-color: #1a2a3a !important; border: 1px solid #20c997 !important; padding: 5px !important; border-radius: 5px !important; }
         .goog-te-gadget-simple span { color: #fff !important; }
-
-        /* Mobile Responsive */
-        @media (max-width: 768px) {
-            .hamburger { display: block; }
-            .nav-menu { display: none; width: 100%; }
-            .nav-menu.active { display: block; position: absolute; top: 100%; left: 0; background: #1a2a3a; padding: 1rem 0; z-index: 1001; }
-            .nav-menu ul { flex-direction: column; gap: 15px; }
-            .cart-dropdown-content { right: 50% !important; transform: translateX(50%) !important; width: 90vw !important; }
-        }
     </style>
 </head>
 <body>
@@ -119,10 +118,14 @@
 <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
 <script>
+    // Hamburger Menu Logic
     const hamburger = document.getElementById('hamburger');
     const navMenu = document.getElementById('nav-menu');
-    hamburger.addEventListener('click', () => { navMenu.classList.toggle('active'); });
+    hamburger.addEventListener('click', () => { 
+        navMenu.classList.toggle('active'); 
+    });
 
+    // Cart Logic
     const cartToggle = document.getElementById('cart-toggle');
     const cartDropdown = document.getElementById('cart-dropdown');
     let cart = JSON.parse(localStorage.getItem('cesl_cart')) || [];
@@ -145,6 +148,12 @@
         let total = 0;
         cart.forEach((item, index) => {
             total += item.price;
-            html += `<div class="cart-item-row"><span>${item.name} -$${item.price}</span><span class="remove-btn" onclick="removeItem(${index})" style="color:red; cursor:pointer;"><i class="fas fa-trash"></i></span></div>`;
+            html += `<div class="cart-item-row"><span>${item.name} - $${item.price}</span><span class="remove-btn" onclick="removeItem(${index})" style="color:red; cursor:pointer;"><i class="fas fa-trash"></i></span></div>`;
         });
-        html += `</div>
+        html += `</div><div class="cart-total"><span>Total:</span> <span>$${total}</span></div><a href="checkout.html" class="checkout-btn">Checkout</a>`;
+        cartDropdown.innerHTML = html;
+    }
+    updateCartUI();
+</script>
+</body>
+</html>
