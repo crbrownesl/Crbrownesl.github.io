@@ -9,10 +9,8 @@
     --accent-teal-hover: #17a589;
     --bg-light: #f8f9fa;
     --text-dark: #333333;
-    --text-muted: #666666;
 }
 
-/* --- Global Elements --- */
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: var(--bg-light);
@@ -22,231 +20,49 @@ body {
     padding: 0;
 }
 
-.container {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 0 20px;
+.container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+
+/* Header & Logo Fix */
+header { background-color: var(--primary-navy); color: #ffffff; padding: 1rem 0; }
+.nav-wrap { display: flex; justify-content: space-between; align-items: center; }
+
+.brand { 
+    display: flex; 
+    align-items: center; 
+    text-decoration: none; 
+    color: #ffffff; 
 }
 
-main {
-    padding: 3rem 0;
-}
-
-/* --- Header & Navigation --- */
-header {
-    background-color: var(--primary-navy);
-    color: #ffffff;
-    padding: 1rem 0;
-}
-
-.nav-wrap {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-/* Brand & Logo Layout */
-.brand {
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-    color: #ffffff;
-    max-width: 300px; /* Prevents the container from expanding unexpectedly */
-}
-
+/* STRICT LOGO SIZING */
 .cesl-logo {
-    display: block;
-    width: 50px !important;       /* Hard width constraint */
-    height: 50px !important;      /* Hard height constraint */
-    object-fit: contain;          /* Preserves image aspect ratio */
+    display: block !important;
+    width: 50px !important;       /* Forces width */
+    height: 50px !important;      /* Forces height */
+    min-width: 50px !important;   /* Prevents shrinking */
+    min-height: 50px !important;  /* Prevents shrinking */
+    object-fit: contain;          /* Keeps aspect ratio */
     margin-right: 12px;
 }
 
-.logo {
-    font-size: 1.5rem;
-    margin: 0;
-    font-weight: 700;
-    color: #ffffff;
+.logo { font-size: 1.5rem; margin: 0; color: #ffffff; }
+
+/* Navigation */
+.nav-menu ul { list-style: none; padding: 0; display: flex; gap: 20px; margin: 0; }
+.nav-menu a { color: #ffffff; text-decoration: none; font-weight: 500; }
+.nav-menu a:hover { color: var(--accent-teal); }
+
+/* Buttons & Cart */
+.checkout-btn { 
+    display: block; width: 100%; background: var(--accent-teal); color: #fff; 
+    text-align: center; padding: 10px; border-radius: 5px; font-weight: bold; 
+    border: none; cursor: pointer; 
 }
+.checkout-btn:hover { background: var(--accent-teal-hover); }
 
-/* Navigation Links */
-.nav-menu ul {
-    list-style: none;
-    padding: 0;
-    display: flex;
-    gap: 24px;
-    margin: 0;
-    align-items: center;
+/* Cart Dropdown */
+.cart-dropdown-content { 
+    display: none; position: absolute; right: 0; top: 45px; background-color: #fff; 
+    min-width: 280px; box-shadow: 0 8px 16px rgba(0,0,0,0.2); z-index: 1000; 
+    padding: 1rem; border-radius: 5px; color: #222; 
 }
-
-.nav-menu a {
-    color: #ffffff;
-    text-decoration: none;
-    font-weight: 500;
-    transition: color 0.2s ease;
-}
-
-.nav-menu a:hover,
-.nav-menu a.active {
-    color: var(--accent-teal);
-}
-
-.menu-toggle {
-    display: none;
-    background: none;
-    border: none;
-    color: #ffffff;
-    font-size: 1.8rem;
-    cursor: pointer;
-}
-
-/* --- Buttons --- */
-.add-cart-btn, .checkout-btn {
-    display: inline-block;
-    background-color: var(--accent-teal);
-    color: #ffffff;
-    border: none;
-    border-radius: 8px;
-    padding: 12px 24px;
-    cursor: pointer;
-    font-weight: bold;
-    font-family: inherit;
-    font-size: 1rem;
-    text-decoration: none;
-    text-align: center;
-    transition: background-color 0.3s ease, transform 0.1s ease;
-}
-
-.add-cart-btn:hover, .checkout-btn:hover {
-    background-color: var(--accent-teal-hover);
-}
-
-.add-cart-btn:active, .checkout-btn:active {
-    transform: scale(0.98);
-}
-
-/* --- Shopping Cart Dropdown --- */
-.cart-dropdown {
-    position: relative;
-}
-
-.cart-link {
-    cursor: pointer;
-}
-
-.cart-dropdown-content {
-    display: none;
-    position: absolute;
-    right: 0;
-    top: 45px;
-    background-color: #ffffff;
-    min-width: 290px;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
-    padding: 1.2rem;
-    border-radius: 8px;
-    color: var(--text-dark);
-    z-index: 1000;
-}
-
-.cart-dropdown-content.show {
-    display: block;
-}
-
-.cart-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-bottom: 10px;
-    margin-bottom: 10px;
-    border-bottom: 1px solid #eeeeee;
-    font-size: 0.95rem;
-}
-
-.item-details {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-}
-
-.remove-btn {
-    color: #d9534f;
-    cursor: pointer;
-    transition: color 0.2s ease;
-}
-
-.remove-btn:hover {
-    color: #b52b27;
-}
-
-.cart-total {
-    font-weight: bold;
-    text-align: right;
-    margin-top: 12px;
-    font-size: 1.1rem;
-}
-
-/* --- Content Sections --- */
-.why-choose {
-    background-color: var(--primary-navy) !important;
-    color: #ffffff;
-    padding: 2.5rem;
-    border-radius: 8px;
-    margin: 2.5rem 0;
-}
-
-.why-choose h2 {
-    margin-top: 0;
-    color: var(--accent-teal);
-}
-
-/* --- Footer --- */
-footer {
-    background-color: var(--primary-navy);
-    color: #ffffff;
-    text-align: center;
-    padding: 1.5rem 0;
-    margin-top: 4rem;
-    font-size: 0.9rem;
-}
-
-footer p {
-    margin: 0;
-}
-
-/* --- Responsive Design --- */
-@media (max-width: 768px) {
-    .menu-toggle {
-        display: block;
-    }
-
-    .nav-menu {
-        display: none;
-        width: 100%;
-    }
-
-    .nav-menu.active {
-        display: block;
-    }
-
-    .nav-wrap {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 15px;
-    }
-
-    .nav-menu ul {
-        flex-direction: column;
-        width: 100%;
-        gap: 10px;
-        padding-top: 10px;
-    }
-
-    .nav-menu li {
-        width: 100%;
-    }
-
-    .cart-dropdown-content {
-        right: auto;
-        left: 0;
-    }
-}
+.cart-dropdown-content.show { display: block; }
