@@ -26,15 +26,17 @@
         .original-price { color: #999; text-decoration: line-through; margin-right: 10px; font-size: 0.9em; }
 
         .cart-link { cursor: pointer; color: #fff; }
-        .cart-dropdown-content { 
+        .nav-menu ul li {
+    position: relative; /* This ensures the dropdown is anchored to the icon, not the whole page */
+}
+.cart-dropdown-content { 
     display: none; 
     position: absolute; 
-    top: 60px; /* Adjusts vertical position */
-    left: 50%; /* Moves to the horizontal center */
-    transform: translateX(-50%); /* Shifts it back by 50% to perfectly center it */
+    top: 45px; /* Adjust as needed */
+    right: -50px; /* Pulls it inward from the right edge */
+    width: 250px; /* Fixed width prevents it from overflowing */
     background-color: #fff; 
     color: #000; 
-    min-width: 280px; 
     border: 1px solid #ccc; 
     box-shadow: 0 8px 16px rgba(0,0,0,0.2); 
     z-index: 9999; 
