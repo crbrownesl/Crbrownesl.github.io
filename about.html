@@ -54,7 +54,24 @@
                 <li><a href="contact.html">Contact</a></li>
                 <li style="position: relative; display: flex; align-items: center;">
                     <a class="cart-link" id="cart-toggle"><i class="fas fa-shopping-cart"></i> (<span id="cart-count">0</span>)</a>
-                    <div class="cart-dropdown-content" id="cart-dropdown"></div>
+                   .cart-dropdown-content { 
+            display: none; 
+            position: absolute; 
+            top: 100%; 
+            right: 0; 
+            background-color: #fff; 
+            color: #000; 
+            min-width: 280px; 
+            border: 1px solid #ccc; 
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2); 
+            z-index: 1000; 
+            padding: 1rem; 
+            border-radius: 5px; 
+            margin-top: 10px;
+        }
+        .cart-dropdown-content.show { display: block; }
+        .remove-btn { color: #d9534f; cursor: pointer; margin-left: 10px; }
+        .checkout-btn { display: block; width: 100%; text-align: center; background: #20c997; color: #fff; text-decoration: none; padding: 10px; margin-top: 10px; border-radius: 5px; border: none; }
                     <div id="google_translate_element"></div>
                 </li>
             </ul>
