@@ -20,17 +20,21 @@
         .about-section { background: #fff; padding: 2rem; margin: 2rem 0; border-radius: 8px; box-shadow: 0 2px 6px rgba(0,0,0,0.1); }
         .about-section h2 { color: #1a2a3a; border-bottom: 2px solid #20c997; padding-bottom: 10px; }
         
-        /* Feature Grid Styles */
         .feature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 20px; }
         .feature-item { padding: 1rem; border: 1px solid #eee; border-radius: 5px; }
         .feature-item h3 { color: #20c997; margin-top: 0; }
 
-        /* Cart Styles */
+        /* Cart & Translate Styles */
         .cart-link { cursor: pointer; color: #fff; }
         .cart-dropdown-content { display: none; position: absolute; right: 0; background-color: #fff; color: #000; min-width: 250px; border: 1px solid #ccc; box-shadow: 0 8px 16px rgba(0,0,0,0.2); z-index: 1000; padding: 1rem; border-radius: 5px; }
         .cart-dropdown-content.show { display: block; }
         .checkout-btn { display: block; width: 100%; text-align: center; background: #20c997; color: #fff; text-decoration: none; padding: 10px; margin-top: 10px; border-radius: 5px; }
         .remove-btn { color: #d9534f; cursor: pointer; margin-left: 10px; }
+        
+        /* Fixes for Google Translate widget */
+        #google_translate_element { margin-left: 10px; }
+        .goog-te-gadget-simple { background-color: #1a2a3a !important; border: 1px solid #20c997 !important; padding: 5px !important; border-radius: 5px !important; }
+        .goog-te-gadget-simple span { color: #fff !important; }
     </style>
 </head>
 <body>
@@ -48,9 +52,10 @@
                 <li><a href="lessons.html">Lessons</a></li>
                 <li><a href="schedule.html">Schedule</a></li>
                 <li><a href="contact.html">Contact</a></li>
-                <li style="position: relative;">
+                <li style="position: relative; display: flex; align-items: center;">
                     <a class="cart-link" id="cart-toggle"><i class="fas fa-shopping-cart"></i> (<span id="cart-count">0</span>)</a>
                     <div class="cart-dropdown-content" id="cart-dropdown"></div>
+                    <div id="google_translate_element"></div>
                 </li>
             </ul>
         </nav>
@@ -60,7 +65,7 @@
 <main class="container">
     <section class="about-section">
         <h1>About Me</h1>
-        <p>Welcome! My name is <strong>Connor Brown</strong>, and I am an English teacher dedicated to helping students achieve their language goals through personalized, private instruction.</p>
+        <p>Welcome! My name is <strong>Connor Reed Brown</strong>, and I am an English teacher dedicated to helping students achieve their language goals through personalized, private instruction.</p>
     </section>
 
     <section class="about-section">
@@ -87,7 +92,7 @@
 
     <section class="about-section">
         <h2>My Teaching Background</h2>
-        <p>My journey in education began with in-person instruction across Europe before I transitioned to specializing in private online lessons in Latin America. Over the years, I have had the pleasure of working with a diverse range of students:</p>
+        <p>My journey in education began with in-person instruction across Europe before I transitioned to specializing in private online lessons. Over the years, I have had the pleasure of working with a diverse range of students:</p>
         <ul>
             <li><strong>All Ages:</strong> Experience teaching students from kindergarten through sixth grade, as well as teenagers and adults.</li>
             <li><strong>Diverse Backgrounds:</strong> Proven success in helping learners with various native accents and different English proficiency levels, from beginner to advanced.</li>
@@ -103,6 +108,13 @@
 <footer class="container" style="text-align: center; padding-bottom: 20px;">
     <p>&copy; 2026 Connor Brown</p>
 </footer>
+
+<script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({pageLanguage: 'en', includedLanguages: 'es,fr,de,it,pt,zh-CN,ja,ko'}, 'google_translate_element');
+    }
+</script>
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
 <script>
     const cartToggle = document.getElementById('cart-toggle');
