@@ -6,117 +6,50 @@
     <title>Contact - Connor ESL</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* Shared Styles */
         body { font-family: Arial, sans-serif; line-height: 1.6; background-color: #f9f9f9; color: #000; margin: 0; }
         .container { width: 90%; max-width: 1200px; margin: 0 auto; }
         header { background-color: #1a2a3a; color: #fff; padding: 1rem 0; }
-        .nav-wrap { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; }
+        
+        .nav-wrap { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; position: relative; }
         .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: #fff; }
         .cesl-logo { width: 50px !important; height: 50px !important; object-fit: contain; }
-        .nav-menu ul { list-style: none; display: flex; flex-wrap: wrap; gap: 20px; align-items: center; margin: 0; padding: 0; }
-        .nav-menu a { text-decoration: none; color: #fff; font-weight: bold; }
-        .nav-menu a.active { color: #20c997; text-decoration: underline; }
+        
+        /* Hamburger Styles */
+        .hamburger { display: none; cursor: pointer; font-size: 1.8rem; color: #20c997; }
+        .nav-menu { display: flex; align-items: center; }
+        nav ul { list-style: none; display: flex; flex-wrap: wrap; gap: 20px; align-items: center; margin: 0; padding: 0; }
+        nav ul li a { text-decoration: none; color: #fff; font-weight: bold; }
+        nav ul li a.active { color: #20c997; text-decoration: underline; }
 
         /* Contact Page Styling */
         .contact-section { background: #fff; padding: 2rem; border-radius: 8px; box-shadow: 0 2px 6px rgba(0,0,0,0.1); margin-top: 2rem; display: flex; flex-direction: column; gap: 15px; align-items: flex-start; }
-        .contact-item { font-size: 1.2rem; display: flex; align-items: center; gap: 15px; }
+        .contact-item { font-size: 1.2rem; display: flex; align-items: flex-start; gap: 15px; word-break: break-all; }
         .whatsapp-btn { background-color: #25d366; color: #fff; padding: 12px 25px; text-decoration: none; border-radius: 5px; font-weight: bold; display: inline-flex; align-items: center; gap: 10px; margin-top: 10px; }
         .whatsapp-btn:hover { background-color: #128c7e; }
 
-        /* Cart Dropdown & Translate Styles */
-        /* Cart & Translate Styles */
+        /* Cart Dropdown Styles */
         .cart-link { cursor: pointer; color: #fff; }
-        
-        .cart-dropdown-content { 
-            display: none; 
-            position: absolute; 
-            top: 40px; /* Adjust this value to bring it down from the header */
-            right: 0; 
-            background-color: #fff; 
-            color: #000; 
-            min-width: 280px; /* Slightly wider to prevent text wrapping issues */
-            border: 1px solid #ccc; 
-            box-shadow: 0 8px 16px rgba(0,0,0,0.2); 
-            z-index: 1000; 
-            padding: 1rem; 
-            border-radius: 5px; 
-            box-sizing: border-box; /* Keeps everything contained */
-        }
-        
+        .cart-dropdown-content { display: none; position: absolute; top: 100%; right: 0; width: 300px; background-color: #fff; color: #333; border: 1px solid #ddd; box-shadow: 0 4px 12px rgba(0,0,0,0.15); z-index: 9999; padding: 15px; border-radius: 8px; box-sizing: border-box; margin-top: 10px; }
         .cart-dropdown-content.show { display: block; }
-        
-        /* THESE ARE BACK - They format the rows and create the gap! */
-        .cart-item-row { 
-            display: flex; 
-            justify-content: space-between; 
-            align-items: center;
-            margin-bottom: 10px; 
-            font-size: 0.95rem; 
-        }
-        
-        .cart-total { 
-            border-top: 1px solid #eee; 
-            padding-top: 10px; 
-            margin-top: 10px; 
-            font-weight: bold; 
-            display: flex; 
-            justify-content: space-between; 
-        }
-
+        .cart-item-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; font-size: 0.95rem; }
+        .cart-total { border-top: 1px solid #eee; padding-top: 10px; margin-top: 10px; font-weight: bold; display: flex; justify-content: space-between; }
         .remove-btn { color: #d9534f; cursor: pointer; margin-left: 10px; }
-
-        .checkout-btn { 
-            display: block; 
-            width: 100%; 
-            text-align: center; 
-            background: #20c997; 
-            color: #fff; 
-            text-decoration: none; 
-            padding: 12px; 
-            margin-top: 15px; 
-            border-radius: 5px; 
-            font-weight: bold;
-            /* This prevents the button from spilling over the edge */
-            box-sizing: border-box; 
-        } /* The missing closing bracket is now here! */
-
-        /* Fixes for Google Translate widget */
+        .checkout-btn { display: block; width: 100%; text-align: center; background: #20c997; color: #fff; text-decoration: none; padding: 12px; margin-top: 15px; border-radius: 5px; font-weight: bold; box-sizing: border-box; }
+        
         #google_translate_element { margin-left: 10px; }
         .goog-te-gadget-simple { background-color: #1a2a3a !important; border: 1px solid #20c997 !important; padding: 5px !important; border-radius: 5px !important; }
         .goog-te-gadget-simple span { color: #fff !important; }
-    /* Mobile Responsive Centering */
+
+        /* Mobile Responsive */
         @media (max-width: 768px) {
-            .nav-wrap {
-                flex-direction: column; /* Stacks the logo and the menu */
-                justify-content: center;
-            }
-            
-            .brand {
-                margin-bottom: 15px; /* Adds breathing room below the logo */
-                justify-content: center;
-                width: 100%;
-            }
-            
-            nav ul {
-                justify-content: center; /* Centers the navigation links */
-                width: 100%;
-            }
-            
-            /* Centers the cart and Google Translate elements */
-            nav ul li:last-child {
-                width: 100%;
-                justify-content: center;
-                margin-top: 10px;
-            }
-            
-            /* Center the cart dropdown box on mobile so it doesn't go off-screen */
-            .cart-dropdown-content {
-                right: auto;
-                left: 50%;
-                transform: translateX(-50%);
-            }
+            .hamburger { display: block; }
+            .nav-menu { width: 100%; }
+            nav ul { display: none; flex-direction: column; width: 100%; background: #1a2a3a; padding: 1rem 0; margin-top: 10px; }
+            nav ul.active { display: flex; }
+            .nav-wrap { flex-direction: row; justify-content: space-between; }
+            .brand { width: auto; }
+            .cart-dropdown-content { right: auto; left: 50%; transform: translateX(-50%); }
         }
-    </style>
     </style>
 </head>
 <body>
@@ -127,8 +60,11 @@
             <img src="images/cesl-logo.png" alt="Connor ESL Logo" class="cesl-logo">
             <h1 style="margin: 0; font-size: 1.5rem;">Connor ESL</h1>
         </a>
+        
+        <div class="hamburger" id="hamburger"><i class="fas fa-bars"></i></div>
+
         <nav class="nav-menu">
-            <ul>
+            <ul id="nav-list">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="about.html">About</a></li>
                 <li><a href="lessons.html">Lessons</a></li>
@@ -169,59 +105,36 @@
 <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
 <script>
+    const hamburger = document.getElementById('hamburger');
+    const navList = document.getElementById('nav-list');
+    hamburger.addEventListener('click', () => { navList.classList.toggle('active'); });
+
     const cartToggle = document.getElementById('cart-toggle');
     const cartDropdown = document.getElementById('cart-dropdown');
     let cart = JSON.parse(localStorage.getItem('cesl_cart')) || [];
 
-    // Toggle dropdown on icon click
-    cartToggle.addEventListener('click', (e) => { 
-        e.preventDefault(); 
-        cartDropdown.classList.toggle('show'); 
-    });
+    cartToggle.addEventListener('click', (e) => { e.preventDefault(); cartDropdown.classList.toggle('show'); });
 
-    // Close when clicking outside
     window.addEventListener('click', (e) => {
         if (!cartToggle.contains(e.target) && !cartDropdown.contains(e.target)) {
             cartDropdown.classList.remove('show');
         }
     });
 
-    function removeItem(index) { 
-        cart.splice(index, 1); 
-        localStorage.setItem('cesl_cart', JSON.stringify(cart)); 
-        updateCartUI(); 
-    }
+    function removeItem(index) { cart.splice(index, 1); localStorage.setItem('cesl_cart', JSON.stringify(cart)); updateCartUI(); }
 
-   function updateCartUI() {
-    const countEl = document.getElementById('cart-count');
-    if (countEl) countEl.innerText = cart.length;
-
-    if (cart.length === 0) {
-        cartDropdown.innerHTML = '<p style="text-align:center;">Your cart is empty.</p>';
-        return;
-    }
-
-    let html = '<div style="max-height: 200px; overflow-y: auto;">';
-    let total = 0;
-
-    cart.forEach((item, index) => {
-        total += item.price;
-        html += `
-            <div class="cart-item-row">
-                <span>${item.name} - $${item.price}</span>
-                <span class="remove-btn" onclick="removeItem(${index})" style="color:red; cursor:pointer;">
-                    <i class="fas fa-trash"></i>
-                </span>
-            </div>`;
-    });
-    
-    html += `</div>
-             <div class="cart-total">
-                <span>Total:</span> <span>$${total}</span>
-             </div>
-             <a href="checkout.html" class="checkout-btn">Checkout</a>`;
-             
-    cartDropdown.innerHTML = html;
+    function updateCartUI() {
+        const countEl = document.getElementById('cart-count');
+        if (countEl) countEl.innerText = cart.length;
+        if (cart.length === 0) { cartDropdown.innerHTML = '<p style="text-align:center;">Your cart is empty.</p>'; return; }
+        let html = '<div style="max-height: 200px; overflow-y: auto;">';
+        let total = 0;
+        cart.forEach((item, index) => {
+            total += item.price;
+            html += `<div class="cart-item-row"><span>${item.name} - $${item.price}</span><span class="remove-btn" onclick="removeItem(${index})"><i class="fas fa-trash"></i></span></div>`;
+        });
+        html += `</div><div class="cart-total"><span>Total:</span> <span>$${total}</span></div><a href="checkout.html" class="checkout-btn">Checkout</a>`;
+        cartDropdown.innerHTML = html;
     }
     updateCartUI();
 </script>
