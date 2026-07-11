@@ -3,9 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Connor ESL - Home</title>
+    <title>Home - Connor ESL</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* Shared Palette/Nav Styles */
+        body { font-family: Arial, sans-serif; line-height: 1.6; background-color: #f9f9f9; color: #000; margin: 0; }
+        .container { width: 90%; max-width: 1200px; margin: 0 auto; }
+        header { background-color: #1a2a3a; color: #fff; padding: 1rem 0; }
+        .nav-wrap { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; }
+        .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: #fff; }
+        .cesl-logo { width: 50px !important; height: 50px !important; object-fit: contain; }
+        .nav-menu ul { list-style: none; display: flex; flex-wrap: wrap; gap: 20px; align-items: center; margin: 0; padding: 0; }
+        .nav-menu a { text-decoration: none; color: #fff; font-weight: bold; }
+        .nav-menu a.active { color: #20c997; text-decoration: underline; }
+
+        /* Cart Dropdown */
+        .cart-link { cursor: pointer; color: #fff; }
+        .cart-dropdown-content { display: none; position: absolute; right: 0; background-color: #fff; color: #000; min-width: 250px; border: 1px solid #ccc; box-shadow: 0 8px 16px rgba(0,0,0,0.2); z-index: 1000; padding: 1rem; border-radius: 5px; }
+        .cart-dropdown-content.show { display: block; }
+    </style>
 </head>
 <body>
 
@@ -13,9 +30,8 @@
     <div class="container nav-wrap">
         <a href="index.html" class="brand">
             <img src="images/cesl-logo.png" alt="Connor ESL Logo" class="cesl-logo">
-            <h1 class="logo">Connor ESL</h1>
+            <h1 style="margin: 0; font-size: 1.5rem;">Connor ESL</h1>
         </a>
-        <button class="menu-toggle" aria-label="Toggle menu">☰</button>
         <nav class="nav-menu">
             <ul>
                 <li><a href="index.html" class="active">Home</a></li>
@@ -23,8 +39,8 @@
                 <li><a href="lessons.html">Lessons</a></li>
                 <li><a href="schedule.html">Schedule</a></li>
                 <li><a href="contact.html">Contact</a></li>
-                <li class="cart-dropdown">
-                    <a class="cart-link" id="cart-toggle"><i class="fas fa-shopping-cart"></i> <span id="cart-count">0</span></a>
+                <li style="position: relative;">
+                    <a class="cart-link" id="cart-toggle"><i class="fas fa-shopping-cart"></i> (<span id="cart-count">0</span>)</a>
                     <div class="cart-dropdown-content" id="cart-dropdown"></div>
                 </li>
             </ul>
@@ -32,21 +48,36 @@
     </div>
 </header>
 
-<main class="container">
-    <section class="hero-banner">
-        <h1>Start Your Journey to Fluent English Today with CESL</h1>
-        <p>Personalized and private English lessons focused on speaking, reading, writing, and grammar.</p>
-    </section>
-
-    <section class="cta-box">
-        <h2><i class="far fa-clock"></i> Try a Free 30-Minute Lesson!</h2>
-        <p>Get a taste of my teaching style with a free 30-minute trial lesson and placement test.</p>
-        <a href="schedule.html" class="schedule-link">Schedule Your Lesson</a>
-    </section>
+<main class="container" style="padding-top: 20px;">
+    <h1>Start Your Journey to Fluent English Today with CESL</h1>
+    <p>Personalized and private English lessons focused on speaking, reading, writing, and grammar.</p>
+    <h2><i class="far fa-clock"></i> Try a Free 30-Minute Lesson!</h2>
+    <p>Get a taste of my teaching style with a free 30-minute trial lesson and placement test.</p>
+    <a href="schedule.html">Schedule Your Lesson</a>
 </main>
 
-<footer>
-    <p>© 2026 Connor Brown</p>
+<footer class="container" style="margin-top: 40px;">
+    <p>&copy; 2026 Connor Brown</p>
 </footer>
+
+<script>
+    const cartToggle = document.getElementById('cart-toggle');
+    const cartDropdown = document.getElementById('cart-dropdown');
+    let cart = JSON.parse(localStorage.getItem('cesl_cart')) || [];
+
+    cartToggle.addEventListener('click', (e) => { e.preventDefault(); cartDropdown.classList.toggle('show'); });
+
+    function updateCartUI() {
+        document.getElementById('cart-count').innerText = cart.length;
+        if (cart.length === 0) {
+            cartDropdown.innerHTML = '<p style="text-align:center; padding:10px;">Your cart is empty.</p>';
+            return;
+        }
+        let html = '';
+        cart.forEach(item => html += `<div style="padding: 5px 0;">${item.name} - $${item.price}</div>`);
+        cartDropdown.innerHTML = html;
+    }
+    updateCartUI();
+</script>
 </body>
 </html>
