@@ -28,12 +28,11 @@
         .cart-link { cursor: pointer; color: #fff; }
         header nav ul li {
     position: relative; 
-}
 .cart-dropdown-content { 
     display: none; 
     position: absolute; 
-    top: 45px; 
-    /* This centers the box under the icon regardless of the list item width */
+    top: 50px; 
+    /* This centers the dropdown under your cart icon */
     left: 50%; 
     transform: translateX(-80%); 
     width: 250px; 
@@ -44,25 +43,12 @@
     z-index: 9999; 
     padding: 1rem; 
     border-radius: 5px; 
-}
-       .cart-dropdown-content { 
-    display: none; 
-    position: absolute; 
-    /* Move it down slightly further from the nav bar */
-    top: 50px; 
-    /* Right: 0 aligns the right edge of the box with the right edge of the nav item */
-    right: 0; 
-    /* Force a width that is guaranteed to fit within the container */
-    width: 250px; 
-    background-color: #fff; 
-    color: #000; 
-    border: 1px solid #ccc; 
-    box-shadow: 0 8px 16px rgba(0,0,0,0.2); 
-    z-index: 9999; 
-    padding: 1rem; 
-    border-radius: 5px; 
-    /* This ensures that even if it's wide, it doesn't push the page layout */
     box-sizing: border-box; 
+}
+
+/* Ensure the display class is outside the other definition */
+.cart-dropdown-content.show { 
+    display: block !important; 
 }
         .checkout-btn { display: block; width: 100%; text-align: center; background: #20c997; color: #fff; text-decoration: none; padding: 10px; margin-top: 10px; border-radius: 5px; }
         .remove-btn { color: #d9534f; cursor: pointer; margin-left: 10px; }
