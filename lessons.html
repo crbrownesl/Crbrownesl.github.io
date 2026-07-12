@@ -23,7 +23,7 @@
         .why-choose { background-color: #1a2a3a; color: #fff; padding: 2.5rem; margin: 2rem 0; border-radius: 8px; }
         .collapsible { background-color: #1a2a3a; color: white; cursor: pointer; padding: 1rem; width: 100%; border: none; text-align: left; font-size: 1.2rem; border-radius: 5px; margin-bottom: 1rem; }
         .content { padding: 1.5rem; display: none; background-color: #fff; border-radius: 0 0 5px 5px; margin-bottom: 2rem; box-shadow: 0 2px 6px rgba(0,0,0,0.1); }
-        .lesson-item { text-align: center; padding: 1.5rem 1rem; }
+        .lesson-item { text-align: center; padding: 1.5rem 1rem; border-bottom: 1px solid #eee; }
         .add-cart-btn { background-color: #20c997; color: #fff; border: none; padding: 12px 24px; border-radius: 5px; font-weight: bold; cursor: pointer; }
         .original-price { color: #999; text-decoration: line-through; margin-right: 10px; font-size: 0.9em; }
 
@@ -80,18 +80,21 @@
 
 <main class="container">
     <h1>Private Online English Lessons</h1>
+    <p>Get personalized, 1-on-1 English training tailored to your specific professional and personal goals.</p>
+
     <section class="why-choose">
-        <h2>Why Choose My Private Classes?</h2>
+        <h2>My Personalized Programs</h2>
         <ul>
-            <li><strong>Convenience:</strong> All lessons are conducted live over Zoom.</li>
-            <li><strong>Resources:</strong> I utilize a wide variety of professional English books from Oxford to Cambridge.</li>
-            <li><strong>Personalized Programs:</strong> Designed to help you achieve your specific goals.</li>
-            <li><strong>Exclusive Attention:</strong> Classes are for 1 person, ensuring you get all the focus.</li>
-            <li><strong>Qualified Teacher:</strong> Extensive experience teaching English as a second language.</li>
+            <li><strong>General English:</strong> I help you build the confidence and skills to communicate effectively in everyday life.</li>
+            <li><strong>Business English:</strong> I refine your professional communication for the global workplace.</li>
+            <li><strong>Advanced Conversation:</strong> I help you improve your fluency, accuracy, and natural expression.</li>
+            <li><strong>Exam Preparation:</strong> I provide dedicated support for TOEFL, IELTS, and other international certifications.</li>
+            <li><strong>Custom-Made Programs:</strong> I build the curriculum around exactly what you need to succeed.</li>
         </ul>
+        <p><strong>How to Begin:</strong> To ensure you are placed at the right level, I start with a brief placement assessment. Contact me today to schedule your evaluation and begin your journey to fluency.</p>
     </section>
 
-    <button class="collapsible">Individual Lessons</button>
+    <button class="collapsible">Individual Sessions</button>
     <div class="content">
         <div class="lesson-item">
             <h3>Standard Lesson (45 min) - $15</h3>
@@ -102,12 +105,12 @@
             <button class="add-cart-btn" onclick="addToCart('Full Lesson (60 min)', 18)">Add to Cart</button>
         </div>
         <div class="lesson-item">
-            <h3>Extended Lesson (2 hours) - $35</h3>
+            <h3>Extended Session (2 hours) - $35</h3>
             <button class="add-cart-btn" onclick="addToCart('Extended Lesson (2 hours)', 35)">Add to Cart</button>
         </div>
     </div>
 
-    <button class="collapsible">Package Deals</button>
+    <button class="collapsible">Package Deals (Best Value)</button>
     <div class="content">
         <div class="lesson-item"><h3>5-Hour Package - $90</h3><button class="add-cart-btn" onclick="addToCart('5-Hour Package', 90)">Add to Cart</button></div>
         <div class="lesson-item"><h3>10-Hour Package - <span class="original-price">$180</span> $170</h3><button class="add-cart-btn" onclick="addToCart('10-Hour Package', 170)">Add to Cart</button></div>
