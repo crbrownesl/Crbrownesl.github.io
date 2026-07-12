@@ -21,6 +21,12 @@
 
         /* Lessons Section - Updated Palette */
         .page-header { background-color: #1a2a3a; color: #fff; padding: 2.5rem; margin: 2rem 0; border-radius: 8px; }
+        
+        /* Updated Programs Grid */
+        .programs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin: 2rem 0; }
+        .program-box { background: #fff; padding: 1.5rem; border-radius: 8px; border-top: 5px solid #20c997; box-shadow: 0 2px 6px rgba(0,0,0,0.1); }
+        .divider { border: 0; border-top: 1px solid #20c997; margin: 2rem 0; }
+
         .collapsible { background-color: #1a2a3a; color: white; cursor: pointer; padding: 1rem; width: 100%; border: 1px solid #20c997; text-align: left; font-size: 1.2rem; border-radius: 5px; margin-bottom: 1rem; transition: 0.3s; }
         .collapsible:hover { background-color: #20c997; }
         .content { padding: 1.5rem; display: none; background-color: #fff; border: 1px solid #20c997; border-radius: 0 0 5px 5px; margin-bottom: 2rem; box-shadow: 0 2px 6px rgba(0,0,0,0.1); }
@@ -84,17 +90,20 @@
     <section class="page-header">
         <h1>Private Online English Lessons</h1>
         <p>Get personalized, 1-on-1 English training tailored to your specific professional and personal goals.</p>
-        
-        <h2>My Personalized Programs</h2>
-        <ul>
-            <li><strong>General English:</strong> Build confidence and skills for everyday life.</li>
-            <li><strong>Business English:</strong> Refine professional communication for the workplace.</li>
-            <li><strong>Advanced Conversation:</strong> Improve fluency, accuracy, and natural expression.</li>
-            <li><strong>Exam Preparation:</strong> Dedicated support for TOEFL, IELTS, and certifications.</li>
-            <li><strong>Custom-Made Programs:</strong> Curriculum built around your unique needs.</li>
-        </ul>
-        <p><strong>How to Begin:</strong> Contact me to schedule a free 30-minute placement assessment.</p>
     </section>
+
+    <h2>My Personalized Programs</h2>
+    <div class="programs-grid">
+        <div class="program-box"><h3>General English</h3><p>Build confidence and skills for everyday life.</p></div>
+        <div class="program-box"><h3>Business English</h3><p>Refine professional communication for the workplace.</p></div>
+        <div class="program-box"><h3>Advanced Conversation</h3><p>Improve fluency, accuracy, and natural expression.</p></div>
+        <div class="program-box"><h3>Exam Preparation</h3><p>Dedicated support for TOEFL, IELTS, and certifications.</p></div>
+        <div class="program-box"><h3>Custom-Made Programs</h3><p>Curriculum built around your unique needs.</p></div>
+    </div>
+
+    <p><strong>How to Begin:</strong> Contact me to schedule a free 30-minute placement assessment.</p>
+    
+    <hr class="divider">
 
     <p style="text-align: center; font-weight: bold; margin-bottom: 20px;">Click on the menus below to see pricing and select your classes.</p>
 
