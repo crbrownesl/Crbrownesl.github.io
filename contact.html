@@ -23,23 +23,31 @@
         nav ul li a { text-decoration: none; color: #fff; font-weight: bold; }
         nav ul li a.active { color: #20c997; text-decoration: underline; }
 
-        /* Contact Page Styling */
-        .contact-section { 
+        /* Unified Info Box Style */
+        .info-box { 
             background: #1a2a3a; 
             color: #fff; 
             padding: 2rem; 
             border-radius: 8px; 
-            border-top: 5px solid #20c997;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.1); 
             margin-top: 2rem; 
-            display: flex; 
-            flex-direction: column; 
-            gap: 20px; 
+            border-top: 5px solid #20c997; 
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
         }
-        .contact-item { font-size: 1.1rem; display: flex; align-items: flex-start; gap: 15px; flex-wrap: wrap; }
+        .contact-item { font-size: 1.1rem; display: flex; align-items: center; gap: 15px; margin-bottom: 15px; }
         .contact-item i { color: #20c997; }
-        .whatsapp-btn { background-color: #20c997; color: #fff; padding: 12px 25px; text-decoration: none; border-radius: 5px; font-weight: bold; display: inline-flex; align-items: center; gap: 10px; width: fit-content; }
-        .whatsapp-btn:hover { background-color: #17a589; }
+        .whatsapp-btn { 
+            background-color: #20c997; 
+            color: #fff; 
+            padding: 12px 25px; 
+            text-decoration: none; 
+            border-radius: 5px; 
+            font-weight: bold; 
+            display: inline-flex; 
+            align-items: center; 
+            gap: 10px; 
+            margin-top: 10px;
+        }
+        .whatsapp-btn:hover { background-color: #1a2a3a; border: 1px solid #20c997; }
 
         /* Cart Dropdown Styles */
         .cart-link { cursor: pointer; color: #fff; }
@@ -52,14 +60,12 @@
         
         #google_translate_element { margin-left: 10px; }
 
-        /* Mobile Responsive */
         @media (max-width: 768px) {
             .hamburger { display: block; }
             .nav-menu { display: none; width: 100%; position: absolute; top: 100%; left: 0; background: #1a2a3a; padding: 1rem 0; z-index: 1001; }
             .nav-menu.active { display: block; }
             .nav-menu ul { flex-direction: column; gap: 15px; text-align: center; }
-            .cart-dropdown-content { position: fixed; top: 70px; left: 50%; transform: translateX(-50%); width: 90vw !important; right: auto !important; max-width: 400px; }
-            .contact-item { font-size: 1rem; }
+            .cart-dropdown-content { position: fixed; top: 70px; left: 50%; transform: translateX(-50%); width: 90vw !important; }
         }
     </style>
 </head>
@@ -71,9 +77,8 @@
             <img src="images/cesl-logo.png" alt="Connor ESL Logo" class="cesl-logo">
             <h1 style="margin: 0; font-size: 1.5rem;">Connor ESL</h1>
         </a>
-        
         <nav class="nav-menu" id="nav-menu">
-            <ul id="nav-list">
+            <ul>
                 <li><a href="index.html">Home</a></li>
                 <li><a href="about.html">About</a></li>
                 <li><a href="lessons.html">Lessons</a></li>
@@ -82,7 +87,6 @@
                 <li><div id="google_translate_element"></div></li>
             </ul>
         </nav>
-
         <div class="header-right">
             <div style="position: relative;">
                 <a class="cart-link" id="cart-toggle"><i class="fas fa-shopping-cart"></i> (<span id="cart-count">0</span>)</a>
@@ -94,10 +98,9 @@
 </header>
 
 <main class="container">
-    <h1>Contact Me</h1>
-    <p>Have questions? Reach out through any of the channels below.</p>
-    
-    <div class="contact-section">
+    <div class="info-box">
+        <h1>Contact Me</h1>
+        <p>Have questions? Reach out through any of the channels below.</p>
         <div class="contact-item"><i class="fas fa-envelope"></i> <strong>Email:</strong> crbrown.esl@gmail.com</div>
         <div class="contact-item"><i class="fas fa-phone"></i> <strong>Phone:</strong> +507 6810-3205</div>
         <a href="https://wa.me/50768103205" class="whatsapp-btn" target="_blank">
@@ -105,10 +108,6 @@
         </a>
     </div>
 </main>
-
-<footer class="container" style="margin-top: 40px; text-align: center; padding-bottom: 20px;">
-    <p>&copy; 2026 Connor Brown</p>
-</footer>
 
 <script type="text/javascript">
     function googleTranslateElementInit() {
@@ -128,12 +127,6 @@
 
     cartToggle.addEventListener('click', (e) => { e.preventDefault(); cartDropdown.classList.toggle('show'); });
 
-    window.addEventListener('click', (e) => {
-        if (!cartToggle.contains(e.target) && !cartDropdown.contains(e.target)) {
-            cartDropdown.classList.remove('show');
-        }
-    });
-
     function removeItem(index) { cart.splice(index, 1); localStorage.setItem('cesl_cart', JSON.stringify(cart)); updateCartUI(); }
 
     function updateCartUI() {
@@ -144,7 +137,7 @@
         let total = 0;
         cart.forEach((item, index) => {
             total += item.price;
-            html += `<div class="cart-item-row"><span>${item.name} - $${item.price}</span><span class="remove-btn" onclick="removeItem(${index})"><i class="fas fa-trash"></i></span></div>`;
+            html += `<div class="cart-item-row"><span>${item.name} - $${item.price}</span><span onclick="removeItem(${index})" style="color:red; cursor:pointer;"><i class="fas fa-trash"></i></span></div>`;
         });
         html += `</div><div class="cart-total"><span>Total:</span> <span>$${total}</span></div><a href="checkout.html" class="checkout-btn">Checkout</a>`;
         cartDropdown.innerHTML = html;
